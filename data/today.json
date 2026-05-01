@@ -1,0 +1,253 @@
+{
+  "date": "2026-04-28",
+  "weekday": "Tuesday",
+  "phase": "base",
+  "day_color": "YELLOW",
+  "workout": {
+    "title": "Bike - Threshold intervals",
+    "sport": "bike",
+    "duration_min": 105,
+    "tss": 95.0,
+    "intensity_factor": 0.88,
+    "is_completed": false
+  },
+  "secondary_workouts": [
+    {
+      "title": "Run - Brick run off bike",
+      "sport": "bike",
+      "duration_min": 20
+    }
+  ],
+  "week_strip": [
+    {
+      "date": "2026-04-27",
+      "label": "M",
+      "color": "red",
+      "is_today": false,
+      "title": "Bike - Recovery spin",
+      "duration_min": 45
+    },
+    {
+      "date": "2026-04-28",
+      "label": "T",
+      "color": "yellow",
+      "is_today": true,
+      "title": "Bike - Threshold intervals",
+      "duration_min": 105
+    },
+    {
+      "date": "2026-04-29",
+      "label": "W",
+      "color": "yellow",
+      "is_today": false,
+      "title": "Run - Easy Z2",
+      "duration_min": 60
+    },
+    {
+      "date": "2026-04-30",
+      "label": "T",
+      "color": "red",
+      "is_today": false,
+      "title": "Strength - Lower body",
+      "duration_min": 30
+    },
+    {
+      "date": "2026-05-01",
+      "label": "F",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 30
+    },
+    {
+      "date": "2026-05-02",
+      "label": "S",
+      "color": "green",
+      "is_today": false,
+      "title": "Bike - Long endurance ride",
+      "duration_min": 210
+    },
+    {
+      "date": "2026-05-03",
+      "label": "S",
+      "color": "yellow",
+      "is_today": false,
+      "title": "Run - Long run",
+      "duration_min": 105
+    }
+  ],
+  "macros": {
+    "carbs_g": 440,
+    "protein_g": 192,
+    "fat_g": 88,
+    "calories": 3320,
+    "carbs_g_per_kg": 5.5,
+    "protein_g_per_kg": 2.4
+  },
+  "meals": [
+    {
+      "slot": "breakfast",
+      "name": "Breakfast",
+      "time": "6:30 AM",
+      "color": "RED",
+      "carbs_g": 30,
+      "protein_g": 35,
+      "fat_g": 15,
+      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
+      "label": "Pre-session \u00b7 light, low-fiber"
+    },
+    {
+      "slot": "lunch",
+      "name": "Lunch",
+      "time": "12:30 PM",
+      "color": "YELLOW",
+      "carbs_g": 50,
+      "protein_g": 40,
+      "fat_g": 25,
+      "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
+      "label": "Steady mid-day fuel"
+    },
+    {
+      "slot": "afternoon_snack",
+      "name": "Afternoon Snack",
+      "time": "4:00 PM",
+      "color": "RED",
+      "carbs_g": 30,
+      "protein_g": 20,
+      "fat_g": 12,
+      "note": "Apple + 2 tbsp almond butter, or Greek yogurt with walnuts + flaxseed.",
+      "label": "Bridge to dinner"
+    },
+    {
+      "slot": "dinner",
+      "name": "Dinner",
+      "time": "7:00 PM",
+      "color": "YELLOW",
+      "carbs_g": 330,
+      "protein_g": 45,
+      "fat_g": 25,
+      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~280g extra complex carbs (rice, sweet potato).",
+      "label": "Veg-forward, balanced"
+    }
+  ],
+  "in_session": {
+    "target_carbs_g_per_hr": 75,
+    "total_carbs_g": 131,
+    "sodium_mg": 875,
+    "glucose_pct": 67,
+    "fructose_pct": 33,
+    "bottle_count": 2,
+    "note": "Multi-source carb mix recommended at this rate. Train your gut \u2014 start at lower g/hr in early sessions and build up.",
+    "steps": [
+      {
+        "when": "\u221215 min",
+        "what": "Sip ~200 ml sports drink (\u2248 15g carbs) before starting",
+        "carbs_g": 15
+      },
+      {
+        "when": "0\u201360 min",
+        "what": "Bottle 1: ~75g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
+        "carbs_g": 75
+      },
+      {
+        "when": "45 min",
+        "what": "1 gel (\u2248 30g), multi-source (glucose + fructose 2:1)",
+        "carbs_g": 30
+      },
+      {
+        "when": "Total",
+        "what": "\u2248 131g carbs \u00b7 \u2248 875 mg sodium across the session",
+        "carbs_g": 0
+      }
+    ]
+  },
+  "flags": [
+    {
+      "level": "ok",
+      "title": "B12",
+      "text": "Daily methylcobalamin supplement on board."
+    },
+    {
+      "level": "warn",
+      "title": "Iron",
+      "text": "Pair plant-iron meals (lentils, tofu, leafy greens) with vitamin C (citrus, peppers, strawberries) \u2014 triples non-heme iron absorption. Avoid coffee or tea within an hour of iron-rich meals."
+    },
+    {
+      "level": "ok",
+      "title": "Leucine",
+      "text": "Aim for ~2.5g leucine per main meal. Combine plant proteins (rice + beans, hummus + bread, soy + grain) for a complete amino acid profile."
+    },
+    {
+      "level": "warn",
+      "title": "Omega-3 Index",
+      "text": "Index at 7.2% \u2014 below 8% target. Algal DHA/EPA supplement (vegetarian) or daily flax + walnuts."
+    }
+  ],
+  "biomarkers": [
+    {
+      "name": "Ferritin",
+      "value": 95,
+      "unit": "ng/mL",
+      "status": "ok",
+      "trend": ""
+    },
+    {
+      "name": "Active B12 (holoTC)",
+      "value": 85,
+      "unit": "pmol/L",
+      "status": "ok",
+      "trend": ""
+    },
+    {
+      "name": "Vitamin D3",
+      "value": 45,
+      "unit": "ng/mL",
+      "status": "ok",
+      "trend": ""
+    },
+    {
+      "name": "Omega-3 Index",
+      "value": 7.2,
+      "unit": "%",
+      "status": "watch",
+      "trend": ""
+    },
+    {
+      "name": "HbA1c",
+      "value": 5.3,
+      "unit": "%",
+      "status": "ok",
+      "trend": ""
+    },
+    {
+      "name": "ApoB",
+      "value": 78,
+      "unit": "mg/dL",
+      "status": "ok",
+      "trend": ""
+    },
+    {
+      "name": "Free Testosterone",
+      "value": 14.2,
+      "unit": "pg/mL",
+      "status": "ok",
+      "trend": ""
+    },
+    {
+      "name": "hs-CRP",
+      "value": 0.8,
+      "unit": "mg/L",
+      "status": "ok",
+      "trend": ""
+    }
+  ],
+  "biomarker_panel_date": "2026-04-15",
+  "race": {
+    "name": "Ironman 70.3 Victoria, BC",
+    "date": "2027-05-30",
+    "days_to_go": 397,
+    "distance": 70.3,
+    "priority": "A"
+  },
+  "generated_at": "2026-05-01T14:35:51.924294Z"
+}

@@ -1,0 +1,69 @@
+# FuelCast — athlete profile
+# Update bodyweight monthly; everything else as it changes.
+
+name: Brooks Groves
+location: Lakewood, WA
+sex: M
+date_of_birth: 1969-XX-XX     # set this to your actual DOB
+diet: vegetarian              # vegetarian | vegan | omnivore | pescatarian
+
+physical:
+  weight_kg: 80               # update monthly or after notable change
+  height_cm: 178              # set to your actual
+  bodyfat_pct: null           # optional, from DEXA if you have it
+
+training:
+  ftp_watts: 245              # update after FTP test
+  swim_css_pace: "1:38/100m"  # update after CSS test
+  run_threshold_pace: "7:30/mile"
+  max_hr: null                # optional; we use Z-zones from TP if available
+  gut_trained_to_g_hr: 75     # personal carb tolerance ceiling (train upward)
+
+# Mode logic — what kind of program am I in right now?
+# health      = general wellness, calorie balance
+# base        = aerobic build, no race
+# build       = specific 70.3 build (12-16 wks out)
+# peak        = race prep (4 wks out)
+# race_week   = carb-load week
+# recovery    = post-race
+phase: base
+
+# Race calendar — first race with priority A is "next race"
+races:
+  - name: "Ironman 70.3 Victoria, BC"
+    date: 2027-05-30           # estimated; update when registration confirms
+    priority: A
+    distance: 70.3
+    notes: "primary A-race; ferry from Seattle"
+
+  - name: "Ironman 70.3 Tri-Cities, WA"
+    date: 2026-09-20
+    priority: B
+    distance: 70.3
+    notes: "tune-up race / build benchmark"
+
+# Vegetarian-specific supplements you take regularly
+# Used to reduce flag noise on the daily card
+supplements:
+  - name: methylcobalamin   # B12
+    dose: 1000mcg
+    daily: true
+  - name: vitamin_d3
+    dose: 2000IU
+    daily: true
+  - name: algal_omega3       # vegetarian DHA/EPA
+    dose: 600mg
+    daily: false             # set true when you start it
+
+# Site / output
+site:
+  output_dir: data/
+  passphrase_hint: "the lake at the end of the Plain of Six Glaciers"
+
+# TrainingPeaks ICS feed
+# Set the URL via the TP_ICS_URL environment variable (or GitHub secret).
+# Do NOT commit the URL itself — anyone with it can read your calendar.
+trainingpeaks:
+  ics_url_env: TP_ICS_URL
+  lookback_days: 1            # how far back to pull completed workouts
+  lookahead_days: 7

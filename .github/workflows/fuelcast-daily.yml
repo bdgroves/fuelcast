@@ -1,0 +1,45 @@
+name: FuelCast Daily
+
+on:
+  schedule:
+    # 5:00 AM PT = 13:00 UTC during PDT, 12:00 UTC during PST.
+    # Picking 12:00 UTC so it always fires before the user's morning regardless
+    # of DST. Adjust to taste.
+    - cron: "0 12 * * *"
+  workflow_dispatch:    # allow manual trigger from the Actions tab
+
+permissions:
+  contents: write       # needed to commit data/today.json
+
+jobs:
+  fuelcast:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
+        with:
+          pixi-version: latest
+          cache: true
+
+      - name: Install dependencies
+        run: pixi install
+
+      - name: Run FuelCast
+        env:
+          TP_ICS_URL: ${{ secrets.TP_ICS_URL }}
+        run: pixi run fuelcast
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "fuelcast-bot"
+          git config user.email "fuelcast@brooksgroves.com"
+          git add data/today.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "fuelcast: daily plan $(date -u +'%Y-%m-%d')"
+            git push
+          fi

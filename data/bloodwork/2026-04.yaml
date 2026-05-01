@@ -1,0 +1,53 @@
+# Functional health panel results.
+# Update twice yearly (April and October).
+# Markers most relevant to vegetarian endurance training are required;
+# others optional. Use null for anything you didn't test.
+
+date: 2026-04-15
+provider: function_health     # function_health | inside_tracker | other
+notes: "Pre-base-building baseline before 70.3 Victoria training arc"
+
+markers:
+  cbc:
+    hemoglobin_g_dl: 14.5
+    hematocrit_pct: 43.2
+    wbc: 5.2
+
+  iron:
+    ferritin_ng_ml: 95          # endurance critical; below 30 = treat
+    serum_iron_ug_dl: 110
+    tibc_ug_dl: 320
+    transferrin_sat_pct: 34
+
+  vitamins:
+    vitamin_d3_ng_ml: 45        # PNW seasonal; target 40-60
+    active_b12_holotc_pmol_l: 85   # vegetarian critical; target >50
+    folate_ng_ml: 12
+
+  omega:
+    omega_3_index_pct: 7.2      # target 8-12; <4 high risk
+
+  metabolic:
+    fasting_glucose_mg_dl: 88
+    fasting_insulin_uiu_ml: 4.2
+    hba1c_pct: 5.3
+
+  lipids:
+    total_chol_mg_dl: 175
+    ldl_mg_dl: 95
+    hdl_mg_dl: 55
+    triglycerides_mg_dl: 88
+    apoB_mg_dl: 78
+    lpa_nmol_l: 22              # once-lifetime; rarely changes
+
+  hormones:
+    free_testosterone_pg_ml: 14.2
+    rbc_magnesium_mg_dl: 5.8
+
+  thyroid:
+    tsh_uiu_ml: 1.8
+    free_t4_ng_dl: 1.2
+    free_t3_pg_ml: 3.1
+
+  inflammation:
+    hs_crp_mg_l: 0.8

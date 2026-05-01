@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fuelcast"
+version = "0.1.0"
+description = "Periodized vegetarian fueling engine"
+requires-python = ">=3.12"
+dependencies = [
+  "pyyaml>=6.0",
+  "icalendar>=5.0",
+  "requests>=2.31",
+  "python-dateutil>=2.8",
+  "pytz",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "RUF"]

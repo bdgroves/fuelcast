@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FuelCast — Personal Fueling Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment:        #f1e6cf;
+    --parchment-light:  #f7efdc;
+    --parchment-dark:   #d9c69b;
+    --ink:              #2a2418;
+    --ink-soft:         #4a4030;
+    --ink-faint:        #7a6b50;
+    --rule:             #b8a47c;
+    --red:              #b8472d;
+    --red-soft:         #d4734f;
+    --yellow:           #c89a3a;
+    --yellow-soft:      #d6b35e;
+    --green:            #5e7a3a;
+    --green-soft:       #82a056;
+    --water:            #4a6a82;
+    --serif-display: 'Playfair Display', Georgia, serif;
+    --serif-body:    'Libre Baskerville', Georgia, serif;
+    --mono:          'DM Mono', 'SF Mono', Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(ellipse at top left, rgba(216, 186, 132, 0.18), transparent 60%),
+      radial-gradient(ellipse at bottom right, rgba(184, 71, 45, 0.06), transparent 50%),
+      var(--parchment);
+    color: var(--ink);
+    font-family: var(--serif-body);
+    font-size: 16px;
+    line-height: 1.55;
+    min-height: 100vh;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.15 0 0 0 0.13 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  /* Password gate */
+  #gate { position: fixed; inset: 0; background: var(--ink); color: var(--parchment);
+          display: flex; align-items: center; justify-content: center; z-index: 999; padding: 2rem; }
+  #gate .gate-inner { max-width: 28rem; width: 100%; text-align: center; }
+  #gate h1 { font-family: var(--serif-display); font-size: clamp(2.2rem, 6vw, 3.4rem);
+             font-weight: 700; letter-spacing: 0.02em; margin-bottom: 0.5rem; color: var(--parchment); }
+  #gate .gate-sub { font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase;
+                    letter-spacing: 0.3em; color: var(--parchment-dark); margin-bottom: 2.5rem; }
+  #gate input[type="password"] { width: 100%; background: transparent; border: none;
+                                  border-bottom: 2px solid var(--parchment-dark); color: var(--parchment);
+                                  font-family: var(--serif-body); font-size: 1.1rem; padding: 0.6rem 0.2rem;
+                                  text-align: center; letter-spacing: 0.1em; }
+  #gate input[type="password"]:focus { outline: none; border-bottom-color: var(--red-soft); }
+  #gate button { margin-top: 1.5rem; background: transparent; border: 1px solid var(--parchment-dark);
+                 color: var(--parchment); font-family: var(--mono); font-size: 0.78rem;
+                 text-transform: uppercase; letter-spacing: 0.25em; padding: 0.7rem 2rem;
+                 cursor: pointer; transition: all 0.2s ease; }
+  #gate button:hover { background: var(--parchment); color: var(--ink); }
+  #gate .gate-error { color: var(--red-soft); font-family: var(--mono); font-size: 0.78rem;
+                       margin-top: 1rem; min-height: 1rem; letter-spacing: 0.05em; }
+
+  .app { display: none; }
+  .app.unlocked { display: block; }
+
+  .container { max-width: 64rem; margin: 0 auto; padding: 2rem 1.5rem 4rem;
+                position: relative; z-index: 2; }
+
+  /* Loading state */
+  .loading { text-align: center; padding: 5rem 0; font-family: var(--mono);
+             color: var(--ink-faint); letter-spacing: 0.2em; text-transform: uppercase;
+             font-size: 0.8rem; }
+
+  /* Masthead */
+  .masthead { border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
+  .masthead-row { display: flex; justify-content: space-between; align-items: baseline;
+                   gap: 1rem; flex-wrap: wrap; }
+  .kicker { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase;
+             letter-spacing: 0.4em; color: var(--red); margin-bottom: 0.5rem; }
+  .masthead h1 { font-family: var(--serif-display); font-size: clamp(2.6rem, 8vw, 4.8rem);
+                  font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+  .masthead h1 .amp { font-style: italic; font-weight: 400; color: var(--red); }
+  .masthead-meta { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase;
+                    letter-spacing: 0.25em; color: var(--ink-faint); text-align: right; }
+  .masthead-meta .date { display: block; color: var(--ink); font-size: 0.85rem;
+                          letter-spacing: 0.15em; margin-bottom: 0.2rem; }
+  .tagline { font-family: var(--serif-body); font-style: italic; font-size: 1rem;
+             color: var(--ink-soft); margin-top: 0.8rem; max-width: 36rem; }
+
+  /* Countdown */
+  .countdown { background: var(--ink); color: var(--parchment); padding: 1.2rem 1.5rem;
+                margin-bottom: 2rem; display: grid; grid-template-columns: auto 1fr auto;
+                gap: 1.5rem; align-items: center; border-left: 6px solid var(--red); }
+  .countdown-days { font-family: var(--serif-display); font-size: 3rem; font-weight: 900;
+                     line-height: 1; color: var(--parchment); }
+  .countdown-info .race-label { font-family: var(--mono); font-size: 0.7rem;
+                                  text-transform: uppercase; letter-spacing: 0.3em;
+                                  color: var(--parchment-dark); margin-bottom: 0.4rem; }
+  .countdown-info .race-name { font-family: var(--serif-display); font-size: 1.3rem;
+                                 font-weight: 600; line-height: 1.2; }
+  .countdown-info .race-date { font-family: var(--mono); font-size: 0.78rem;
+                                 color: var(--parchment-dark); margin-top: 0.25rem;
+                                 letter-spacing: 0.1em; }
+  .countdown-mode { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase;
+                     letter-spacing: 0.25em; text-align: right; color: var(--parchment-dark); }
+  .countdown-mode strong { display: block; color: var(--parchment); font-size: 0.85rem;
+                            margin-top: 0.15rem; letter-spacing: 0.2em; }
+
+  /* Week strip */
+  .week-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem;
+                 margin-bottom: 2.5rem; padding: 1rem 0; border-top: 1px solid var(--rule);
+                 border-bottom: 1px solid var(--rule); }
+  .day-cell { text-align: center; cursor: default; }
+  .day-cell .dot { width: 1.6rem; height: 1.6rem; border-radius: 50%; margin: 0 auto 0.4rem;
+                    border: 1.5px solid var(--ink); transition: transform 0.2s ease; }
+  .day-cell.today .dot { box-shadow: 0 0 0 3px var(--parchment), 0 0 0 4px var(--ink); }
+  .day-cell .dot.red    { background: var(--red); }
+  .day-cell .dot.yellow { background: var(--yellow); }
+  .day-cell .dot.green  { background: var(--green); }
+  .day-cell .label { font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase;
+                      letter-spacing: 0.15em; color: var(--ink-faint); }
+  .day-cell.today .label { color: var(--ink); font-weight: 500; }
+
+  /* Section headers */
+  .section-header { margin: 3rem 0 1.5rem; display: flex; justify-content: space-between;
+                     align-items: baseline; border-bottom: 1px solid var(--rule);
+                     padding-bottom: 0.5rem; }
+  .section-header h2 { font-family: var(--serif-display); font-size: 1.8rem;
+                        font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .section-header .label { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase;
+                            letter-spacing: 0.3em; color: var(--ink-faint); }
+
+  /* Daily card */
+  .daily { background: var(--parchment-light); border: 1px solid var(--rule);
+            padding: 1.8rem; margin-bottom: 1.5rem; }
+  .daily-header { display: flex; justify-content: space-between; align-items: flex-start;
+                   margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px dotted var(--rule); }
+  .daily-title { font-family: var(--serif-display); font-size: 1.4rem; font-weight: 600;
+                  line-height: 1.2; }
+  .daily-title .session { font-style: italic; font-weight: 400; color: var(--ink-soft);
+                           font-size: 0.95rem; display: block; margin-top: 0.3rem; }
+  .day-color { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono);
+                font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.25em; }
+  .day-color .swatch { width: 0.8rem; height: 0.8rem; border-radius: 50%; border: 1px solid var(--ink); }
+  .day-color .swatch.red    { background: var(--red); }
+  .day-color .swatch.yellow { background: var(--yellow); }
+  .day-color .swatch.green  { background: var(--green); }
+
+  /* Meals */
+  .meals { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; }
+  .meal { display: grid; grid-template-columns: 4px 1fr auto; gap: 1rem; padding: 1rem 0;
+           border-bottom: 1px dotted var(--rule); align-items: center; }
+  .meal:last-child { border-bottom: none; }
+  .meal-bar { width: 4px; height: 100%; min-height: 2.5rem; }
+  .meal-bar.red    { background: var(--red); }
+  .meal-bar.yellow { background: var(--yellow); }
+  .meal-bar.green  { background: var(--green); }
+  .meal-bar.water  { background: var(--water); }
+  .meal-info .meal-name { font-family: var(--serif-display); font-size: 1.1rem;
+                            font-weight: 600; color: var(--ink); }
+  .meal-info .meal-detail { font-family: var(--mono); font-size: 0.78rem;
+                              color: var(--ink-soft); margin-top: 0.2rem; letter-spacing: 0.02em; }
+  .meal-info .meal-detail .em { color: var(--red); font-weight: 500; }
+  .meal-info .meal-note { font-family: var(--serif-body); font-style: italic;
+                           font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.3rem; }
+  .meal-macros { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft);
+                  text-align: right; line-height: 1.5; white-space: nowrap; }
+  .meal-macros .carbs { font-weight: 500; color: var(--ink); }
+
+  /* Session fuel */
+  .session-fuel { background: var(--ink); color: var(--parchment-light);
+                   padding: 1.4rem 1.6rem; margin: 0.5rem 0; border-left: 4px solid var(--red); }
+  .session-fuel-header { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase;
+                          letter-spacing: 0.35em; color: var(--red-soft); margin-bottom: 0.8rem; }
+  .session-fuel-title { font-family: var(--serif-display); font-size: 1.15rem; font-weight: 600;
+                         color: var(--parchment); margin-bottom: 1rem; }
+  .fuel-timeline { display: grid; grid-template-columns: 1fr; gap: 0.7rem; }
+  .fuel-step { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; padding: 0.5rem 0;
+                font-family: var(--mono); font-size: 0.82rem;
+                border-bottom: 1px dotted #4a4030; }
+  .fuel-step:last-child { border-bottom: none; }
+  .fuel-step .when { color: var(--red-soft); text-transform: uppercase; letter-spacing: 0.15em;
+                      font-size: 0.7rem; padding-top: 0.15rem; }
+  .fuel-step .what { color: var(--parchment); line-height: 1.5; }
+  .session-fuel-note { font-family: var(--serif-body); font-style: italic; font-size: 0.85rem;
+                        color: var(--parchment-dark); margin-top: 1rem; padding-top: 1rem;
+                        border-top: 1px dotted #4a4030; }
+
+  /* Macro totals */
+  .macros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 1.2rem;
+             background: var(--parchment); border: 1px solid var(--rule); margin-top: 1.5rem; }
+  .macro { text-align: center; border-right: 1px solid var(--rule); padding-right: 1rem; }
+  .macro:last-child { border-right: none; padding-right: 0; }
+  .macro .value { font-family: var(--serif-display); font-size: 1.6rem; font-weight: 700;
+                   color: var(--ink); line-height: 1; }
+  .macro .unit { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-faint);
+                  text-transform: uppercase; letter-spacing: 0.2em; margin-top: 0.2rem; }
+  .macro .label { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase;
+                   letter-spacing: 0.2em; color: var(--ink-soft); margin-top: 0.4rem; }
+
+  /* Flags */
+  .flags { background: var(--parchment-light); border: 1px solid var(--rule);
+            padding: 1.4rem 1.6rem; margin-top: 1.5rem; }
+  .flag-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .flag { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.7rem; align-items: start;
+           font-size: 0.92rem; }
+  .flag .icon { font-family: var(--mono); font-weight: 700; text-align: center; padding-top: 0.05rem; }
+  .flag.ok .icon { color: var(--green); }
+  .flag.warn .icon { color: var(--yellow); }
+  .flag.alert .icon { color: var(--red); }
+  .flag .text { color: var(--ink-soft); }
+  .flag .text strong { color: var(--ink); font-style: italic; font-family: var(--serif-display);
+                        font-weight: 600; }
+
+  /* Biomarkers */
+  .biomarkers { margin-top: 1.5rem; background: var(--parchment-light); border: 1px solid var(--rule); }
+  .biomarkers summary { padding: 1.2rem 1.6rem; cursor: pointer; font-family: var(--serif-display);
+                         font-size: 1.2rem; font-weight: 600; list-style: none;
+                         display: flex; justify-content: space-between; align-items: center; }
+  .biomarkers summary::-webkit-details-marker { display: none; }
+  .biomarkers summary::after { content: '+'; font-family: var(--serif-display); font-size: 1.6rem;
+                                font-weight: 400; color: var(--red); }
+  .biomarkers[open] summary::after { content: '−'; }
+  .biomarkers-body { padding: 0 1.6rem 1.5rem; border-top: 1px dotted var(--rule); }
+  .biomarker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+                     gap: 0.8rem; margin-top: 1rem; }
+  .biomarker { padding: 0.8rem; background: var(--parchment); border-left: 3px solid var(--rule); }
+  .biomarker.ok    { border-left-color: var(--green); }
+  .biomarker.watch { border-left-color: var(--yellow); }
+  .biomarker.flag  { border-left-color: var(--red); }
+  .biomarker .name { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase;
+                      letter-spacing: 0.15em; color: var(--ink-faint); }
+  .biomarker .reading { font-family: var(--serif-display); font-size: 1.2rem; font-weight: 600;
+                         color: var(--ink); margin: 0.2rem 0; }
+  .biomarker .trend { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-soft); }
+
+  /* Footer */
+  .footer { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+             font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint);
+             text-transform: uppercase; letter-spacing: 0.2em; line-height: 1.8; }
+  .footer a { color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red); }
+  .footer a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .footer-row { display: flex; justify-content: space-between; align-items: center;
+                 flex-wrap: wrap; gap: 1rem; }
+  .legend { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .legend-item { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .legend-item .swatch { width: 0.7rem; height: 0.7rem; border-radius: 50%; border: 1px solid var(--ink); }
+
+  @media (max-width: 640px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    .countdown { grid-template-columns: 1fr; text-align: center; }
+    .countdown-days { font-size: 2.4rem; }
+    .countdown-mode { text-align: center; }
+    .macros { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+    .macro:nth-child(2n) { border-right: none; }
+    .meal { grid-template-columns: 4px 1fr; }
+    .meal-macros { grid-column: 2; text-align: left; margin-top: 0.5rem; }
+    .fuel-step { grid-template-columns: 1fr; gap: 0.2rem; }
+    .footer-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <div class="gate-inner">
+    <h1>FuelCast</h1>
+    <div class="gate-sub">Restricted · Personal Athlete Data</div>
+    <input type="password" id="gate-input" placeholder="passphrase" autofocus autocomplete="off">
+    <br>
+    <button id="gate-submit">Enter</button>
+    <div class="gate-error" id="gate-error">&nbsp;</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+<div class="container" id="content">
+  <div class="loading">Loading today's plan…</div>
+</div>
+</div>
+
+<script>
+  // ─── CONFIG ───
+  const SESSION_KEY = 'fuelcast_auth';
+  const PASSPHRASE  = 'lakemorraine';   // change this
+  const DATA_URL    = 'data/today.json';
+
+  // ─── GATE ───
+  const gate    = document.getElementById('gate');
+  const app     = document.getElementById('app');
+  const input   = document.getElementById('gate-input');
+  const submit  = document.getElementById('gate-submit');
+  const errorEl = document.getElementById('gate-error');
+
+  function unlock() {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    gate.style.display = 'none';
+    app.classList.add('unlocked');
+    loadAndRender();
+  }
+  function checkGate() {
+    const val = input.value.trim().toLowerCase();
+    if (val === PASSPHRASE) unlock();
+    else {
+      errorEl.textContent = 'Incorrect. Try again.';
+      input.value = ''; input.focus();
+      setTimeout(() => { errorEl.textContent = '\u00a0'; }, 2400);
+    }
+  }
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    gate.style.display = 'none';
+    app.classList.add('unlocked');
+    document.addEventListener('DOMContentLoaded', loadAndRender);
+  } else {
+    submit.addEventListener('click', checkGate);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') checkGate(); });
+  }
+
+  // ─── DATA + RENDER ───
+  async function loadAndRender() {
+    try {
+      const r = await fetch(DATA_URL + '?t=' + Date.now());
+      if (!r.ok) throw new Error('No today.json found');
+      const plan = await r.json();
+      render(plan);
+    } catch (e) {
+      document.getElementById('content').innerHTML = `
+        <div class="loading">
+          No plan available yet — has the engine run?<br><br>
+          <code style="text-transform:none; letter-spacing:0;">
+            pixi run fuelcast
+          </code>
+        </div>`;
+    }
+  }
+
+  // Phase to mode label
+  const PHASE_LABEL = {
+    health: 'HEALTH', base: 'BASE', build: 'BUILD',
+    peak: 'PEAK', race_week: 'RACE WEEK', recovery: 'RECOVERY',
+  };
+
+  function fmtDate(iso) {
+    const d = new Date(iso + 'T12:00:00');
+    return d.toLocaleDateString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+    });
+  }
+
+  function render(plan) {
+    const colorClass = plan.day_color.toLowerCase();
+    const mode = PHASE_LABEL[plan.phase] || plan.phase.toUpperCase();
+
+    let html = '';
+
+    // ─── MASTHEAD ───
+    html += `
+      <header class="masthead">
+        <div class="kicker">Personal Fueling Engine · No. 001</div>
+        <div class="masthead-row">
+          <h1>Fuel<span class="amp">Cast</span></h1>
+          <div class="masthead-meta">
+            <span class="date">${fmtDate(plan.date)}</span>
+            <span>Volume I · ${mode} Phase</span>
+          </div>
+        </div>
+        <p class="tagline">
+          A periodized fueling protocol for the build to Ironman 70.3 Victoria —
+          vegetarian, masters, calibrated against published sport-nutrition
+          science and reverse-engineered from the field.
+        </p>
+      </header>
+    `;
+
+    // ─── COUNTDOWN ───
+    if (plan.race) {
+      const raceDate = new Date(plan.race.date + 'T07:00:00-07:00');
+      const dateStr = raceDate.toLocaleDateString('en-US', {
+        weekday: 'short', month: 'short', day: 'numeric', year: 'numeric',
+      });
+      html += `
+        <section class="countdown">
+          <div class="countdown-days">${plan.race.days_to_go}</div>
+          <div class="countdown-info">
+            <div class="race-label">Days to A-race</div>
+            <div class="race-name">${plan.race.name}</div>
+            <div class="race-date">${dateStr} · ${plan.race.distance} mi</div>
+          </div>
+          <div class="countdown-mode">
+            Current mode<strong>${mode}</strong>
+          </div>
+        </section>
+      `;
+    }
+
+    // ─── WEEK STRIP ───
+    html += '<div class="week-strip">';
+    plan.week_strip.forEach(d => {
+      html += `
+        <div class="day-cell ${d.is_today ? 'today' : ''}" title="${d.title}">
+          <div class="dot ${d.color}"></div>
+          <div class="label">${d.label}</div>
+        </div>
+      `;
+    });
+    html += '</div>';
+
+    // ─── DAILY HEADER ───
+    html += `
+      <div class="section-header">
+        <h2>Today's Plan</h2>
+        <span class="label">Daily Card</span>
+      </div>
+      <div class="daily">
+    `;
+
+    // Title block
+    let sessionLine = 'Rest day';
+    if (plan.workout) {
+      const dur = plan.workout.duration_min;
+      const tssStr = plan.workout.tss ? ` · TSS ${plan.workout.tss}` : '';
+      sessionLine = `${dur} min · ${plan.workout.sport}${tssStr}`;
+    }
+    html += `
+      <div class="daily-header">
+        <div class="daily-title">
+          ${plan.workout ? plan.workout.title : 'Rest Day'}
+          <span class="session">${sessionLine}</span>
+        </div>
+        <div class="day-color">
+          <span class="swatch ${colorClass}"></span>
+          ${plan.day_color} Day
+        </div>
+      </div>
+    `;
+
+    // ─── MEALS ───
+    html += '<div class="meals">';
+
+    // Show meals up through lunch
+    const preMeals = ['breakfast', 'lunch'];
+    plan.meals.filter(m => preMeals.includes(m.slot)).forEach(m => {
+      html += renderMeal(m);
+    });
+
+    // In-session fuel block
+    if (plan.in_session) {
+      html += renderSessionFuel(plan.in_session, plan.workout);
+    }
+
+    // Hydration reminder
+    html += `
+      <div class="meal">
+        <div class="meal-bar water"></div>
+        <div class="meal-info">
+          <div class="meal-name">Hydrate</div>
+          <div class="meal-detail">3+ L water across the day · electrolytes post-session</div>
+        </div>
+        <div class="meal-macros">&nbsp;</div>
+      </div>
+    `;
+
+    // Remaining meals
+    const postMeals = ['afternoon_snack', 'dinner'];
+    plan.meals.filter(m => postMeals.includes(m.slot)).forEach(m => {
+      html += renderMeal(m);
+    });
+
+    html += '</div>'; // .meals
+
+    // ─── DAILY MACRO TOTALS ───
+    html += `
+      <div class="macros">
+        <div class="macro">
+          <div class="value">${plan.macros.protein_g}<span class="unit"> g</span></div>
+          <div class="label">Protein</div>
+        </div>
+        <div class="macro">
+          <div class="value">${plan.macros.fat_g}<span class="unit"> g</span></div>
+          <div class="label">Fat</div>
+        </div>
+        <div class="macro">
+          <div class="value">${plan.macros.carbs_g}<span class="unit"> g</span></div>
+          <div class="label">Carbs</div>
+        </div>
+        <div class="macro">
+          <div class="value">${plan.macros.calories.toLocaleString()}<span class="unit"> kcal</span></div>
+          <div class="label">Calories</div>
+        </div>
+      </div>
+    `;
+
+    // ─── FLAGS ───
+    if (plan.flags && plan.flags.length) {
+      html += '<div class="flags"><ul class="flag-list">';
+      plan.flags.forEach(f => {
+        const icon = { ok: '✓', warn: '⚠', alert: '!' }[f.level] || '·';
+        html += `
+          <li class="flag ${f.level}">
+            <span class="icon">${icon}</span>
+            <span class="text"><strong>${f.title}.</strong> ${f.text}</span>
+          </li>
+        `;
+      });
+      html += '</ul></div>';
+    }
+
+    html += '</div>'; // .daily
+
+    // ─── BIOMARKERS ───
+    if (plan.biomarkers && plan.biomarkers.length) {
+      html += `
+        <details class="biomarkers">
+          <summary>Biomarker Watch</summary>
+          <div class="biomarkers-body">
+            <p style="font-family: var(--serif-body); font-style: italic;
+                      color: var(--ink-soft); font-size: 0.9rem; margin-top: 1rem;">
+              From your most recent functional health panel${
+                plan.biomarker_panel_date
+                  ? ' (' + fmtDate(plan.biomarker_panel_date) + ').'
+                  : '.'
+              }
+              Markers most relevant to vegetarian endurance training are surfaced first.
+            </p>
+            <div class="biomarker-grid">
+      `;
+      plan.biomarkers.forEach(b => {
+        html += `
+          <div class="biomarker ${b.status}">
+            <div class="name">${b.name}</div>
+            <div class="reading">${b.value} ${b.unit}</div>
+            <div class="trend">${b.trend || statusText(b.status)}</div>
+          </div>
+        `;
+      });
+      html += `
+            </div>
+          </div>
+        </details>
+      `;
+    }
+
+    // ─── FOOTER ───
+    html += `
+      <footer class="footer">
+        <div class="footer-row">
+          <div>
+            Calibrated against Jeukendrup, Burke &amp; Phillips —<br>
+            and against Fuelin, where they got it right.
+          </div>
+          <div class="legend">
+            <span class="legend-item"><span class="swatch" style="background: var(--red);"></span>Red 30g</span>
+            <span class="legend-item"><span class="swatch" style="background: var(--yellow);"></span>Yellow 50g</span>
+            <span class="legend-item"><span class="swatch" style="background: var(--green);"></span>Green 100g</span>
+          </div>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          Engine: <a href="https://github.com/bdgroves/fuelcast" target="_blank">fuelcast</a> ·
+          Data: TrainingPeaks · Garmin · Lose It! · Functional Health<br>
+          Last updated: ${plan.generated_at || 'unknown'}
+        </div>
+      </footer>
+    `;
+
+    document.getElementById('content').innerHTML = html;
+  }
+
+  function renderMeal(m) {
+    const colorClass = m.color.toLowerCase();
+    return `
+      <div class="meal">
+        <div class="meal-bar ${colorClass}"></div>
+        <div class="meal-info">
+          <div class="meal-name">${m.name} · ${m.time}</div>
+          <div class="meal-detail">${m.label}</div>
+          <div class="meal-note">${m.note}</div>
+        </div>
+        <div class="meal-macros">
+          P ${m.protein_g} · F ${m.fat_g}<br>
+          <span class="carbs">C ${m.carbs_g}g</span>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSessionFuel(s, workout) {
+    const dur = workout ? workout.duration_min : 0;
+    const hours = (dur / 60).toFixed(1);
+    let html = `
+      <div class="session-fuel">
+        <div class="session-fuel-header">⛽ In-Session Fueling</div>
+        <div class="session-fuel-title">
+          ${dur} min · ${s.target_carbs_g_per_hr} g/hr target
+          ${s.fructose_pct > 0 ? `· ${s.glucose_pct}/${s.fructose_pct} glucose:fructose` : ''}
+        </div>
+        <div class="fuel-timeline">
+    `;
+    s.steps.forEach(step => {
+      html += `
+        <div class="fuel-step">
+          <div class="when">${step.when}</div>
+          <div class="what">${step.what}</div>
+        </div>
+      `;
+    });
+    html += '</div>';
+    if (s.note) {
+      html += `<div class="session-fuel-note">${s.note}</div>`;
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function statusText(s) {
+    return { ok: 'in range', watch: 'monitor', flag: 'attention' }[s] || '';
+  }
+</script>
+
+</body>
+</html>
