@@ -1,79 +1,84 @@
 {
-  "date": "2026-04-28",
-  "weekday": "Tuesday",
+  "date": "2026-05-01",
+  "weekday": "Friday",
   "phase": "base",
   "day_color": "YELLOW",
   "workout": {
-    "title": "Bike - Threshold intervals",
-    "sport": "bike",
-    "duration_min": 105,
-    "tss": 95.0,
-    "intensity_factor": 0.88,
+    "title": "Other: Fuelin Targets: Pro 210 | Fat 85 | Carb 190",
+    "sport": "other",
+    "duration_min": 60,
+    "tss": null,
+    "intensity_factor": null,
     "is_completed": false
   },
   "secondary_workouts": [
     {
-      "title": "Run - Brick run off bike",
-      "sport": "bike",
-      "duration_min": 20
+      "title": "Run: Treadmill Running",
+      "sport": "run",
+      "duration_min": 60
+    },
+    {
+      "title": "Other: Fuelin Targets: Pro 215 | Fat 80 | Carb 180",
+      "sport": "run",
+      "duration_min": 0
     }
   ],
   "week_strip": [
     {
       "date": "2026-04-27",
       "label": "M",
-      "color": "red",
+      "color": "yellow",
       "is_today": false,
-      "title": "Bike - Recovery spin",
-      "duration_min": 45
+      "title": "Run: Treadmill Running",
+      "duration_min": 60
     },
     {
       "date": "2026-04-28",
       "label": "T",
       "color": "yellow",
-      "is_today": true,
-      "title": "Bike - Threshold intervals",
-      "duration_min": 105
+      "is_today": false,
+      "title": "Run: Treadmill Running",
+      "duration_min": 60
     },
     {
       "date": "2026-04-29",
       "label": "W",
       "color": "yellow",
       "is_today": false,
-      "title": "Run - Easy Z2",
+      "title": "Run: Treadmill Running",
       "duration_min": 60
     },
     {
       "date": "2026-04-30",
       "label": "T",
-      "color": "red",
+      "color": "yellow",
       "is_today": false,
-      "title": "Strength - Lower body",
-      "duration_min": 30
+      "title": "Run: Treadmill Running",
+      "duration_min": 60
     },
     {
       "date": "2026-05-01",
       "label": "F",
-      "color": "red",
-      "is_today": false,
-      "title": "Rest",
-      "duration_min": 30
+      "color": "yellow",
+      "is_today": true,
+      "title": "Other: Fuelin Targets: Pro 210 | Fat 85 | Carb 190",
+      "duration_min": 60
     },
     {
       "date": "2026-05-02",
       "label": "S",
-      "color": "green",
+      "color": "red",
       "is_today": false,
-      "title": "Bike - Long endurance ride",
-      "duration_min": 210
+      "title": "Other: Fuelin Targets: Pro 215 | Fat 80 | Carb 250",
+      "duration_min": 0
     },
     {
       "date": "2026-05-03",
       "label": "S",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run - Long run",
-      "duration_min": 105
+      "title": "Other: Fuelin Targets: Pro 215 | Fat 80 | Carb 180",
+      "duration_min": 0
     }
   ],
   "macros": {
@@ -131,32 +136,22 @@
     }
   ],
   "in_session": {
-    "target_carbs_g_per_hr": 75,
-    "total_carbs_g": 131,
-    "sodium_mg": 875,
-    "glucose_pct": 67,
-    "fructose_pct": 33,
-    "bottle_count": 2,
-    "note": "Multi-source carb mix recommended at this rate. Train your gut \u2014 start at lower g/hr in early sessions and build up.",
+    "target_carbs_g_per_hr": 30,
+    "total_carbs_g": 30,
+    "sodium_mg": 0,
+    "glucose_pct": 100,
+    "fructose_pct": 0,
+    "bottle_count": 1,
+    "note": "",
     "steps": [
       {
-        "when": "\u221215 min",
-        "what": "Sip ~200 ml sports drink (\u2248 15g carbs) before starting",
-        "carbs_g": 15
-      },
-      {
         "when": "0\u201360 min",
-        "what": "Bottle 1: ~75g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
-        "carbs_g": 75
-      },
-      {
-        "when": "45 min",
-        "what": "1 gel (\u2248 30g), multi-source (glucose + fructose 2:1)",
+        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
         "carbs_g": 30
       },
       {
         "when": "Total",
-        "what": "\u2248 131g carbs \u00b7 \u2248 875 mg sodium across the session",
+        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
         "carbs_g": 0
       }
     ]
@@ -245,9 +240,9 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 397,
+    "days_to_go": 394,
     "distance": 70.3,
     "priority": "A"
   },
-  "generated_at": "2026-05-01T14:35:51.924294Z"
+  "generated_at": "2026-05-01T15:04:01.583781Z"
 }
