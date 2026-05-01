@@ -4,11 +4,11 @@
 name: Brooks Groves
 location: Lakewood, WA
 sex: M
-date_of_birth: 1969-XX-XX     # set this to your actual DOB
+date_of_birth: 1970-05-15
 diet: vegetarian              # vegetarian | vegan | omnivore | pescatarian
 
 physical:
-  weight_kg: 80               # update monthly or after notable change
+  weight_kg: 91               # 200 lbs ≈ 90.7 kg; update monthly
   height_cm: 178              # set to your actual
   bodyfat_pct: null           # optional, from DEXA if you have it
 
