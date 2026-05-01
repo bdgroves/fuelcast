@@ -32,6 +32,14 @@ from fuelcast.sources.trainingpeaks import (
     parse_workouts,
     workout_for,
 )
+from fuelcast.training_load import (
+    TrainingLoad,
+    carb_adjustment_pct,
+    compute_training_load,
+    latest_load,
+    training_load_flag,
+    tsb_state,
+)
 
 
 @dataclass
@@ -52,6 +60,7 @@ class DayPlan:
     biomarkers: list[dict] = field(default_factory=list)
     biomarker_panel_date: str | None = None
     race: dict | None = None
+    training_load: dict | None = None
     generated_at: str = ""
 
 
@@ -217,10 +226,23 @@ def build_day_plan(
     phase = athlete.phase
     diet = athlete.diet
 
-    # Macros
+    # Training load — compute CTL/ATL/TSB from completed workout history
+    load_history = compute_training_load(workouts, target_date=target_date)
+    current_load = latest_load(load_history)
+
+    # Macros — base prescription
     carbs_g = daily_carbs_grams(weight, primary, phase=phase)
     protein_g = daily_protein_grams(weight, age=age, diet=diet, phase=phase)
     fat_g = round(daily_fat_g_per_kg(phase=phase) * weight)
+
+    # Recovery-aware carb adjustment based on TSB.
+    # Heavy load / overreached → bump carbs to support recovery.
+    carb_bump_pct = 0
+    if current_load is not None:
+        carb_bump_pct = carb_adjustment_pct(current_load.tsb)
+        if carb_bump_pct > 0:
+            carbs_g = round(carbs_g * (1 + carb_bump_pct / 100))
+
     cals = daily_calories_estimate(weight, carbs_g, protein_g, fat_g)
 
     # Meals
@@ -246,6 +268,12 @@ def build_day_plan(
 
     # Flags
     flags = vegetarian_flags(panel, diet=diet)
+
+    # Training load flag — recovery state surfacing
+    tl_flag = training_load_flag(current_load)
+    if tl_flag is not None:
+        # Insert at top so it's the first thing the athlete sees
+        flags.insert(0, tl_flag)
 
     # Biomarkers list for the panel
     biomarkers_out = []
@@ -296,6 +324,25 @@ def build_day_plan(
         for w in all_today if w is not primary
     ]
 
+    # Training load dict for the dashboard
+    training_load_dict = None
+    if current_load is not None:
+        # Send last 30 days of history for sparkline rendering
+        recent_history = load_history[-30:] if len(load_history) > 30 else load_history
+        training_load_dict = {
+            "ctl": current_load.ctl,
+            "atl": current_load.atl,
+            "tsb": current_load.tsb,
+            "tss_today": current_load.tss_today,
+            "state": tsb_state(current_load.tsb),
+            "carb_bump_pct": carb_bump_pct,
+            "history": [
+                {"date": h.date.isoformat(), "ctl": h.ctl, "atl": h.atl,
+                 "tsb": h.tsb, "tss": h.tss_today}
+                for h in recent_history
+            ],
+        }
+
     return DayPlan(
         date=target_date.isoformat(),
         weekday=target_date.strftime("%A"),
@@ -311,6 +358,7 @@ def build_day_plan(
             "calories": cals,
             "carbs_g_per_kg": round(carbs_g / weight, 2),
             "protein_g_per_kg": round(protein_g / weight, 2),
+            "carb_bump_pct": carb_bump_pct,
         },
         meals=meals,
         in_session=session_dict,
@@ -318,6 +366,7 @@ def build_day_plan(
         biomarkers=biomarkers_out,
         biomarker_panel_date=panel_date_str,
         race=race_dict,
+        training_load=training_load_dict,
         generated_at=datetime.now(UTC).isoformat().replace("+00:00", "Z"),
     )
 
