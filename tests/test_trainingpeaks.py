@@ -5,6 +5,7 @@ from pathlib import Path
 
 from fuelcast.sources.trainingpeaks import (
     classify_sport,
+    is_noise_event,
     parse_if,
     parse_tss,
     parse_workouts,
@@ -66,3 +67,35 @@ def test_rest_day_returns_none():
     )
     # No workout on 2026-05-04
     assert workout_for(date(2026, 5, 4), workouts) is None
+
+
+# ──────── noise filter ────────
+
+def test_fuelin_targets_are_noise():
+    """Fuelin posts daily macro targets to TP as calendar entries.
+    These should be filtered out, not treated as workouts."""
+    assert is_noise_event("Other: Fuelin Targets: Pro 210 | Fat 85 | Carb 190")
+    assert is_noise_event("Fuelin Target Day")
+
+
+def test_race_countdown_is_noise():
+    assert is_noise_event("Race Day - 30 days to Victoria")
+    assert is_noise_event("Race Countdown: 100 days")
+
+
+def test_real_workouts_pass_filter():
+    """Actual workouts should NOT be flagged as noise."""
+    assert not is_noise_event("Run: Treadmill Running")
+    assert not is_noise_event("Bike - Threshold intervals")
+    assert not is_noise_event("Long run with race-pace pickups")
+
+
+def test_treadmill_classified_as_run():
+    """Brooks's TP feed uses 'Run: Treadmill Running' format."""
+    assert classify_sport("Run: Treadmill Running") == "run"
+
+
+def test_colon_format_workouts():
+    """TP uses both 'Sport - Title' and 'Sport: Title' formats."""
+    assert classify_sport("Bike: Recovery spin") == "bike"
+    assert classify_sport("Swim: Pool intervals") == "swim"

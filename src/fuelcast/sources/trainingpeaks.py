@@ -45,11 +45,35 @@ class Workout:
 # Sport keyword classifier — TrainingPeaks SUMMARY usually leads with the sport
 SPORT_KEYWORDS = {
     "bike":     ("bike", "ride", "cycling", "trainer", "rouvy", "zwift", "sufferfest"),
-    "run":      ("run", "running", "jog"),
+    "run":      ("run", "running", "jog", "treadmill"),
     "swim":     ("swim", "pool", "ows"),
     "strength": ("strength", "lift", "gym", "weights", "core", "yoga", "pilates"),
     "cross":    ("xc", "ski", "row", "elliptical", "hike"),
 }
+
+
+# Patterns that indicate a calendar event is NOT a workout. TrainingPeaks
+# (and apps that integrate with it like Fuelin) post nutrition targets, race
+# markers, and other notes as VEVENTs. We filter them out so they don't
+# pollute the prescription.
+NOISE_PATTERNS = (
+    "fuelin targets",
+    "fuelin target",
+    "nutrition target",
+    "macro target",
+    "daily targets",
+    "race day",          # countdown markers, not the race itself
+    "race countdown",
+    "weight in",
+    "weigh-in",
+    "rest day",          # we infer rest from absence, not a marker
+)
+
+
+def is_noise_event(title: str, description: str = "") -> bool:
+    """Return True if this VEVENT is a non-workout marker we should ignore."""
+    text = f"{title} {description}".lower()
+    return any(pat in text for pat in NOISE_PATTERNS)
 
 
 def classify_sport(title: str, description: str = "") -> str:
@@ -140,8 +164,17 @@ def parse_workouts(
         title = str(event.get("summary", "")).strip()
         description = str(event.get("description", "")).strip()
 
+        # Skip calendar noise — Fuelin nutrition targets, race countdown markers, etc.
+        if is_noise_event(title, description):
+            continue
+
         if duration_min is None:
             duration_min = _parse_duration_text(description) or _parse_duration_text(title) or 0
+
+        # Some calendar events have zero duration (markers, all-day events
+        # treated as 0-min). Skip them so they don't show up as workouts.
+        if duration_min < 5:
+            continue
 
         # TrainingPeaks marks completed workouts in different ways across exports.
         # Common signal: a [Completed] prefix in summary, or " - Completed" suffix.
