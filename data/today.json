@@ -4,25 +4,14 @@
   "phase": "base",
   "day_color": "YELLOW",
   "workout": {
-    "title": "Other: Fuelin Targets: Pro 210 | Fat 85 | Carb 190",
-    "sport": "other",
+    "title": "Run: Treadmill Running",
+    "sport": "run",
     "duration_min": 60,
     "tss": null,
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [
-    {
-      "title": "Run: Treadmill Running",
-      "sport": "run",
-      "duration_min": 60
-    },
-    {
-      "title": "Other: Fuelin Targets: Pro 215 | Fat 80 | Carb 180",
-      "sport": "run",
-      "duration_min": 0
-    }
-  ],
+  "secondary_workouts": [],
   "week_strip": [
     {
       "date": "2026-04-27",
@@ -61,7 +50,7 @@
       "label": "F",
       "color": "yellow",
       "is_today": true,
-      "title": "Other: Fuelin Targets: Pro 210 | Fat 85 | Carb 190",
+      "title": "Run: Treadmill Running",
       "duration_min": 60
     },
     {
@@ -69,7 +58,7 @@
       "label": "S",
       "color": "red",
       "is_today": false,
-      "title": "Other: Fuelin Targets: Pro 215 | Fat 80 | Carb 250",
+      "title": "Rest",
       "duration_min": 0
     },
     {
@@ -77,7 +66,7 @@
       "label": "S",
       "color": "red",
       "is_today": false,
-      "title": "Other: Fuelin Targets: Pro 215 | Fat 80 | Carb 180",
+      "title": "Rest",
       "duration_min": 0
     }
   ],
@@ -244,5 +233,5 @@
     "distance": 70.3,
     "priority": "A"
   },
-  "generated_at": "2026-05-01T15:04:01.583781Z"
+  "generated_at": "2026-05-01T15:13:46.204138Z"
 }
