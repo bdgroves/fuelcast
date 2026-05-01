@@ -11,7 +11,13 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Run: Running",
+      "sport": "run",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-04-27",
@@ -71,12 +77,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 500,
+    "carbs_g": 575,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3772,
-    "carbs_g_per_kg": 5.49,
-    "protein_g_per_kg": 2.4
+    "calories": 4072,
+    "carbs_g_per_kg": 6.32,
+    "protein_g_per_kg": 2.4,
+    "carb_bump_pct": 15
   },
   "meals": [
     {
@@ -146,6 +153,11 @@
     ]
   },
   "flags": [
+    {
+      "level": "alert",
+      "title": "Overreached",
+      "text": "TSB -43, CTL 13, ATL 57. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
+    },
     {
       "level": "ok",
       "title": "B12",
@@ -233,5 +245,225 @@
     "distance": 70.3,
     "priority": "A"
   },
-  "generated_at": "2026-05-01T16:09:06.691982Z"
+  "training_load": {
+    "ctl": 13.3,
+    "atl": 56.6,
+    "tsb": -43.3,
+    "tss_today": 0.0,
+    "state": "overreached",
+    "carb_bump_pct": 15,
+    "history": [
+      {
+        "date": "2026-04-02",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-03",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-04",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-05",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-06",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-07",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-08",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-09",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-10",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-11",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-12",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-13",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-14",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-15",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-16",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-17",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-18",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-19",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-20",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-21",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-22",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-23",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-24",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-25",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-26",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-27",
+        "ctl": 3.5,
+        "atl": 20.0,
+        "tsb": -16.4,
+        "tss": 150.0
+      },
+      {
+        "date": "2026-04-28",
+        "ctl": 7.0,
+        "atl": 37.3,
+        "tsb": -30.3,
+        "tss": 150.0
+      },
+      {
+        "date": "2026-04-29",
+        "ctl": 10.3,
+        "atl": 52.3,
+        "tsb": -41.9,
+        "tss": 150.0
+      },
+      {
+        "date": "2026-04-30",
+        "ctl": 13.6,
+        "atl": 65.3,
+        "tsb": -51.7,
+        "tss": 150.0
+      },
+      {
+        "date": "2026-05-01",
+        "ctl": 13.3,
+        "atl": 56.6,
+        "tsb": -43.3,
+        "tss": 0.0
+      }
+    ]
+  },
+  "generated_at": "2026-05-01T23:45:43.057730Z"
 }
