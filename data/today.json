@@ -71,11 +71,11 @@
     }
   ],
   "macros": {
-    "carbs_g": 440,
-    "protein_g": 192,
-    "fat_g": 88,
-    "calories": 3320,
-    "carbs_g_per_kg": 5.5,
+    "carbs_g": 500,
+    "protein_g": 218,
+    "fat_g": 100,
+    "calories": 3772,
+    "carbs_g_per_kg": 5.49,
     "protein_g_per_kg": 2.4
   },
   "meals": [
@@ -117,10 +117,10 @@
       "name": "Dinner",
       "time": "7:00 PM",
       "color": "YELLOW",
-      "carbs_g": 330,
+      "carbs_g": 390,
       "protein_g": 45,
       "fat_g": 25,
-      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~280g extra complex carbs (rice, sweet potato).",
+      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~340g extra complex carbs (rice, sweet potato).",
       "label": "Veg-forward, balanced"
     }
   ],
@@ -233,5 +233,5 @@
     "distance": 70.3,
     "priority": "A"
   },
-  "generated_at": "2026-05-01T15:44:14.502251Z"
+  "generated_at": "2026-05-01T16:09:06.691982Z"
 }
