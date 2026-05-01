@@ -1,4 +1,4 @@
-[project]
+[workspace]
 name = "fuelcast"
 version = "0.1.0"
 description = "Periodized vegetarian fueling engine for endurance training"
