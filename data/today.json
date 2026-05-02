@@ -1,31 +1,18 @@
 {
-  "date": "2026-05-01",
-  "weekday": "Friday",
+  "date": "2026-05-02",
+  "weekday": "Saturday",
   "phase": "base",
-  "day_color": "YELLOW",
-  "workout": {
-    "title": "Run: Treadmill Running",
-    "sport": "run",
-    "duration_min": 60,
-    "tss": null,
-    "intensity_factor": null,
-    "is_completed": false
-  },
-  "secondary_workouts": [
-    {
-      "title": "Run: Running",
-      "sport": "run",
-      "duration_min": 60
-    }
-  ],
+  "day_color": "RED",
+  "workout": null,
+  "secondary_workouts": [],
   "week_strip": [
     {
       "date": "2026-04-27",
       "label": "M",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-04-28",
@@ -55,7 +42,7 @@
       "date": "2026-05-01",
       "label": "F",
       "color": "yellow",
-      "is_today": true,
+      "is_today": false,
       "title": "Run: Treadmill Running",
       "duration_min": 60
     },
@@ -63,7 +50,7 @@
       "date": "2026-05-02",
       "label": "S",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     },
@@ -77,11 +64,11 @@
     }
   ],
   "macros": {
-    "carbs_g": 575,
+    "carbs_g": 366,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 4072,
-    "carbs_g_per_kg": 6.32,
+    "calories": 3236,
+    "carbs_g_per_kg": 4.02,
     "protein_g_per_kg": 2.4,
     "carb_bump_pct": 15
   },
@@ -94,15 +81,15 @@
       "carbs_g": 30,
       "protein_g": 35,
       "fat_g": 15,
-      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
-      "label": "Pre-session \u00b7 light, low-fiber"
+      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
+      "label": "Steady start"
     },
     {
       "slot": "lunch",
       "name": "Lunch",
       "time": "12:30 PM",
-      "color": "YELLOW",
-      "carbs_g": 50,
+      "color": "RED",
+      "carbs_g": 30,
       "protein_g": 40,
       "fat_g": 25,
       "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
@@ -123,40 +110,20 @@
       "slot": "dinner",
       "name": "Dinner",
       "time": "7:00 PM",
-      "color": "YELLOW",
-      "carbs_g": 390,
+      "color": "RED",
+      "carbs_g": 228,
       "protein_g": 45,
       "fat_g": 25,
-      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~340g extra complex carbs (rice, sweet potato).",
+      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~198g extra complex carbs (rice, sweet potato).",
       "label": "Veg-forward, balanced"
     }
   ],
-  "in_session": {
-    "target_carbs_g_per_hr": 30,
-    "total_carbs_g": 30,
-    "sodium_mg": 0,
-    "glucose_pct": 100,
-    "fructose_pct": 0,
-    "bottle_count": 1,
-    "note": "",
-    "steps": [
-      {
-        "when": "0\u201360 min",
-        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
-        "carbs_g": 30
-      },
-      {
-        "when": "Total",
-        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
-        "carbs_g": 0
-      }
-    ]
-  },
+  "in_session": null,
   "flags": [
     {
       "level": "alert",
       "title": "Overreached",
-      "text": "TSB -43, CTL 13, ATL 57. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
+      "text": "TSB -39, CTL 12, ATL 51. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
     },
     {
       "level": "ok",
@@ -241,25 +208,18 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 394,
+    "days_to_go": 393,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 13.3,
-    "atl": 56.6,
-    "tsb": -43.3,
+    "ctl": 12.2,
+    "atl": 50.8,
+    "tsb": -38.7,
     "tss_today": 0.0,
     "state": "overreached",
     "carb_bump_pct": 15,
     "history": [
-      {
-        "date": "2026-04-02",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
       {
         "date": "2026-04-03",
         "ctl": 0.0,
@@ -430,40 +390,47 @@
       },
       {
         "date": "2026-04-27",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-28",
         "ctl": 3.5,
         "atl": 20.0,
         "tsb": -16.4,
         "tss": 150.0
       },
       {
-        "date": "2026-04-28",
+        "date": "2026-04-29",
         "ctl": 7.0,
         "atl": 37.3,
         "tsb": -30.3,
         "tss": 150.0
       },
       {
-        "date": "2026-04-29",
+        "date": "2026-04-30",
         "ctl": 10.3,
         "atl": 52.3,
         "tsb": -41.9,
         "tss": 150.0
       },
       {
-        "date": "2026-04-30",
-        "ctl": 13.6,
-        "atl": 65.3,
-        "tsb": -51.7,
-        "tss": 150.0
+        "date": "2026-05-01",
+        "ctl": 12.5,
+        "atl": 58.6,
+        "tsb": -46.2,
+        "tss": 100.0
       },
       {
-        "date": "2026-05-01",
-        "ctl": 13.3,
-        "atl": 56.6,
-        "tsb": -43.3,
+        "date": "2026-05-02",
+        "ctl": 12.2,
+        "atl": 50.8,
+        "tsb": -38.7,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-01T23:45:43.057730Z"
+  "generated_at": "2026-05-02T13:26:40.194640Z"
 }
