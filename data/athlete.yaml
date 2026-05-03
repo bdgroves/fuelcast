@@ -7,39 +7,44 @@ sex: M
 date_of_birth: 1970-05-15
 diet: vegetarian              # vegetarian | vegan | omnivore | pescatarian
 
+# Goal mode — drives prescription strategy.
+# training_focus = full carbs, protect performance adaptations
+# weight_loss    = moderate deficit, protein floor protected, RED days cut
+# maintenance    = balanced, no deficit
+goal: weight_loss
+
 physical:
   weight_kg: 91               # 200 lbs ≈ 90.7 kg; update monthly
-  height_cm: 178              # set to your actual
+  height_cm: 178
   bodyfat_pct: null           # optional, from DEXA if you have it
 
 training:
-  ftp_watts: 245              # update after FTP test
-  swim_css_pace: "1:38/100m"  # update after CSS test
+  ftp_watts: 210              # current FTP from May 2026 testing
+  ftp_w_per_kg: 2.31          # tracked separately; recomputes when weight changes
+  swim_css_pace: "1:38/100m"
   run_threshold_pace: "7:30/mile"
-  max_hr: null                # optional; we use Z-zones from TP if available
+  max_hr: null                # field-test with chest strap when ready
+  lt1_hr_cap: 130             # working Z2 ceiling; verify via talk test
+  power_z2_low: 120           # bottom of Z2 power band
+  power_z2_high: 150          # top of Z2 power band (LT1)
+  hr_data_source: chest_strap_only   # wrist optical (Fenix 7) is unreliable;
+                                     # only HRM Pro chest strap data is trusted
   gut_trained_to_g_hr: 75     # personal carb tolerance ceiling (train upward)
 
-# TrainingPeaks training load seed.
-# Without these, FuelCast computes CTL/ATL from iCal history (only ~30 days)
-# starting at zero. That under-counts true fitness for weeks. Seed with the
-# values you see in TrainingPeaks today, and the engine will be accurate
-# from day one.
+# TrainingPeaks training load seed — calibrated against actual TP display
+# May 3, 2026.
+# Updated from CSV export ground truth (49 days of TSS data 3/15-5/3) plus
+# the gap from training before 3/15 visible in TP's running CTL of 54.
 #
-# Update these every couple weeks by checking the top-right of your TP
-# Calendar view: "Today: 57 CTL · 45 ATL · +7 TSB" -> copy into here.
+# Update these every couple weeks: TP Calendar -> top right shows
+# "Today: X CTL · Y ATL · Z TSB" -> copy values + today's date here.
 training_load_seed:
-  date: 2026-05-01            # the date these numbers were observed in TP
-  ctl: 57                     # Fitness (Chronic Training Load)
-  atl: 45                     # Fatigue (Acute Training Load)
-  # TSB is computed from CTL - ATL, no need to specify
+  date: 2026-05-03
+  ctl: 54                     # TP's current display
+  atl: 40                     # gives small negative TSB matching TP ramp rate
 
-# Mode logic — what kind of program am I in right now?
-# health      = general wellness, calorie balance
-# base        = aerobic build, no race
-# build       = specific 70.3 build (12-16 wks out)
-# peak        = race prep (4 wks out)
-# race_week   = carb-load week
-# recovery    = post-race
+# Phase — base, build, peak, race_week, recovery
+# Currently in pure Z2 base + fat loss block; mitochondrial development focus.
 phase: base
 
 # Race calendar — first race with priority A is "next race"
@@ -56,15 +61,15 @@ races:
     distance: 70.3
     notes: "tune-up race / build benchmark"
 
-# Vegetarian-specific supplements you take regularly
+# Vegetarian-specific supplements
 supplements:
-  - name: methylcobalamin   # B12
+  - name: methylcobalamin
     dose: 1000mcg
     daily: true
   - name: vitamin_d3
     dose: 2000IU
     daily: true
-  - name: algal_omega3       # vegetarian DHA/EPA
+  - name: algal_omega3
     dose: 600mg
     daily: false             # set true when you start it
 
@@ -74,8 +79,8 @@ site:
   passphrase_hint: "the lake at the end of the Plain of Six Glaciers"
 
 # TrainingPeaks ICS feed
-# Set the URL via the TP_ICS_URL environment variable (or GitHub secret).
-# Do NOT commit the URL itself — anyone with it can read your calendar.
+# URL via TP_ICS_URL environment variable (or GitHub secret).
+# Treat the URL like a password.
 trainingpeaks:
   ics_url_env: TP_ICS_URL
   lookback_days: 1
