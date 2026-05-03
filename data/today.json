@@ -1,6 +1,6 @@
 {
-  "date": "2026-05-02",
-  "weekday": "Saturday",
+  "date": "2026-05-03",
+  "weekday": "Sunday",
   "phase": "base",
   "day_color": "RED",
   "workout": null,
@@ -17,10 +17,10 @@
     {
       "date": "2026-04-28",
       "label": "T",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-04-29",
@@ -49,16 +49,16 @@
     {
       "date": "2026-05-02",
       "label": "S",
-      "color": "red",
-      "is_today": true,
-      "title": "Rest",
-      "duration_min": 0
+      "color": "yellow",
+      "is_today": false,
+      "title": "Run: Treadmill Running",
+      "duration_min": 60
     },
     {
       "date": "2026-05-03",
       "label": "S",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     }
@@ -123,7 +123,7 @@
     {
       "level": "alert",
       "title": "Overreached",
-      "text": "TSB -39, CTL 12, ATL 51. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
+      "text": "TSB -39, CTL 12, ATL 52. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
     },
     {
       "level": "ok",
@@ -208,25 +208,18 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 393,
+    "days_to_go": 392,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
     "ctl": 12.2,
-    "atl": 50.8,
-    "tsb": -38.7,
+    "atl": 51.6,
+    "tsb": -39.4,
     "tss_today": 0.0,
     "state": "overreached",
     "carb_bump_pct": 15,
     "history": [
-      {
-        "date": "2026-04-03",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
       {
         "date": "2026-04-04",
         "ctl": 0.0,
@@ -397,40 +390,47 @@
       },
       {
         "date": "2026-04-28",
+        "ctl": 0.0,
+        "atl": 0.0,
+        "tsb": 0.0,
+        "tss": 0.0
+      },
+      {
+        "date": "2026-04-29",
         "ctl": 3.5,
         "atl": 20.0,
         "tsb": -16.4,
         "tss": 150.0
       },
       {
-        "date": "2026-04-29",
+        "date": "2026-04-30",
         "ctl": 7.0,
         "atl": 37.3,
         "tsb": -30.3,
         "tss": 150.0
       },
       {
-        "date": "2026-04-30",
-        "ctl": 10.3,
-        "atl": 52.3,
-        "tsb": -41.9,
-        "tss": 150.0
-      },
-      {
         "date": "2026-05-01",
-        "ctl": 12.5,
-        "atl": 58.6,
-        "tsb": -46.2,
+        "ctl": 9.2,
+        "atl": 45.6,
+        "tsb": -36.5,
         "tss": 100.0
       },
       {
         "date": "2026-05-02",
+        "ctl": 12.5,
+        "atl": 59.5,
+        "tsb": -47.0,
+        "tss": 150.0
+      },
+      {
+        "date": "2026-05-03",
         "ctl": 12.2,
-        "atl": 50.8,
-        "tsb": -38.7,
+        "atl": 51.6,
+        "tsb": -39.4,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-02T13:26:40.194640Z"
+  "generated_at": "2026-05-03T13:26:24.748966Z"
 }
