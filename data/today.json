@@ -64,13 +64,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 366,
+    "carbs_g": 318,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3236,
-    "carbs_g_per_kg": 4.02,
+    "calories": 3044,
+    "carbs_g_per_kg": 3.49,
     "protein_g_per_kg": 2.4,
-    "carb_bump_pct": 15
+    "carb_bump_pct": 0
   },
   "meals": [
     {
@@ -121,9 +121,9 @@
   "in_session": null,
   "flags": [
     {
-      "level": "alert",
-      "title": "Overreached",
-      "text": "TSB -39, CTL 12, ATL 52. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
+      "level": "ok",
+      "title": "Recovery state",
+      "text": "TSB +17, CTL 55. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -213,224 +213,35 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 12.2,
-    "atl": 51.6,
-    "tsb": -39.4,
+    "ctl": 54.9,
+    "atl": 38.1,
+    "tsb": 16.8,
     "tss_today": 0.0,
-    "state": "overreached",
-    "carb_bump_pct": 15,
+    "state": "fresh",
+    "carb_bump_pct": 0,
     "history": [
       {
-        "date": "2026-04-04",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-05",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-06",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-07",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-08",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-09",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-10",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-11",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-12",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-13",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-14",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-15",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-16",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-17",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-18",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-19",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-20",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-21",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-22",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-23",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-24",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-25",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-26",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-27",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-28",
-        "ctl": 0.0,
-        "atl": 0.0,
-        "tsb": 0.0,
-        "tss": 0.0
-      },
-      {
-        "date": "2026-04-29",
-        "ctl": 3.5,
-        "atl": 20.0,
-        "tsb": -16.4,
-        "tss": 150.0
-      },
-      {
-        "date": "2026-04-30",
-        "ctl": 7.0,
-        "atl": 37.3,
-        "tsb": -30.3,
-        "tss": 150.0
-      },
-      {
         "date": "2026-05-01",
-        "ctl": 9.2,
-        "atl": 45.6,
-        "tsb": -36.5,
-        "tss": 100.0
+        "ctl": 56.4,
+        "atl": 43.0,
+        "tsb": 13.4,
+        "tss": 30.0
       },
       {
         "date": "2026-05-02",
-        "ctl": 12.5,
-        "atl": 59.5,
-        "tsb": -47.0,
-        "tss": 150.0
+        "ctl": 56.2,
+        "atl": 43.9,
+        "tsb": 12.3,
+        "tss": 50.0
       },
       {
         "date": "2026-05-03",
-        "ctl": 12.2,
-        "atl": 51.6,
-        "tsb": -39.4,
+        "ctl": 54.9,
+        "atl": 38.1,
+        "tsb": 16.8,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-03T13:26:24.748966Z"
+  "generated_at": "2026-05-03T15:52:46.924377Z"
 }
