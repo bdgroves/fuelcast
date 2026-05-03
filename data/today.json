@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +17, CTL 55. Fresh \u2014 good day for quality work or a key session."
+      "text": "TSB +17, CTL 53. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -213,35 +213,28 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 54.9,
-    "atl": 38.1,
+    "ctl": 52.6,
+    "atl": 35.8,
     "tsb": 16.8,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
     "history": [
       {
-        "date": "2026-05-01",
-        "ctl": 56.4,
-        "atl": 43.0,
-        "tsb": 13.4,
-        "tss": 30.0
-      },
-      {
         "date": "2026-05-02",
-        "ctl": 56.2,
-        "atl": 43.9,
-        "tsb": 12.3,
+        "ctl": 53.9,
+        "atl": 41.3,
+        "tsb": 12.6,
         "tss": 50.0
       },
       {
         "date": "2026-05-03",
-        "ctl": 54.9,
-        "atl": 38.1,
+        "ctl": 52.6,
+        "atl": 35.8,
         "tsb": 16.8,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-03T15:52:46.924377Z"
+  "generated_at": "2026-05-03T16:57:19.029780Z"
 }
