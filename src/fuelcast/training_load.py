@@ -45,23 +45,33 @@ class TrainingLoad:
 def _daily_tss(workouts: list[Workout], target_date: date) -> float:
     """Sum TSS for all workouts on a given date.
 
-    For workouts without an explicit TSS in the iCal description, we estimate
-    a conservative value from duration: 50 TSS/hr. That's roughly the rate of
-    a moderate Z2 endurance session — close enough for bootstrapping.
+    Strategy:
+      1. Use explicit TSS from the iCal description when present (preferred).
+      2. If duration is known but TSS isn't, estimate **conservatively**:
+         use 15 TSS/hr — roughly Z1 walking pace. This is intentionally low
+         because the iCal feed often omits TSS on short / recovery work, and
+         we'd rather under-estimate fitness than inflate it.
+      3. Strength sessions without TSS get 20 TSS/hr (rough Garmin convention).
+
+    Why so conservative? In the original implementation 50 TSS/hr was used,
+    which is a moderate Z2 endurance rate. That over-credited every untagged
+    workout and inflated ATL dramatically. Real Z2 endurance does run ~50
+    TSS/hr — but TP almost always tags those with explicit TSS, so the
+    fallback is hit mostly on easy / recovery sessions where 15 is closer
+    to truth.
     """
     total = 0.0
     for w in workouts:
         if w.date != target_date:
             continue
         if not w.is_completed:
-            # Only count completed workouts toward training load.
-            # Planned-but-not-done shouldn't inflate fitness.
             continue
         if w.tss is not None:
             total += w.tss
         elif w.duration_min > 0:
-            # Conservative estimate: 50 TSS/hr (moderate aerobic)
-            total += 50 * w.duration_hr
+            # Conservative fallback — see docstring
+            rate = 20 if w.sport == "strength" else 15
+            total += rate * w.duration_hr
     return total
 
 
@@ -78,10 +88,10 @@ def compute_training_load(
     Returns a list of TrainingLoad records, one per day, oldest first.
     The last entry is target_date itself.
 
-    Note on accuracy: with only ~30 days of iCal history, CTL takes ~3 weeks
-    to stabilize from a zero seed. After 6 weeks of running daily this is
-    no longer an issue. For early days, treat the absolute CTL number with
-    skepticism but trust the *trend* (ATL and TSB respond faster).
+    For accuracy, pass `initial_ctl` and `initial_atl` from the athlete's
+    actual TrainingPeaks values at the start of the seed window. Otherwise
+    seeds at zero, which under-counts fitness for the first 6 weeks until
+    the exponential filter converges.
     """
     target_date = target_date or date.today()
     start = target_date - timedelta(days=seed_days)

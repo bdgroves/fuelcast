@@ -31,6 +31,24 @@ def test_tss_extraction():
     assert parse_tss("no tss here") is None
 
 
+def test_hr_tss_extraction():
+    """TrainingPeaks emits hrTSS for heart-rate-based scoring on runs/treadmill."""
+    assert parse_tss("9 hrTSS") == 9.0
+    assert parse_tss("13 hrTSS") == 13.0
+    assert parse_tss("Treadmill Running\n0:06:34\n1.03 mi\n13 hrTSS") == 13.0
+
+
+def test_running_tss_extraction():
+    """rTSS = pace-based running stress score."""
+    assert parse_tss("12 rTSS") == 12.0
+    assert parse_tss("85 rTSS") == 85.0
+
+
+def test_decimal_tss():
+    assert parse_tss("TSS: 95.5") == 95.5
+    assert parse_tss("12.5 hrTSS") == 12.5
+
+
 def test_if_extraction():
     assert parse_if("IF: 0.88") == 0.88
     assert parse_if("IF=0.72") == 0.72

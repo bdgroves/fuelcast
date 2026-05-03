@@ -227,7 +227,30 @@ def build_day_plan(
     diet = athlete.diet
 
     # Training load — compute CTL/ATL/TSB from completed workout history
-    load_history = compute_training_load(workouts, target_date=target_date)
+    # Training load — compute CTL/ATL/TSB from completed workout history.
+    # Seed from athlete.yaml if the athlete provided real TP values, so we
+    # don't have to wait 6 weeks for the exponential filter to converge.
+    tl_config = athlete.raw.get("training_load_seed", {})
+    initial_ctl = float(tl_config.get("ctl", 0.0))
+    initial_atl = float(tl_config.get("atl", 0.0))
+    # If a seed_date is provided, use that as our window start — we trust
+    # the seed values *at* that date, then accumulate forward from workouts.
+    seed_days_param = 60
+    seed_date_str = tl_config.get("date")
+    if seed_date_str:
+        try:
+            sd = datetime.strptime(str(seed_date_str), "%Y-%m-%d").date()
+            seed_days_param = max(1, (target_date - sd).days)
+        except (ValueError, TypeError):
+            pass
+
+    load_history = compute_training_load(
+        workouts,
+        target_date=target_date,
+        seed_days=seed_days_param,
+        initial_ctl=initial_ctl,
+        initial_atl=initial_atl,
+    )
     current_load = latest_load(load_history)
 
     # Macros — base prescription

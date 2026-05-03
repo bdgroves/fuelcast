@@ -19,6 +19,20 @@ training:
   max_hr: null                # optional; we use Z-zones from TP if available
   gut_trained_to_g_hr: 75     # personal carb tolerance ceiling (train upward)
 
+# TrainingPeaks training load seed.
+# Without these, FuelCast computes CTL/ATL from iCal history (only ~30 days)
+# starting at zero. That under-counts true fitness for weeks. Seed with the
+# values you see in TrainingPeaks today, and the engine will be accurate
+# from day one.
+#
+# Update these every couple weeks by checking the top-right of your TP
+# Calendar view: "Today: 57 CTL · 45 ATL · +7 TSB" -> copy into here.
+training_load_seed:
+  date: 2026-05-01            # the date these numbers were observed in TP
+  ctl: 57                     # Fitness (Chronic Training Load)
+  atl: 45                     # Fatigue (Acute Training Load)
+  # TSB is computed from CTL - ATL, no need to specify
+
 # Mode logic — what kind of program am I in right now?
 # health      = general wellness, calorie balance
 # base        = aerobic build, no race
@@ -43,7 +57,6 @@ races:
     notes: "tune-up race / build benchmark"
 
 # Vegetarian-specific supplements you take regularly
-# Used to reduce flag noise on the daily card
 supplements:
   - name: methylcobalamin   # B12
     dose: 1000mcg
@@ -65,5 +78,5 @@ site:
 # Do NOT commit the URL itself — anyone with it can read your calendar.
 trainingpeaks:
   ics_url_env: TP_ICS_URL
-  lookback_days: 1            # how far back to pull completed workouts
+  lookback_days: 1
   lookahead_days: 7

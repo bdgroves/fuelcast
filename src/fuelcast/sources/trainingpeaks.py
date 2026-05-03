@@ -85,8 +85,18 @@ def classify_sport(title: str, description: str = "") -> str:
     return "other"
 
 
-# Patterns to extract TSS / IF / duration from TP description text
-RE_TSS = re.compile(r"\bTSS\s*[:=]?\s*(\d+(?:\.\d+)?)", re.IGNORECASE)
+# Patterns to extract TSS / IF / duration from TP description text.
+# TrainingPeaks emits TSS in several flavors:
+#   "TSS: 95"      — power-based or generic
+#   "TSS=95"
+#   "9 hrTSS"      — heart-rate-based (most common for runs/treadmill)
+#   "12 rTSS"      — running-pace-based
+# We accept all of them and treat them as equivalent for fueling math.
+RE_TSS = re.compile(
+    r"(?:\bTSS\s*[:=]?\s*(\d+(?:\.\d+)?))"      # "TSS: 95" or "TSS=95"
+    r"|(?:\b(\d+(?:\.\d+)?)\s*(?:hr|r|p)?TSS\b)",  # "9 hrTSS" / "12 rTSS" / "95 TSS"
+    re.IGNORECASE,
+)
 RE_IF = re.compile(r"\bIF\s*[:=]?\s*(\d+(?:\.\d+)?)", re.IGNORECASE)
 RE_PLANNED_DURATION = re.compile(
     r"(\d+(?:\.\d+)?)\s*(?:hr|hour|h)\b|(\d+)\s*(?:min|minutes)\b", re.IGNORECASE
@@ -95,7 +105,12 @@ RE_PLANNED_DURATION = re.compile(
 
 def parse_tss(text: str) -> float | None:
     m = RE_TSS.search(text)
-    return float(m.group(1)) if m else None
+    if not m:
+        return None
+    # The regex has two capture groups (one for each pattern variant).
+    # Whichever matched holds the number.
+    val = m.group(1) or m.group(2)
+    return float(val) if val else None
 
 
 def parse_if(text: str) -> float | None:
