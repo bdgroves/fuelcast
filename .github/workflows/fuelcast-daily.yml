@@ -3,7 +3,7 @@ name: FuelCast Daily
 on:
   schedule:
     # 12:00 UTC daily = 5am PDT / 4am PST
-    - cron: "0 12 * * *"
+    - cron: "0 */2 * * *"
   workflow_dispatch:
 
 permissions:
