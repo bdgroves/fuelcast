@@ -1,64 +1,64 @@
 {
-  "date": "2026-05-03",
-  "weekday": "Sunday",
+  "date": "2026-05-04",
+  "weekday": "Monday",
   "phase": "base",
   "day_color": "RED",
   "workout": null,
   "secondary_workouts": [],
   "week_strip": [
     {
-      "date": "2026-04-27",
+      "date": "2026-05-04",
       "label": "M",
       "color": "red",
-      "is_today": false,
-      "title": "Rest",
-      "duration_min": 0
-    },
-    {
-      "date": "2026-04-28",
-      "label": "T",
-      "color": "red",
-      "is_today": false,
-      "title": "Rest",
-      "duration_min": 0
-    },
-    {
-      "date": "2026-04-29",
-      "label": "W",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-04-30",
-      "label": "T",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-05-01",
-      "label": "F",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-05-02",
-      "label": "S",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-05-03",
-      "label": "S",
-      "color": "red",
       "is_today": true,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-05-05",
+      "label": "T",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-05-06",
+      "label": "W",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-05-07",
+      "label": "T",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-05-08",
+      "label": "F",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-05-09",
+      "label": "S",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-05-10",
+      "label": "S",
+      "color": "red",
+      "is_today": false,
       "title": "Rest",
       "duration_min": 0
     }
@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +17, CTL 53. Fresh \u2014 good day for quality work or a key session."
+      "text": "TSB +20, CTL 52. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -208,33 +208,33 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 392,
+    "days_to_go": 391,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 52.6,
-    "atl": 35.8,
-    "tsb": 16.8,
+    "ctl": 51.8,
+    "atl": 31.8,
+    "tsb": 20.0,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
     "history": [
       {
-        "date": "2026-05-02",
-        "ctl": 53.9,
-        "atl": 41.3,
-        "tsb": 12.6,
-        "tss": 50.0
+        "date": "2026-05-03",
+        "ctl": 53.1,
+        "atl": 36.7,
+        "tsb": 16.4,
+        "tss": 15.0
       },
       {
-        "date": "2026-05-03",
-        "ctl": 52.6,
-        "atl": 35.8,
-        "tsb": 16.8,
+        "date": "2026-05-04",
+        "ctl": 51.8,
+        "atl": 31.8,
+        "tsb": 20.0,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-03T16:57:19.029780Z"
+  "generated_at": "2026-05-04T14:19:59.241374Z"
 }
