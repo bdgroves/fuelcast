@@ -1,31 +1,24 @@
 {
-  "date": "2026-05-04",
-  "weekday": "Monday",
+  "date": "2026-05-05",
+  "weekday": "Tuesday",
   "phase": "base",
-  "day_color": "YELLOW",
-  "workout": {
-    "title": "Strength: Strength",
-    "sport": "strength",
-    "duration_min": 60,
-    "tss": null,
-    "intensity_factor": null,
-    "is_completed": false
-  },
+  "day_color": "RED",
+  "workout": null,
   "secondary_workouts": [],
   "week_strip": [
     {
       "date": "2026-05-04",
       "label": "M",
       "color": "yellow",
-      "is_today": true,
-      "title": "Strength: Strength",
+      "is_today": false,
+      "title": "Run: Running",
       "duration_min": 60
     },
     {
       "date": "2026-05-05",
       "label": "T",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     },
@@ -71,11 +64,11 @@
     }
   ],
   "macros": {
-    "carbs_g": 500,
+    "carbs_g": 318,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3772,
-    "carbs_g_per_kg": 5.49,
+    "calories": 3044,
+    "carbs_g_per_kg": 3.49,
     "protein_g_per_kg": 2.4,
     "carb_bump_pct": 0
   },
@@ -88,15 +81,15 @@
       "carbs_g": 30,
       "protein_g": 35,
       "fat_g": 15,
-      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
-      "label": "Pre-session \u00b7 light, low-fiber"
+      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
+      "label": "Steady start"
     },
     {
       "slot": "lunch",
       "name": "Lunch",
       "time": "12:30 PM",
-      "color": "YELLOW",
-      "carbs_g": 50,
+      "color": "RED",
+      "carbs_g": 30,
       "protein_g": 40,
       "fat_g": 25,
       "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
@@ -117,40 +110,20 @@
       "slot": "dinner",
       "name": "Dinner",
       "time": "7:00 PM",
-      "color": "YELLOW",
-      "carbs_g": 390,
+      "color": "RED",
+      "carbs_g": 228,
       "protein_g": 45,
       "fat_g": 25,
-      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~340g extra complex carbs (rice, sweet potato).",
+      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~198g extra complex carbs (rice, sweet potato).",
       "label": "Veg-forward, balanced"
     }
   ],
-  "in_session": {
-    "target_carbs_g_per_hr": 30,
-    "total_carbs_g": 30,
-    "sodium_mg": 0,
-    "glucose_pct": 100,
-    "fructose_pct": 0,
-    "bottle_count": 1,
-    "note": "",
-    "steps": [
-      {
-        "when": "0\u201360 min",
-        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
-        "carbs_g": 30
-      },
-      {
-        "when": "Total",
-        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
-        "carbs_g": 0
-      }
-    ]
-  },
+  "in_session": null,
   "flags": [
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +20, CTL 52. Fresh \u2014 good day for quality work or a key session."
+      "text": "TSB +20, CTL 51. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -235,14 +208,14 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 391,
+    "days_to_go": 390,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 51.8,
-    "atl": 31.8,
-    "tsb": 20.0,
+    "ctl": 51.4,
+    "atl": 31.6,
+    "tsb": 19.8,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
@@ -256,12 +229,19 @@
       },
       {
         "date": "2026-05-04",
-        "ctl": 51.8,
-        "atl": 31.8,
-        "tsb": 20.0,
+        "ctl": 52.7,
+        "atl": 36.4,
+        "tsb": 16.2,
+        "tss": 35.0
+      },
+      {
+        "date": "2026-05-05",
+        "ctl": 51.4,
+        "atl": 31.6,
+        "tsb": 19.8,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-04T22:47:17.958581Z"
+  "generated_at": "2026-05-05T00:37:00.348656Z"
 }
