@@ -11,7 +11,13 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Swim: Lap Swimming",
+      "sport": "swim",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-05-04",
@@ -284,5 +290,5 @@
       }
     ]
   },
-  "generated_at": "2026-05-07T20:56:59.875016Z"
+  "generated_at": "2026-05-07T22:51:46.448333Z"
 }
