@@ -9,10 +9,10 @@
     {
       "date": "2026-05-04",
       "label": "M",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-05-05",
@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +22, CTL 49. Fresh \u2014 good day for quality work or a key session."
+      "text": "TSB +24, CTL 48. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 48.9,
-    "atl": 26.8,
-    "tsb": 22.1,
+    "ctl": 48.1,
+    "atl": 24.5,
+    "tsb": 23.6,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
@@ -229,47 +229,47 @@
       },
       {
         "date": "2026-05-04",
-        "ctl": 52.3,
-        "atl": 34.7,
-        "tsb": 17.6,
-        "tss": 35.0
+        "ctl": 51.5,
+        "atl": 30.1,
+        "tsb": 21.4,
+        "tss": 0.0
       },
       {
         "date": "2026-05-05",
-        "ctl": 52.3,
-        "atl": 36.8,
-        "tsb": 15.5,
+        "ctl": 51.5,
+        "atl": 32.7,
+        "tsb": 18.7,
         "tss": 50.0
       },
       {
         "date": "2026-05-06",
-        "ctl": 51.4,
-        "atl": 33.9,
-        "tsb": 17.5,
+        "ctl": 50.6,
+        "atl": 30.4,
+        "tsb": 20.2,
         "tss": 15.0
       },
       {
         "date": "2026-05-07",
-        "ctl": 50.9,
-        "atl": 33.3,
-        "tsb": 17.5,
+        "ctl": 50.1,
+        "atl": 30.3,
+        "tsb": 19.8,
         "tss": 30.0
       },
       {
         "date": "2026-05-08",
-        "ctl": 50.0,
-        "atl": 30.9,
-        "tsb": 19.1,
+        "ctl": 49.3,
+        "atl": 28.3,
+        "tsb": 21.0,
         "tss": 15.0
       },
       {
         "date": "2026-05-09",
-        "ctl": 48.9,
-        "atl": 26.8,
-        "tsb": 22.1,
+        "ctl": 48.1,
+        "atl": 24.5,
+        "tsb": 23.6,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-09T05:00:35.684174Z"
+  "generated_at": "2026-05-09T07:41:52.282628Z"
 }
