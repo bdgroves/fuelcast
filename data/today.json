@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +27, CTL 44. Fresh \u2014 good day for quality work or a key session."
+      "text": "TSB +29, CTL 44. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 44.5,
-    "atl": 17.2,
-    "tsb": 27.3,
+    "ctl": 43.9,
+    "atl": 15.2,
+    "tsb": 28.6,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
@@ -250,47 +250,47 @@
       },
       {
         "date": "2026-05-07",
-        "ctl": 48.6,
-        "atl": 23.6,
-        "tsb": 25.1,
-        "tss": 30.0
+        "ctl": 47.9,
+        "atl": 19.6,
+        "tsb": 28.4,
+        "tss": 0.0
       },
       {
         "date": "2026-05-08",
-        "ctl": 47.9,
-        "atl": 22.4,
-        "tsb": 25.4,
+        "ctl": 47.2,
+        "atl": 19.0,
+        "tsb": 28.2,
         "tss": 15.0
       },
       {
         "date": "2026-05-09",
-        "ctl": 47.1,
-        "atl": 21.4,
-        "tsb": 25.6,
+        "ctl": 46.4,
+        "atl": 18.4,
+        "tsb": 28.0,
         "tss": 15.0
       },
       {
         "date": "2026-05-10",
-        "ctl": 46.3,
-        "atl": 20.6,
-        "tsb": 25.7,
+        "ctl": 45.7,
+        "atl": 18.0,
+        "tsb": 27.7,
         "tss": 15.0
       },
       {
         "date": "2026-05-11",
-        "ctl": 45.6,
-        "atl": 19.8,
-        "tsb": 25.7,
+        "ctl": 44.9,
+        "atl": 17.6,
+        "tsb": 27.4,
         "tss": 15.0
       },
       {
         "date": "2026-05-12",
-        "ctl": 44.5,
-        "atl": 17.2,
-        "tsb": 27.3,
+        "ctl": 43.9,
+        "atl": 15.2,
+        "tsb": 28.6,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-12T05:37:35.624617Z"
+  "generated_at": "2026-05-12T08:24:16.539537Z"
 }
