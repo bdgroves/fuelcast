@@ -4,14 +4,20 @@
   "phase": "base",
   "day_color": "YELLOW",
   "workout": {
-    "title": "Other: Yoga",
-    "sport": "strength",
+    "title": "Run: Running",
+    "sport": "run",
     "duration_min": 60,
     "tss": null,
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Other: Yoga",
+      "sport": "strength",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-05-18",
@@ -66,7 +72,7 @@
       "label": "S",
       "color": "yellow",
       "is_today": true,
-      "title": "Other: Yoga",
+      "title": "Run: Running",
       "duration_min": 60
     }
   ],
@@ -403,5 +409,5 @@
       }
     ]
   },
-  "generated_at": "2026-05-24T20:42:02.036340Z"
+  "generated_at": "2026-05-24T22:45:46.187263Z"
 }
