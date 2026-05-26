@@ -1,6 +1,6 @@
 {
-  "date": "2026-05-25",
-  "weekday": "Monday",
+  "date": "2026-05-26",
+  "weekday": "Tuesday",
   "phase": "base",
   "day_color": "RED",
   "workout": null,
@@ -10,7 +10,7 @@
       "date": "2026-05-25",
       "label": "M",
       "color": "red",
-      "is_today": true,
+      "is_today": false,
       "title": "Rest",
       "duration_min": 0
     },
@@ -18,7 +18,7 @@
       "date": "2026-05-26",
       "label": "T",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     },
@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +29, CTL 32. Fresh \u2014 good day for quality work or a key session."
+      "text": "TSB +28, CTL 31. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -208,14 +208,14 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 370,
+    "days_to_go": 369,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 31.6,
-    "atl": 2.6,
-    "tsb": 28.9,
+    "ctl": 30.8,
+    "atl": 2.3,
+    "tsb": 28.5,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
@@ -380,8 +380,15 @@
         "atl": 2.6,
         "tsb": 28.9,
         "tss": 0.0
+      },
+      {
+        "date": "2026-05-26",
+        "ctl": 30.8,
+        "atl": 2.3,
+        "tsb": 28.5,
+        "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-25T22:50:32.400088Z"
+  "generated_at": "2026-05-26T02:06:12.245771Z"
 }
