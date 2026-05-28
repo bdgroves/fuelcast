@@ -4,8 +4,8 @@
   "phase": "base",
   "day_color": "YELLOW",
   "workout": {
-    "title": "Other: Yoga",
-    "sport": "strength",
+    "title": "Run: Treadmill Running",
+    "sport": "run",
     "duration_min": 60,
     "tss": null,
     "intensity_factor": null,
@@ -48,7 +48,7 @@
       "label": "T",
       "color": "yellow",
       "is_today": true,
-      "title": "Other: Yoga",
+      "title": "Run: Treadmill Running",
       "duration_min": 60
     },
     {
@@ -437,5 +437,5 @@
       }
     ]
   },
-  "generated_at": "2026-05-28T15:25:10.654937Z"
+  "generated_at": "2026-05-28T18:29:04.066075Z"
 }
