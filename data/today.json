@@ -1,6 +1,6 @@
 {
-  "date": "2026-05-29",
-  "weekday": "Friday",
+  "date": "2026-05-30",
+  "weekday": "Saturday",
   "phase": "base",
   "day_color": "RED",
   "workout": null,
@@ -41,16 +41,16 @@
     {
       "date": "2026-05-29",
       "label": "F",
-      "color": "red",
-      "is_today": true,
-      "title": "Rest",
-      "duration_min": 0
+      "color": "yellow",
+      "is_today": false,
+      "title": "Run: Treadmill Running",
+      "duration_min": 60
     },
     {
       "date": "2026-05-30",
       "label": "S",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     },
@@ -208,14 +208,14 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 366,
+    "days_to_go": 365,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 30.4,
-    "atl": 10.1,
-    "tsb": 20.3,
+    "ctl": 30.0,
+    "atl": 10.5,
+    "tsb": 19.5,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
@@ -404,12 +404,19 @@
       },
       {
         "date": "2026-05-29",
-        "ctl": 30.4,
-        "atl": 10.1,
-        "tsb": 20.3,
+        "ctl": 30.8,
+        "atl": 12.1,
+        "tsb": 18.7,
+        "tss": 15.0
+      },
+      {
+        "date": "2026-05-30",
+        "ctl": 30.0,
+        "atl": 10.5,
+        "tsb": 19.5,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-29T23:02:38.075183Z"
+  "generated_at": "2026-05-30T01:59:33.107678Z"
 }
