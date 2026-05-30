@@ -41,10 +41,10 @@
     {
       "date": "2026-05-29",
       "label": "F",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-05-30",
@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +20, CTL 30. Fresh \u2014 good day for quality work or a key session."
+      "text": "TSB +21, CTL 30. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 30.0,
-    "atl": 10.5,
-    "tsb": 19.5,
+    "ctl": 29.7,
+    "atl": 8.8,
+    "tsb": 20.9,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
@@ -404,19 +404,19 @@
       },
       {
         "date": "2026-05-29",
-        "ctl": 30.8,
-        "atl": 12.1,
-        "tsb": 18.7,
-        "tss": 15.0
+        "ctl": 30.4,
+        "atl": 10.1,
+        "tsb": 20.3,
+        "tss": 0.0
       },
       {
         "date": "2026-05-30",
-        "ctl": 30.0,
-        "atl": 10.5,
-        "tsb": 19.5,
+        "ctl": 29.7,
+        "atl": 8.8,
+        "tsb": 20.9,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-30T16:51:19.227745Z"
+  "generated_at": "2026-05-30T18:57:53.042054Z"
 }
