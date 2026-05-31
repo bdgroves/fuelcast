@@ -1,23 +1,10 @@
 {
-  "date": "2026-05-30",
-  "weekday": "Saturday",
+  "date": "2026-05-31",
+  "weekday": "Sunday",
   "phase": "base",
   "day_color": "RED",
-  "workout": {
-    "title": "Walk: Walking",
-    "sport": "other",
-    "duration_min": 60,
-    "tss": null,
-    "intensity_factor": null,
-    "is_completed": false
-  },
-  "secondary_workouts": [
-    {
-      "title": "Run: Running",
-      "sport": "run",
-      "duration_min": 60
-    }
-  ],
+  "workout": null,
+  "secondary_workouts": [],
   "week_strip": [
     {
       "date": "2026-05-25",
@@ -63,7 +50,7 @@
       "date": "2026-05-30",
       "label": "S",
       "color": "red",
-      "is_today": true,
+      "is_today": false,
       "title": "Walk: Walking",
       "duration_min": 60
     },
@@ -71,7 +58,7 @@
       "date": "2026-05-31",
       "label": "S",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     }
@@ -94,8 +81,8 @@
       "carbs_g": 30,
       "protein_g": 35,
       "fat_g": 15,
-      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
-      "label": "Pre-session \u00b7 light, low-fiber"
+      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
+      "label": "Steady start"
     },
     {
       "slot": "lunch",
@@ -131,32 +118,12 @@
       "label": "Veg-forward, balanced"
     }
   ],
-  "in_session": {
-    "target_carbs_g_per_hr": 30,
-    "total_carbs_g": 30,
-    "sodium_mg": 0,
-    "glucose_pct": 100,
-    "fructose_pct": 0,
-    "bottle_count": 1,
-    "note": "",
-    "steps": [
-      {
-        "when": "0\u201360 min",
-        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
-        "carbs_g": 30
-      },
-      {
-        "when": "Total",
-        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
-        "carbs_g": 0
-      }
-    ]
-  },
+  "in_session": null,
   "flags": [
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +21, CTL 30. Fresh \u2014 good day for quality work or a key session."
+      "text": "TSB +19, CTL 30. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -241,14 +208,14 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 365,
+    "days_to_go": 364,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
     "ctl": 29.7,
-    "atl": 8.8,
-    "tsb": 20.9,
+    "atl": 11.1,
+    "tsb": 18.6,
     "tss_today": 0.0,
     "state": "fresh",
     "carb_bump_pct": 0,
@@ -444,12 +411,19 @@
       },
       {
         "date": "2026-05-30",
+        "ctl": 30.4,
+        "atl": 12.8,
+        "tsb": 17.6,
+        "tss": 30.0
+      },
+      {
+        "date": "2026-05-31",
         "ctl": 29.7,
-        "atl": 8.8,
-        "tsb": 20.9,
+        "atl": 11.1,
+        "tsb": 18.6,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-05-30T22:46:20.455700Z"
+  "generated_at": "2026-05-31T02:15:40.612495Z"
 }
