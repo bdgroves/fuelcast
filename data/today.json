@@ -4,29 +4,35 @@
   "phase": "base",
   "day_color": "YELLOW",
   "workout": {
-    "title": "Other: Yoga",
-    "sport": "strength",
+    "title": "Run: Treadmill Running",
+    "sport": "run",
     "duration_min": 60,
     "tss": null,
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Strength: Strength",
+      "sport": "strength",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-06-08",
       "label": "M",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-06-09",
       "label": "T",
       "color": "yellow",
       "is_today": true,
-      "title": "Other: Yoga",
+      "title": "Run: Treadmill Running",
       "duration_min": 60
     },
     {
@@ -150,7 +156,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +12, CTL 25. Recovered, ready for normal training."
+      "text": "TSB +21, CTL 22. Fresh \u2014 good day for quality work or a key session."
     },
     {
       "level": "ok",
@@ -240,11 +246,11 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 24.9,
-    "atl": 13.4,
-    "tsb": 11.5,
+    "ctl": 22.2,
+    "atl": 1.3,
+    "tsb": 20.9,
     "tss_today": 0.0,
-    "state": "recovered",
+    "state": "fresh",
     "carb_bump_pct": 0,
     "history": [
       {
@@ -431,33 +437,33 @@
       },
       {
         "date": "2026-06-06",
-        "ctl": 24.6,
-        "atl": 6.7,
-        "tsb": 18.0,
-        "tss": 35.0
+        "ctl": 23.8,
+        "atl": 2.0,
+        "tsb": 21.8,
+        "tss": 0.0
       },
       {
         "date": "2026-06-07",
-        "ctl": 25.2,
-        "atl": 12.4,
-        "tsb": 12.8,
-        "tss": 50.0
+        "ctl": 23.3,
+        "atl": 1.7,
+        "tsb": 21.5,
+        "tss": 0.0
       },
       {
         "date": "2026-06-08",
-        "ctl": 25.5,
-        "atl": 15.4,
-        "tsb": 10.0,
-        "tss": 35.0
+        "ctl": 22.7,
+        "atl": 1.5,
+        "tsb": 21.2,
+        "tss": 0.0
       },
       {
         "date": "2026-06-09",
-        "ctl": 24.9,
-        "atl": 13.4,
-        "tsb": 11.5,
+        "ctl": 22.2,
+        "atl": 1.3,
+        "tsb": 20.9,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-06-09T14:20:24.926897Z"
+  "generated_at": "2026-06-09T17:51:57.226391Z"
 }
