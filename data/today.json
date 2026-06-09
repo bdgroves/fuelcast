@@ -4,8 +4,8 @@
   "phase": "base",
   "day_color": "YELLOW",
   "workout": {
-    "title": "Run: Treadmill Running",
-    "sport": "run",
+    "title": "Bike: Indoor Cycling",
+    "sport": "bike",
     "duration_min": 60,
     "tss": null,
     "intensity_factor": null,
@@ -15,6 +15,16 @@
     {
       "title": "Strength: Strength",
       "sport": "strength",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Run: Treadmill Running",
+      "sport": "run",
       "duration_min": 60
     }
   ],
@@ -32,7 +42,7 @@
       "label": "T",
       "color": "yellow",
       "is_today": true,
-      "title": "Run: Treadmill Running",
+      "title": "Bike: Indoor Cycling",
       "duration_min": 60
     },
     {
@@ -465,5 +475,5 @@
       }
     ]
   },
-  "generated_at": "2026-06-09T21:29:16.869662Z"
+  "generated_at": "2026-06-09T23:09:16.992551Z"
 }
