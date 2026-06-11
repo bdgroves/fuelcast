@@ -16,6 +16,11 @@
       "title": "Other: Yoga",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Run: Running",
+      "sport": "run",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -465,5 +470,5 @@
       }
     ]
   },
-  "generated_at": "2026-06-11T20:08:50.997912Z"
+  "generated_at": "2026-06-11T23:13:48.038736Z"
 }
