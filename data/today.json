@@ -1,28 +1,10 @@
 {
-  "date": "2026-06-25",
-  "weekday": "Thursday",
+  "date": "2026-06-26",
+  "weekday": "Friday",
   "phase": "base",
-  "day_color": "YELLOW",
-  "workout": {
-    "title": "Run: Treadmill Running",
-    "sport": "run",
-    "duration_min": 60,
-    "tss": null,
-    "intensity_factor": null,
-    "is_completed": false
-  },
-  "secondary_workouts": [
-    {
-      "title": "Strength: Strength",
-      "sport": "strength",
-      "duration_min": 60
-    },
-    {
-      "title": "Run: Treadmill Running",
-      "sport": "run",
-      "duration_min": 60
-    }
-  ],
+  "day_color": "RED",
+  "workout": null,
+  "secondary_workouts": [],
   "week_strip": [
     {
       "date": "2026-06-22",
@@ -52,7 +34,7 @@
       "date": "2026-06-25",
       "label": "T",
       "color": "yellow",
-      "is_today": true,
+      "is_today": false,
       "title": "Run: Treadmill Running",
       "duration_min": 60
     },
@@ -60,7 +42,7 @@
       "date": "2026-06-26",
       "label": "F",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     },
@@ -82,11 +64,11 @@
     }
   ],
   "macros": {
-    "carbs_g": 500,
+    "carbs_g": 318,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3772,
-    "carbs_g_per_kg": 5.49,
+    "calories": 3044,
+    "carbs_g_per_kg": 3.49,
     "protein_g_per_kg": 2.4,
     "carb_bump_pct": 0
   },
@@ -99,15 +81,15 @@
       "carbs_g": 30,
       "protein_g": 35,
       "fat_g": 15,
-      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
-      "label": "Pre-session \u00b7 light, low-fiber"
+      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
+      "label": "Steady start"
     },
     {
       "slot": "lunch",
       "name": "Lunch",
       "time": "12:30 PM",
-      "color": "YELLOW",
-      "carbs_g": 50,
+      "color": "RED",
+      "carbs_g": 30,
       "protein_g": 40,
       "fat_g": 25,
       "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
@@ -128,40 +110,20 @@
       "slot": "dinner",
       "name": "Dinner",
       "time": "7:00 PM",
-      "color": "YELLOW",
-      "carbs_g": 390,
+      "color": "RED",
+      "carbs_g": 228,
       "protein_g": 45,
       "fat_g": 25,
-      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~340g extra complex carbs (rice, sweet potato).",
+      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~198g extra complex carbs (rice, sweet potato).",
       "label": "Veg-forward, balanced"
     }
   ],
-  "in_session": {
-    "target_carbs_g_per_hr": 30,
-    "total_carbs_g": 30,
-    "sodium_mg": 0,
-    "glucose_pct": 100,
-    "fructose_pct": 0,
-    "bottle_count": 1,
-    "note": "",
-    "steps": [
-      {
-        "when": "0\u201360 min",
-        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
-        "carbs_g": 30
-      },
-      {
-        "when": "Total",
-        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
-        "carbs_g": 0
-      }
-    ]
-  },
+  "in_session": null,
   "flags": [
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +3, CTL 18. Productive load zone \u2014 fitness is building."
+      "text": "TSB +0, CTL 19. Productive load zone \u2014 fitness is building."
     },
     {
       "level": "ok",
@@ -246,25 +208,18 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 339,
+    "days_to_go": 338,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 18.3,
-    "atl": 15.0,
-    "tsb": 3.3,
+    "ctl": 19.0,
+    "atl": 18.7,
+    "tsb": 0.3,
     "tss_today": 0.0,
     "state": "productive",
     "carb_bump_pct": 0,
     "history": [
-      {
-        "date": "2026-05-27",
-        "ctl": 29.8,
-        "atl": 1.1,
-        "tsb": 28.7,
-        "tss": 0.0
-      },
       {
         "date": "2026-05-28",
         "ctl": 29.1,
@@ -463,12 +418,19 @@
       },
       {
         "date": "2026-06-25",
-        "ctl": 18.3,
-        "atl": 15.0,
-        "tsb": 3.3,
+        "ctl": 19.5,
+        "atl": 21.6,
+        "tsb": -2.1,
+        "tss": 50.0
+      },
+      {
+        "date": "2026-06-26",
+        "ctl": 19.0,
+        "atl": 18.7,
+        "tsb": 0.3,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-06-25T23:06:23.604598Z"
+  "generated_at": "2026-06-26T02:11:06.718622Z"
 }
