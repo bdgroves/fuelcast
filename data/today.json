@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB -1, CTL 18. Productive load zone \u2014 fitness is building."
+      "text": "TSB +1, CTL 17. Productive load zone \u2014 fitness is building."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 18.1,
-    "atl": 19.3,
-    "tsb": -1.3,
+    "ctl": 17.0,
+    "atl": 16.1,
+    "tsb": 0.9,
     "tss_today": 0.0,
     "state": "productive",
     "carb_bump_pct": 0,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-06-25",
-        "ctl": 16.1,
-        "atl": 6.7,
-        "tsb": 9.4,
-        "tss": 50.0
+        "ctl": 14.9,
+        "atl": 0.0,
+        "tsb": 14.9,
+        "tss": 0.0
       },
       {
         "date": "2026-06-26",
-        "ctl": 16.9,
-        "atl": 12.4,
-        "tsb": 4.5,
+        "ctl": 15.8,
+        "atl": 6.7,
+        "tsb": 9.1,
         "tss": 50.0
       },
       {
         "date": "2026-06-27",
-        "ctl": 17.3,
-        "atl": 15.4,
-        "tsb": 1.9,
+        "ctl": 16.2,
+        "atl": 10.4,
+        "tsb": 5.8,
         "tss": 35.0
       },
       {
         "date": "2026-06-28",
-        "ctl": 17.7,
-        "atl": 18.0,
-        "tsb": -0.3,
+        "ctl": 16.6,
+        "atl": 13.7,
+        "tsb": 2.9,
         "tss": 35.0
       },
       {
         "date": "2026-06-29",
-        "ctl": 18.5,
-        "atl": 22.3,
-        "tsb": -3.8,
+        "ctl": 17.4,
+        "atl": 18.5,
+        "tsb": -1.1,
         "tss": 50.0
       },
       {
         "date": "2026-06-30",
-        "ctl": 18.1,
-        "atl": 19.3,
-        "tsb": -1.3,
+        "ctl": 17.0,
+        "atl": 16.1,
+        "tsb": 0.9,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-06-30T02:11:40.826127Z"
+  "generated_at": "2026-06-30T07:41:25.398802Z"
 }
