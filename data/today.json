@@ -21,6 +21,16 @@
       "title": "Strength: Strength",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Bike: Virtual Activity Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -470,5 +480,5 @@
       }
     ]
   },
-  "generated_at": "2026-06-30T21:21:43.605294Z"
+  "generated_at": "2026-06-30T23:01:55.830347Z"
 }
