@@ -11,7 +11,13 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Strength: Strength",
+      "sport": "strength",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-06-29",
@@ -459,5 +465,5 @@
       }
     ]
   },
-  "generated_at": "2026-06-30T13:52:54.248736Z"
+  "generated_at": "2026-06-30T16:14:57.054198Z"
 }
