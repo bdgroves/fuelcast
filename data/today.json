@@ -21,6 +21,11 @@
       "title": "Strength: Strength",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Run: Running",
+      "sport": "run",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -470,5 +475,5 @@
       }
     ]
   },
-  "generated_at": "2026-07-02T20:52:34.946778Z"
+  "generated_at": "2026-07-02T22:55:43.365619Z"
 }
