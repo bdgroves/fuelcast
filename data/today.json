@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -12, CTL 20, ATL 32. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -10, CTL 19, ATL 29. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 19.9,
-    "atl": 31.5,
-    "tsb": -11.6,
+    "ctl": 19.1,
+    "atl": 29.2,
+    "tsb": -10.1,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-06-28",
-        "ctl": 14.7,
-        "atl": 4.7,
-        "tsb": 10.1,
-        "tss": 35.0
+        "ctl": 13.9,
+        "atl": 0.0,
+        "tsb": 13.9,
+        "tss": 0.0
       },
       {
         "date": "2026-06-29",
-        "ctl": 15.6,
-        "atl": 10.7,
-        "tsb": 4.8,
+        "ctl": 14.7,
+        "atl": 6.7,
+        "tsb": 8.1,
         "tss": 50.0
       },
       {
         "date": "2026-06-30",
-        "ctl": 17.2,
-        "atl": 20.6,
-        "tsb": -3.4,
+        "ctl": 16.4,
+        "atl": 17.1,
+        "tsb": -0.7,
         "tss": 85.0
       },
       {
         "date": "2026-07-01",
-        "ctl": 19.1,
-        "atl": 31.2,
-        "tsb": -12.0,
+        "ctl": 18.4,
+        "atl": 28.1,
+        "tsb": -9.8,
         "tss": 100.0
       },
       {
         "date": "2026-07-02",
-        "ctl": 20.3,
-        "atl": 36.3,
-        "tsb": -16.0,
+        "ctl": 19.6,
+        "atl": 33.7,
+        "tsb": -14.1,
         "tss": 70.0
       },
       {
         "date": "2026-07-03",
-        "ctl": 19.9,
-        "atl": 31.5,
-        "tsb": -11.6,
+        "ctl": 19.1,
+        "atl": 29.2,
+        "tsb": -10.1,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-07-03T05:42:18.042545Z"
+  "generated_at": "2026-07-03T08:46:48.538139Z"
 }
