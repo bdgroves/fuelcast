@@ -17,10 +17,10 @@
     {
       "date": "2026-06-30",
       "label": "T",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-07-01",
@@ -64,13 +64,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 350,
+    "carbs_g": 318,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3172,
-    "carbs_g_per_kg": 3.85,
+    "calories": 3044,
+    "carbs_g_per_kg": 3.49,
     "protein_g_per_kg": 2.4,
-    "carb_bump_pct": 10
+    "carb_bump_pct": 0
   },
   "meals": [
     {
@@ -121,9 +121,9 @@
   "in_session": null,
   "flags": [
     {
-      "level": "warn",
-      "title": "Heavy load",
-      "text": "TSB -12, CTL 20, ATL 32. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "level": "ok",
+      "title": "Recovery state",
+      "text": "TSB -8, CTL 18. Productive load zone \u2014 fitness is building."
     },
     {
       "level": "ok",
@@ -213,12 +213,12 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 19.9,
-    "atl": 32.0,
-    "tsb": -12.0,
+    "ctl": 18.2,
+    "atl": 26.4,
+    "tsb": -8.3,
     "tss_today": 0.0,
-    "state": "heavy_load",
-    "carb_bump_pct": 10,
+    "state": "productive",
+    "carb_bump_pct": 0,
     "history": [
       {
         "date": "2026-06-06",
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-06-30",
-        "ctl": 15.3,
-        "atl": 11.3,
-        "tsb": 3.9,
-        "tss": 85.0
+        "ctl": 13.3,
+        "atl": 0.0,
+        "tsb": 13.2,
+        "tss": 0.0
       },
       {
         "date": "2026-07-01",
-        "ctl": 17.2,
-        "atl": 23.1,
-        "tsb": -5.9,
+        "ctl": 15.3,
+        "atl": 13.3,
+        "tsb": 2.0,
         "tss": 100.0
       },
       {
         "date": "2026-07-02",
-        "ctl": 18.5,
-        "atl": 29.4,
-        "tsb": -10.9,
+        "ctl": 16.6,
+        "atl": 20.9,
+        "tsb": -4.3,
         "tss": 70.0
       },
       {
         "date": "2026-07-03",
-        "ctl": 19.6,
-        "atl": 34.1,
-        "tsb": -14.5,
+        "ctl": 17.7,
+        "atl": 26.7,
+        "tsb": -9.0,
         "tss": 65.0
       },
       {
         "date": "2026-07-04",
-        "ctl": 20.4,
-        "atl": 36.9,
-        "tsb": -16.5,
+        "ctl": 18.6,
+        "atl": 30.5,
+        "tsb": -11.9,
         "tss": 55.0
       },
       {
         "date": "2026-07-05",
-        "ctl": 19.9,
-        "atl": 32.0,
-        "tsb": -12.0,
+        "ctl": 18.2,
+        "atl": 26.4,
+        "tsb": -8.3,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-07-05T01:58:25.646756Z"
+  "generated_at": "2026-07-05T06:02:59.541745Z"
 }
