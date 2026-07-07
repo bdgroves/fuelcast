@@ -21,6 +21,11 @@
       "title": "Strength: Strength",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Run: Treadmill Running",
+      "sport": "run",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -470,5 +475,5 @@
       }
     ]
   },
-  "generated_at": "2026-07-07T19:38:39.323690Z"
+  "generated_at": "2026-07-07T21:13:20.892522Z"
 }
