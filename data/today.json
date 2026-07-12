@@ -2,16 +2,22 @@
   "date": "2026-07-12",
   "weekday": "Sunday",
   "phase": "base",
-  "day_color": "YELLOW",
+  "day_color": "RED",
   "workout": {
-    "title": "Run: Running",
-    "sport": "run",
+    "title": "Walk: Walking",
+    "sport": "other",
     "duration_min": 60,
     "tss": null,
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Run: Running",
+      "sport": "run",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-07-06",
@@ -64,18 +70,18 @@
     {
       "date": "2026-07-12",
       "label": "S",
-      "color": "yellow",
+      "color": "red",
       "is_today": true,
-      "title": "Run: Running",
+      "title": "Walk: Walking",
       "duration_min": 60
     }
   ],
   "macros": {
-    "carbs_g": 500,
+    "carbs_g": 318,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3772,
-    "carbs_g_per_kg": 5.49,
+    "calories": 3044,
+    "carbs_g_per_kg": 3.49,
     "protein_g_per_kg": 2.4,
     "carb_bump_pct": 0
   },
@@ -95,8 +101,8 @@
       "slot": "lunch",
       "name": "Lunch",
       "time": "12:30 PM",
-      "color": "YELLOW",
-      "carbs_g": 50,
+      "color": "RED",
+      "carbs_g": 30,
       "protein_g": 40,
       "fat_g": 25,
       "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
@@ -117,11 +123,11 @@
       "slot": "dinner",
       "name": "Dinner",
       "time": "7:00 PM",
-      "color": "YELLOW",
-      "carbs_g": 390,
+      "color": "RED",
+      "carbs_g": 228,
       "protein_g": 45,
       "fat_g": 25,
-      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~340g extra complex carbs (rice, sweet potato).",
+      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~198g extra complex carbs (rice, sweet potato).",
       "label": "Veg-forward, balanced"
     }
   ],
@@ -459,5 +465,5 @@
       }
     ]
   },
-  "generated_at": "2026-07-12T20:34:23.851823Z"
+  "generated_at": "2026-07-12T22:36:37.125090Z"
 }
