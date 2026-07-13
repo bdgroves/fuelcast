@@ -1,79 +1,66 @@
 {
-  "date": "2026-07-12",
-  "weekday": "Sunday",
+  "date": "2026-07-13",
+  "weekday": "Monday",
   "phase": "base",
   "day_color": "RED",
-  "workout": {
-    "title": "Walk: Walking",
-    "sport": "other",
-    "duration_min": 60,
-    "tss": null,
-    "intensity_factor": null,
-    "is_completed": false
-  },
-  "secondary_workouts": [
-    {
-      "title": "Run: Running",
-      "sport": "run",
-      "duration_min": 60
-    }
-  ],
+  "workout": null,
+  "secondary_workouts": [],
   "week_strip": [
     {
-      "date": "2026-07-06",
+      "date": "2026-07-13",
       "label": "M",
       "color": "red",
-      "is_today": false,
-      "title": "Rest",
-      "duration_min": 0
-    },
-    {
-      "date": "2026-07-07",
-      "label": "T",
-      "color": "red",
-      "is_today": false,
-      "title": "Rest",
-      "duration_min": 0
-    },
-    {
-      "date": "2026-07-08",
-      "label": "W",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-07-09",
-      "label": "T",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-07-10",
-      "label": "F",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-07-11",
-      "label": "S",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-07-12",
-      "label": "S",
-      "color": "red",
       "is_today": true,
-      "title": "Walk: Walking",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-07-14",
+      "label": "T",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-07-15",
+      "label": "W",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-07-16",
+      "label": "T",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-07-17",
+      "label": "F",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-07-18",
+      "label": "S",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-07-19",
+      "label": "S",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
     }
   ],
   "macros": {
@@ -94,8 +81,8 @@
       "carbs_g": 30,
       "protein_g": 35,
       "fat_g": 15,
-      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
-      "label": "Pre-session \u00b7 light, low-fiber"
+      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
+      "label": "Steady start"
     },
     {
       "slot": "lunch",
@@ -131,27 +118,7 @@
       "label": "Veg-forward, balanced"
     }
   ],
-  "in_session": {
-    "target_carbs_g_per_hr": 30,
-    "total_carbs_g": 30,
-    "sodium_mg": 0,
-    "glucose_pct": 100,
-    "fructose_pct": 0,
-    "bottle_count": 1,
-    "note": "",
-    "steps": [
-      {
-        "when": "0\u201360 min",
-        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
-        "carbs_g": 30
-      },
-      {
-        "when": "Total",
-        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
-        "carbs_g": 0
-      }
-    ]
-  },
+  "in_session": null,
   "flags": [
     {
       "level": "ok",
@@ -241,25 +208,18 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 322,
+    "days_to_go": 321,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 13.8,
-    "atl": 15.3,
-    "tsb": -1.5,
+    "ctl": 14.2,
+    "atl": 16.7,
+    "tsb": -2.5,
     "tss_today": 0.0,
     "state": "productive",
     "carb_bump_pct": 0,
     "history": [
-      {
-        "date": "2026-06-13",
-        "ctl": 19.9,
-        "atl": 0.1,
-        "tsb": 19.8,
-        "tss": 0.0
-      },
       {
         "date": "2026-06-14",
         "ctl": 19.4,
@@ -458,12 +418,19 @@
       },
       {
         "date": "2026-07-12",
-        "ctl": 13.8,
-        "atl": 15.3,
-        "tsb": -1.5,
+        "ctl": 14.5,
+        "atl": 19.3,
+        "tsb": -4.8,
+        "tss": 30.0
+      },
+      {
+        "date": "2026-07-13",
+        "ctl": 14.2,
+        "atl": 16.7,
+        "tsb": -2.5,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-07-12T22:36:37.125090Z"
+  "generated_at": "2026-07-13T01:45:07.814532Z"
 }
