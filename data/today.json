@@ -17,10 +17,10 @@
     {
       "date": "2026-07-14",
       "label": "T",
-      "color": "red",
+      "color": "yellow",
       "is_today": false,
-      "title": "Rest",
-      "duration_min": 0
+      "title": "Run: Running",
+      "duration_min": 60
     },
     {
       "date": "2026-07-15",
@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +4, CTL 11. Productive load zone \u2014 fitness is building."
+      "text": "TSB +3, CTL 11. Productive load zone \u2014 fitness is building."
     },
     {
       "level": "ok",
@@ -214,8 +214,8 @@
   },
   "training_load": {
     "ctl": 11.3,
-    "atl": 7.5,
-    "tsb": 3.8,
+    "atl": 8.7,
+    "tsb": 2.6,
     "tss_today": 0.0,
     "state": "productive",
     "carb_bump_pct": 0,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-07-10",
-        "ctl": 11.3,
-        "atl": 4.7,
-        "tsb": 6.6,
-        "tss": 35.0
+        "ctl": 10.4,
+        "atl": 0.0,
+        "tsb": 10.4,
+        "tss": 0.0
       },
       {
         "date": "2026-07-11",
-        "ctl": 11.4,
-        "atl": 6.0,
-        "tsb": 5.3,
+        "ctl": 10.6,
+        "atl": 2.0,
+        "tsb": 8.6,
         "tss": 15.0
       },
       {
         "date": "2026-07-12",
-        "ctl": 11.8,
-        "atl": 9.2,
-        "tsb": 2.6,
+        "ctl": 11.0,
+        "atl": 5.7,
+        "tsb": 5.3,
         "tss": 30.0
       },
       {
         "date": "2026-07-13",
-        "ctl": 11.9,
-        "atl": 10.0,
-        "tsb": 1.9,
+        "ctl": 11.1,
+        "atl": 7.0,
+        "tsb": 4.1,
         "tss": 15.0
       },
       {
         "date": "2026-07-14",
-        "ctl": 11.6,
-        "atl": 8.7,
-        "tsb": 2.9,
-        "tss": 0.0
+        "ctl": 11.5,
+        "atl": 10.0,
+        "tsb": 1.5,
+        "tss": 30.0
       },
       {
         "date": "2026-07-15",
         "ctl": 11.3,
-        "atl": 7.5,
-        "tsb": 3.8,
+        "atl": 8.7,
+        "tsb": 2.6,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-07-15T04:39:22.738057Z"
+  "generated_at": "2026-07-15T07:48:40.622010Z"
 }
