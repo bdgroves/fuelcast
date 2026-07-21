@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB +0, CTL 10. Productive load zone \u2014 fitness is building."
+      "text": "TSB -1, CTL 11. Productive load zone \u2014 fitness is building."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 10.5,
-    "atl": 10.2,
-    "tsb": 0.2,
+    "ctl": 10.8,
+    "atl": 12.0,
+    "tsb": -1.2,
     "tss_today": 0.0,
     "state": "productive",
     "carb_bump_pct": 0,
@@ -418,19 +418,19 @@
       },
       {
         "date": "2026-07-20",
-        "ctl": 10.7,
-        "atl": 11.8,
-        "tsb": -1.1,
-        "tss": 35.0
+        "ctl": 11.1,
+        "atl": 13.8,
+        "tsb": -2.7,
+        "tss": 50.0
       },
       {
         "date": "2026-07-21",
-        "ctl": 10.5,
-        "atl": 10.2,
-        "tsb": 0.2,
+        "ctl": 10.8,
+        "atl": 12.0,
+        "tsb": -1.2,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-07-21T01:28:10.303468Z"
+  "generated_at": "2026-07-21T04:57:32.700292Z"
 }
