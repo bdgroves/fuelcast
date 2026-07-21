@@ -4,14 +4,20 @@
   "phase": "base",
   "day_color": "YELLOW",
   "workout": {
-    "title": "Strength: Strength",
-    "sport": "strength",
+    "title": "Run: Treadmill Running",
+    "sport": "run",
     "duration_min": 60,
     "tss": null,
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Strength: Strength",
+      "sport": "strength",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-07-20",
@@ -26,7 +32,7 @@
       "label": "T",
       "color": "yellow",
       "is_today": true,
-      "title": "Strength: Strength",
+      "title": "Run: Treadmill Running",
       "duration_min": 60
     },
     {
@@ -459,5 +465,5 @@
       }
     ]
   },
-  "generated_at": "2026-07-21T17:05:46.598036Z"
+  "generated_at": "2026-07-21T19:01:26.529132Z"
 }
