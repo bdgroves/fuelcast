@@ -16,6 +16,11 @@
       "title": "Other: Yoga",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Run: Treadmill Running",
+      "sport": "run",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -24,7 +29,7 @@
       "label": "M",
       "color": "yellow",
       "is_today": false,
-      "title": "Run: Running",
+      "title": "Run: Treadmill Running",
       "duration_min": 60
     },
     {
@@ -465,5 +470,5 @@
       }
     ]
   },
-  "generated_at": "2026-07-22T20:54:12.322293Z"
+  "generated_at": "2026-07-22T22:52:27.349712Z"
 }
