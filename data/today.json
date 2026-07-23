@@ -11,7 +11,7 @@
       "label": "M",
       "color": "yellow",
       "is_today": false,
-      "title": "Run: Running",
+      "title": "Run: Treadmill Running",
       "duration_min": 60
     },
     {
@@ -432,5 +432,5 @@
       }
     ]
   },
-  "generated_at": "2026-07-23T08:09:18.529022Z"
+  "generated_at": "2026-07-23T11:46:02.262491Z"
 }
