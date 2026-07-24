@@ -11,14 +11,20 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Run: Treadmill Running",
+      "sport": "run",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-07-20",
       "label": "M",
       "color": "yellow",
       "is_today": false,
-      "title": "Run: Treadmill Running",
+      "title": "Run: Running",
       "duration_min": 60
     },
     {
@@ -459,5 +465,5 @@
       }
     ]
   },
-  "generated_at": "2026-07-24T20:54:08.995066Z"
+  "generated_at": "2026-07-24T22:51:47.026682Z"
 }
