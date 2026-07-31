@@ -11,7 +11,13 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Run: Running",
+      "sport": "run",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-07-27",
@@ -459,5 +465,5 @@
       }
     ]
   },
-  "generated_at": "2026-07-31T20:52:14.002743Z"
+  "generated_at": "2026-07-31T22:49:50.971891Z"
 }
