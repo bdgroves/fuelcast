@@ -17,10 +17,10 @@
     {
       "date": "2026-07-28",
       "label": "T",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-07-29",
@@ -123,7 +123,7 @@
     {
       "level": "ok",
       "title": "Recovery state",
-      "text": "TSB -8, CTL 10. Productive load zone \u2014 fitness is building."
+      "text": "TSB -6, CTL 10. Productive load zone \u2014 fitness is building."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 10.2,
-    "atl": 17.9,
-    "tsb": -7.6,
+    "ctl": 9.6,
+    "atl": 15.9,
+    "tsb": -6.3,
     "tss_today": 0.0,
     "state": "productive",
     "carb_bump_pct": 0,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-07-28",
-        "ctl": 7.5,
-        "atl": 4.0,
-        "tsb": 3.5,
-        "tss": 30.0
+        "ctl": 6.8,
+        "atl": 0.0,
+        "tsb": 6.8,
+        "tss": 0.0
       },
       {
         "date": "2026-07-29",
-        "ctl": 8.0,
-        "atl": 7.5,
-        "tsb": 0.6,
+        "ctl": 7.4,
+        "atl": 4.0,
+        "tsb": 3.4,
         "tss": 30.0
       },
       {
         "date": "2026-07-30",
-        "ctl": 8.6,
-        "atl": 10.5,
-        "tsb": -1.9,
+        "ctl": 7.9,
+        "atl": 7.5,
+        "tsb": 0.4,
         "tss": 30.0
       },
       {
         "date": "2026-07-31",
-        "ctl": 9.1,
-        "atl": 13.1,
-        "tsb": -4.0,
+        "ctl": 8.4,
+        "atl": 10.5,
+        "tsb": -2.1,
         "tss": 30.0
       },
       {
         "date": "2026-08-01",
-        "ctl": 10.5,
-        "atl": 20.6,
-        "tsb": -10.1,
+        "ctl": 9.9,
+        "atl": 18.4,
+        "tsb": -8.5,
         "tss": 70.0
       },
       {
         "date": "2026-08-02",
-        "ctl": 10.2,
-        "atl": 17.9,
-        "tsb": -7.6,
+        "ctl": 9.6,
+        "atl": 15.9,
+        "tsb": -6.3,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-08-02T05:15:51.818756Z"
+  "generated_at": "2026-08-02T08:02:51.729911Z"
 }
