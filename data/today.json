@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -13, CTL 12, ATL 24. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -12, CTL 11, ATL 22. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 11.5,
-    "atl": 24.3,
-    "tsb": -12.8,
+    "ctl": 10.8,
+    "atl": 22.3,
+    "tsb": -11.5,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-07-31",
-        "ctl": 7.0,
-        "atl": 4.0,
-        "tsb": 3.0,
-        "tss": 30.0
+        "ctl": 6.3,
+        "atl": 0.0,
+        "tsb": 6.3,
+        "tss": 0.0
       },
       {
         "date": "2026-08-01",
-        "ctl": 8.5,
-        "atl": 12.8,
-        "tsb": -4.3,
+        "ctl": 7.8,
+        "atl": 9.3,
+        "tsb": -1.5,
         "tss": 70.0
       },
       {
         "date": "2026-08-02",
-        "ctl": 9.5,
-        "atl": 17.7,
-        "tsb": -8.2,
+        "ctl": 8.8,
+        "atl": 14.7,
+        "tsb": -5.9,
         "tss": 50.0
       },
       {
         "date": "2026-08-03",
-        "ctl": 10.1,
-        "atl": 20.0,
-        "tsb": -9.9,
+        "ctl": 9.4,
+        "atl": 17.4,
+        "tsb": -8.0,
         "tss": 35.0
       },
       {
         "date": "2026-08-04",
-        "ctl": 11.7,
-        "atl": 28.0,
-        "tsb": -16.3,
+        "ctl": 11.1,
+        "atl": 25.8,
+        "tsb": -14.7,
         "tss": 80.0
       },
       {
         "date": "2026-08-05",
-        "ctl": 11.5,
-        "atl": 24.3,
-        "tsb": -12.8,
+        "ctl": 10.8,
+        "atl": 22.3,
+        "tsb": -11.5,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-08-05T04:53:48.995137Z"
+  "generated_at": "2026-08-05T08:14:13.517570Z"
 }
