@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -18, CTL 13, ATL 30. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -14, CTL 11, ATL 26. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 12.8,
-    "atl": 30.3,
-    "tsb": -17.6,
+    "ctl": 11.3,
+    "atl": 25.8,
+    "tsb": -14.5,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-08-01",
-        "ctl": 7.8,
-        "atl": 9.3,
-        "tsb": -1.5,
-        "tss": 70.0
+        "ctl": 6.2,
+        "atl": 0.0,
+        "tsb": 6.2,
+        "tss": 0.0
       },
       {
         "date": "2026-08-02",
-        "ctl": 8.8,
-        "atl": 14.7,
-        "tsb": -5.9,
+        "ctl": 7.2,
+        "atl": 6.7,
+        "tsb": 0.6,
         "tss": 50.0
       },
       {
         "date": "2026-08-03",
-        "ctl": 9.4,
-        "atl": 17.4,
-        "tsb": -8.0,
+        "ctl": 7.9,
+        "atl": 10.4,
+        "tsb": -2.6,
         "tss": 35.0
       },
       {
         "date": "2026-08-04",
-        "ctl": 11.1,
-        "atl": 25.8,
-        "tsb": -14.7,
+        "ctl": 9.6,
+        "atl": 19.7,
+        "tsb": -10.1,
         "tss": 80.0
       },
       {
         "date": "2026-08-05",
-        "ctl": 13.1,
-        "atl": 35.0,
-        "tsb": -21.9,
+        "ctl": 11.6,
+        "atl": 29.7,
+        "tsb": -18.1,
         "tss": 95.0
       },
       {
         "date": "2026-08-06",
-        "ctl": 12.8,
-        "atl": 30.3,
-        "tsb": -17.6,
+        "ctl": 11.3,
+        "atl": 25.8,
+        "tsb": -14.5,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-08-06T04:54:15.367925Z"
+  "generated_at": "2026-08-06T11:56:06.159830Z"
 }
