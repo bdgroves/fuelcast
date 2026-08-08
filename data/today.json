@@ -9,17 +9,17 @@
     {
       "date": "2026-08-03",
       "label": "M",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-08-04",
       "label": "T",
       "color": "yellow",
       "is_today": false,
-      "title": "Bike: Virtual Activity Cycling",
+      "title": "Bike: Indoor Cycling",
       "duration_min": 60
     },
     {
@@ -123,7 +123,7 @@
     {
       "level": "alert",
       "title": "Overreached",
-      "text": "TSB -22, CTL 14, ATL 36. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
+      "text": "TSB -20, CTL 13, ATL 34. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 13.8,
-    "atl": 35.8,
-    "tsb": -22.0,
+    "ctl": 13.1,
+    "atl": 33.6,
+    "tsb": -20.5,
     "tss_today": 0.0,
     "state": "overreached",
     "carb_bump_pct": 15,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-08-03",
-        "ctl": 6.7,
-        "atl": 4.7,
-        "tsb": 2.1,
-        "tss": 35.0
+        "ctl": 5.9,
+        "atl": 0.0,
+        "tsb": 5.9,
+        "tss": 0.0
       },
       {
         "date": "2026-08-04",
-        "ctl": 8.4,
-        "atl": 14.7,
-        "tsb": -6.2,
+        "ctl": 7.6,
+        "atl": 10.6,
+        "tsb": -3.0,
         "tss": 80.0
       },
       {
         "date": "2026-08-05",
-        "ctl": 10.5,
-        "atl": 25.4,
-        "tsb": -14.9,
+        "ctl": 9.7,
+        "atl": 21.9,
+        "tsb": -12.2,
         "tss": 95.0
       },
       {
         "date": "2026-08-06",
-        "ctl": 12.5,
-        "atl": 34.6,
-        "tsb": -22.2,
+        "ctl": 11.7,
+        "atl": 31.6,
+        "tsb": -19.9,
         "tss": 95.0
       },
       {
         "date": "2026-08-07",
-        "ctl": 14.2,
-        "atl": 41.4,
-        "tsb": -27.2,
+        "ctl": 13.4,
+        "atl": 38.7,
+        "tsb": -25.3,
         "tss": 85.0
       },
       {
         "date": "2026-08-08",
-        "ctl": 13.8,
-        "atl": 35.8,
-        "tsb": -22.0,
+        "ctl": 13.1,
+        "atl": 33.6,
+        "tsb": -20.5,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-08-08T04:44:56.739575Z"
+  "generated_at": "2026-08-08T06:32:12.123151Z"
 }
