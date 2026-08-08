@@ -19,7 +19,7 @@
       "label": "T",
       "color": "yellow",
       "is_today": false,
-      "title": "Bike: Indoor Cycling",
+      "title": "Bike: Virtual Activity Cycling",
       "duration_min": 60
     },
     {
@@ -432,5 +432,5 @@
       }
     ]
   },
-  "generated_at": "2026-08-08T08:26:34.252194Z"
+  "generated_at": "2026-08-08T10:19:49.678132Z"
 }
