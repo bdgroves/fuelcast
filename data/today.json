@@ -16,6 +16,26 @@
       "title": "Other: Yoga",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Bike: Virtual Activity Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Other: Transition",
+      "sport": "other",
+      "duration_min": 60
+    },
+    {
+      "title": "Run: Treadmill Running",
+      "sport": "run",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -465,5 +485,5 @@
       }
     ]
   },
-  "generated_at": "2026-08-12T20:31:40.749634Z"
+  "generated_at": "2026-08-12T22:28:49.058379Z"
 }
