@@ -4,14 +4,35 @@
   "phase": "base",
   "day_color": "YELLOW",
   "workout": {
-    "title": "Other: Yoga",
-    "sport": "strength",
+    "title": "Bike: Virtual Activity Cycling",
+    "sport": "bike",
     "duration_min": 60,
     "tss": null,
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Other: Yoga",
+      "sport": "strength",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Other: Transition",
+      "sport": "other",
+      "duration_min": 60
+    },
+    {
+      "title": "Run: Treadmill Running",
+      "sport": "run",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-08-10",
@@ -42,7 +63,7 @@
       "label": "T",
       "color": "yellow",
       "is_today": true,
-      "title": "Other: Yoga",
+      "title": "Bike: Virtual Activity Cycling",
       "duration_min": 60
     },
     {
@@ -459,5 +480,5 @@
       }
     ]
   },
-  "generated_at": "2026-08-13T20:29:15.507193Z"
+  "generated_at": "2026-08-13T22:29:45.906756Z"
 }
