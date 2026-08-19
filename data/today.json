@@ -11,7 +11,28 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Bike: Virtual Activity Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Other: Transition",
+      "sport": "other",
+      "duration_min": 60
+    },
+    {
+      "title": "Run: Treadmill Running",
+      "sport": "run",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-08-17",
@@ -459,5 +480,5 @@
       }
     ]
   },
-  "generated_at": "2026-08-19T20:14:11.899899Z"
+  "generated_at": "2026-08-19T22:13:03.196935Z"
 }
