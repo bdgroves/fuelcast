@@ -11,7 +11,13 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Walk: Walking",
+      "sport": "other",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-08-17",
@@ -459,5 +465,5 @@
       }
     ]
   },
-  "generated_at": "2026-08-21T20:13:10.117591Z"
+  "generated_at": "2026-08-21T22:12:12.722944Z"
 }
