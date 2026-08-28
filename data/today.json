@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -17, CTL 10, ATL 27. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -16, CTL 9, ATL 25. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 9.6,
-    "atl": 26.9,
-    "tsb": -17.3,
+    "ctl": 8.9,
+    "atl": 24.9,
+    "tsb": -16.0,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-08-23",
-        "ctl": 4.4,
-        "atl": 4.0,
-        "tsb": 0.4,
-        "tss": 30.0
+        "ctl": 3.7,
+        "atl": 0.0,
+        "tsb": 3.7,
+        "tss": 0.0
       },
       {
         "date": "2026-08-24",
-        "ctl": 5.0,
-        "atl": 7.5,
-        "tsb": -2.5,
+        "ctl": 4.3,
+        "atl": 4.0,
+        "tsb": 0.3,
         "tss": 30.0
       },
       {
         "date": "2026-08-25",
-        "ctl": 6.6,
-        "atl": 16.4,
-        "tsb": -9.8,
+        "ctl": 5.9,
+        "atl": 13.4,
+        "tsb": -7.5,
         "tss": 75.0
       },
       {
         "date": "2026-08-26",
-        "ctl": 8.2,
-        "atl": 24.2,
-        "tsb": -16.0,
+        "ctl": 7.6,
+        "atl": 21.6,
+        "tsb": -14.1,
         "tss": 75.0
       },
       {
         "date": "2026-08-27",
-        "ctl": 9.8,
-        "atl": 31.0,
-        "tsb": -21.2,
+        "ctl": 9.2,
+        "atl": 28.7,
+        "tsb": -19.6,
         "tss": 75.0
       },
       {
         "date": "2026-08-28",
-        "ctl": 9.6,
-        "atl": 26.9,
-        "tsb": -17.3,
+        "ctl": 8.9,
+        "atl": 24.9,
+        "tsb": -16.0,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-08-28T01:52:26.732046Z"
+  "generated_at": "2026-08-28T13:30:07.131987Z"
 }
