@@ -1,6 +1,6 @@
 {
-  "date": "2026-08-27",
-  "weekday": "Thursday",
+  "date": "2026-08-28",
+  "weekday": "Friday",
   "phase": "base",
   "day_color": "RED",
   "workout": null,
@@ -33,16 +33,16 @@
     {
       "date": "2026-08-27",
       "label": "T",
-      "color": "red",
-      "is_today": true,
-      "title": "Rest",
-      "duration_min": 0
+      "color": "yellow",
+      "is_today": false,
+      "title": "Run: Treadmill Running",
+      "duration_min": 60
     },
     {
       "date": "2026-08-28",
       "label": "F",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     },
@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -13, CTL 8, ATL 21. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -17, CTL 10, ATL 27. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -208,25 +208,18 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 276,
+    "days_to_go": 275,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 8.0,
-    "atl": 21.0,
-    "tsb": -13.0,
+    "ctl": 9.6,
+    "atl": 26.9,
+    "tsb": -17.3,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
     "history": [
-      {
-        "date": "2026-07-29",
-        "ctl": 6.6,
-        "atl": 0.0,
-        "tsb": 6.6,
-        "tss": 0.0
-      },
       {
         "date": "2026-07-30",
         "ctl": 6.5,
@@ -425,12 +418,19 @@
       },
       {
         "date": "2026-08-27",
-        "ctl": 8.0,
-        "atl": 21.0,
-        "tsb": -13.0,
+        "ctl": 9.8,
+        "atl": 31.0,
+        "tsb": -21.2,
+        "tss": 75.0
+      },
+      {
+        "date": "2026-08-28",
+        "ctl": 9.6,
+        "atl": 26.9,
+        "tsb": -17.3,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-08-27T17:02:02.703378Z"
+  "generated_at": "2026-08-28T01:52:26.732046Z"
 }
