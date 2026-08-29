@@ -11,7 +11,13 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Bike: TrainingPeaks Virtual - Two Legs Bad",
+      "sport": "bike",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-08-24",
@@ -459,5 +465,5 @@
       }
     ]
   },
-  "generated_at": "2026-08-29T15:54:24.503350Z"
+  "generated_at": "2026-08-29T18:58:56.625185Z"
 }
