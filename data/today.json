@@ -51,7 +51,7 @@
       "label": "S",
       "color": "yellow",
       "is_today": false,
-      "title": "Run: Treadmill Running",
+      "title": "Bike: TrainingPeaks Virtual - Two Legs Bad",
       "duration_min": 60
     },
     {
@@ -432,5 +432,5 @@
       }
     ]
   },
-  "generated_at": "2026-08-30T18:54:47.232375Z"
+  "generated_at": "2026-08-30T22:12:40.046092Z"
 }
