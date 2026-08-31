@@ -1,64 +1,64 @@
 {
-  "date": "2026-08-30",
-  "weekday": "Sunday",
+  "date": "2026-08-31",
+  "weekday": "Monday",
   "phase": "base",
   "day_color": "RED",
   "workout": null,
   "secondary_workouts": [],
   "week_strip": [
     {
-      "date": "2026-08-24",
+      "date": "2026-08-31",
       "label": "M",
       "color": "red",
-      "is_today": false,
-      "title": "Rest",
-      "duration_min": 0
-    },
-    {
-      "date": "2026-08-25",
-      "label": "T",
-      "color": "red",
-      "is_today": false,
-      "title": "Rest",
-      "duration_min": 0
-    },
-    {
-      "date": "2026-08-26",
-      "label": "W",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-08-27",
-      "label": "T",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-08-28",
-      "label": "F",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-08-29",
-      "label": "S",
-      "color": "yellow",
-      "is_today": false,
-      "title": "Bike: TrainingPeaks Virtual - Two Legs Bad",
-      "duration_min": 60
-    },
-    {
-      "date": "2026-08-30",
-      "label": "S",
-      "color": "red",
       "is_today": true,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-09-01",
+      "label": "T",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-09-02",
+      "label": "W",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-09-03",
+      "label": "T",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-09-04",
+      "label": "F",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-09-05",
+      "label": "S",
+      "color": "red",
+      "is_today": false,
+      "title": "Rest",
+      "duration_min": 0
+    },
+    {
+      "date": "2026-09-06",
+      "label": "S",
+      "color": "red",
+      "is_today": false,
       "title": "Rest",
       "duration_min": 0
     }
@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -12, CTL 8, ATL 20. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -11, CTL 8, ATL 19. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -208,25 +208,18 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 273,
+    "days_to_go": 272,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 8.1,
-    "atl": 20.3,
-    "tsb": -12.3,
+    "ctl": 8.2,
+    "atl": 19.4,
+    "tsb": -11.1,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
     "history": [
-      {
-        "date": "2026-08-01",
-        "ctl": 6.2,
-        "atl": 0.0,
-        "tsb": 6.2,
-        "tss": 0.0
-      },
       {
         "date": "2026-08-02",
         "ctl": 6.0,
@@ -425,12 +418,19 @@
       },
       {
         "date": "2026-08-30",
-        "ctl": 8.1,
-        "atl": 20.3,
-        "tsb": -12.3,
+        "ctl": 8.4,
+        "atl": 22.3,
+        "tsb": -13.9,
+        "tss": 15.0
+      },
+      {
+        "date": "2026-08-31",
+        "ctl": 8.2,
+        "atl": 19.4,
+        "tsb": -11.1,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-08-30T22:12:40.046092Z"
+  "generated_at": "2026-08-31T02:10:19.134924Z"
 }
