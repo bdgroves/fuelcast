@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -13, CTL 8, ATL 20. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -12, CTL 7, ATL 19. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 7.5,
-    "atl": 20.5,
-    "tsb": -13.0,
+    "ctl": 6.9,
+    "atl": 18.6,
+    "tsb": -11.7,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-08-29",
-        "ctl": 3.9,
-        "atl": 4.0,
-        "tsb": -0.1,
-        "tss": 30.0
+        "ctl": 3.2,
+        "atl": 0.0,
+        "tsb": 3.2,
+        "tss": 0.0
       },
       {
         "date": "2026-08-30",
-        "ctl": 4.1,
-        "atl": 5.5,
-        "tsb": -1.3,
+        "ctl": 3.5,
+        "atl": 2.0,
+        "tsb": 1.5,
         "tss": 15.0
       },
       {
         "date": "2026-08-31",
-        "ctl": 4.4,
-        "atl": 6.7,
-        "tsb": -2.3,
+        "ctl": 3.7,
+        "atl": 3.7,
+        "tsb": -0.0,
         "tss": 15.0
       },
       {
         "date": "2026-09-01",
-        "ctl": 6.1,
-        "atl": 15.8,
-        "tsb": -9.8,
+        "ctl": 5.4,
+        "atl": 13.2,
+        "tsb": -7.8,
         "tss": 75.0
       },
       {
         "date": "2026-09-02",
-        "ctl": 7.7,
-        "atl": 23.7,
-        "tsb": -16.0,
+        "ctl": 7.0,
+        "atl": 21.4,
+        "tsb": -14.4,
         "tss": 75.0
       },
       {
         "date": "2026-09-03",
-        "ctl": 7.5,
-        "atl": 20.5,
-        "tsb": -13.0,
+        "ctl": 6.9,
+        "atl": 18.6,
+        "tsb": -11.7,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-09-03T01:56:54.980039Z"
+  "generated_at": "2026-09-03T06:44:56.929950Z"
 }
