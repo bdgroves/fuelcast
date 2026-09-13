@@ -32,9 +32,9 @@
     {
       "date": "2026-09-09",
       "label": "W",
-      "color": "green",
+      "color": "yellow",
       "is_today": false,
-      "title": "Bike: TrainingPeaks Virtual - Workout: Sweet Spot (30 mins)",
+      "title": "Run: Treadmill Running",
       "duration_min": 60
     },
     {
@@ -459,5 +459,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-13T17:07:11.431859Z"
+  "generated_at": "2026-09-13T19:58:23.405728Z"
 }
