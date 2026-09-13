@@ -17,10 +17,10 @@
     {
       "date": "2026-09-08",
       "label": "T",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Treadmill Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-09-09",
@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -11, CTL 7, ATL 18. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -10, CTL 6, ATL 17. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 7.1,
-    "atl": 18.4,
-    "tsb": -11.3,
+    "ctl": 6.4,
+    "atl": 16.9,
+    "tsb": -10.5,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-09-08",
-        "ctl": 3.7,
-        "atl": 6.7,
-        "tsb": -3.0,
-        "tss": 50.0
+        "ctl": 2.5,
+        "atl": 0.0,
+        "tsb": 2.5,
+        "tss": 0.0
       },
       {
         "date": "2026-09-09",
-        "ctl": 5.8,
-        "atl": 18.4,
-        "tsb": -12.6,
+        "ctl": 4.7,
+        "atl": 12.6,
+        "tsb": -8.0,
         "tss": 95.0
       },
       {
         "date": "2026-09-10",
-        "ctl": 6.0,
-        "atl": 18.0,
-        "tsb": -11.9,
+        "ctl": 4.9,
+        "atl": 13.0,
+        "tsb": -8.0,
         "tss": 15.0
       },
       {
         "date": "2026-09-11",
-        "ctl": 7.1,
-        "atl": 22.2,
-        "tsb": -15.1,
+        "ctl": 6.0,
+        "atl": 17.9,
+        "tsb": -11.9,
         "tss": 50.0
       },
       {
         "date": "2026-09-12",
-        "ctl": 7.3,
-        "atl": 21.3,
-        "tsb": -14.0,
-        "tss": 15.0
+        "ctl": 6.5,
+        "atl": 19.5,
+        "tsb": -13.0,
+        "tss": 30.0
       },
       {
         "date": "2026-09-13",
-        "ctl": 7.1,
-        "atl": 18.4,
-        "tsb": -11.3,
+        "ctl": 6.4,
+        "atl": 16.9,
+        "tsb": -10.5,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-09-13T01:55:13.162935Z"
+  "generated_at": "2026-09-13T06:57:11.885465Z"
 }
