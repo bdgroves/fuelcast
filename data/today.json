@@ -27,7 +27,7 @@
       "label": "W",
       "color": "yellow",
       "is_today": false,
-      "title": "Run: Treadmill Running",
+      "title": "Bike: Indoor Cycling",
       "duration_min": 60
     },
     {
@@ -51,7 +51,7 @@
       "label": "S",
       "color": "yellow",
       "is_today": false,
-      "title": "Swim: Lap Swimming",
+      "title": "Run: Running",
       "duration_min": 60
     },
     {
@@ -432,5 +432,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-13T06:57:11.885465Z"
+  "generated_at": "2026-09-13T12:54:33.587544Z"
 }
