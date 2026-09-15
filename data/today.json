@@ -16,6 +16,16 @@
       "title": "Other: Yoga",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: TrainingPeaks Virtual - Workout: Sweet Spot (60 mins)",
+      "sport": "bike",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -465,5 +475,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-15T20:36:06.320103Z"
+  "generated_at": "2026-09-15T23:48:26.589072Z"
 }
