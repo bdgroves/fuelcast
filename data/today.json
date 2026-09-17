@@ -16,6 +16,16 @@
       "title": "Other: Yoga",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Bike: Virtual Activity Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -465,5 +475,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-17T19:24:58.282864Z"
+  "generated_at": "2026-09-17T22:31:00.801826Z"
 }
