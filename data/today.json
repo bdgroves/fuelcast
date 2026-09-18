@@ -16,6 +16,21 @@
       "title": "Other: Yoga",
       "sport": "strength",
       "duration_min": 60
+    },
+    {
+      "title": "Bike: TrainingPeaks Virtual - Workout: Threshold Two Tens",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: TrainingPeaks Virtual - Two Legs Bad",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
     }
   ],
   "week_strip": [
@@ -465,5 +480,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-18T20:06:51.998661Z"
+  "generated_at": "2026-09-18T23:43:46.235762Z"
 }
