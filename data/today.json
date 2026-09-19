@@ -9,10 +9,10 @@
     {
       "date": "2026-09-14",
       "label": "M",
-      "color": "yellow",
+      "color": "red",
       "is_today": false,
-      "title": "Run: Running",
-      "duration_min": 60
+      "title": "Rest",
+      "duration_min": 0
     },
     {
       "date": "2026-09-15",
@@ -64,13 +64,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 366,
+    "carbs_g": 350,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3236,
-    "carbs_g_per_kg": 4.02,
+    "calories": 3172,
+    "carbs_g_per_kg": 3.85,
     "protein_g_per_kg": 2.4,
-    "carb_bump_pct": 15
+    "carb_bump_pct": 10
   },
   "meals": [
     {
@@ -121,9 +121,9 @@
   "in_session": null,
   "flags": [
     {
-      "level": "alert",
-      "title": "Overreached",
-      "text": "TSB -20, CTL 9, ATL 29. Fatigue significantly exceeds fitness \u2014 carbs bumped 15%. Strongly consider a rest or easy day; pushing through risks deeper hole."
+      "level": "warn",
+      "title": "Heavy load",
+      "text": "TSB -19, CTL 8, ATL 27. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -213,12 +213,12 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 8.8,
-    "atl": 29.0,
-    "tsb": -20.2,
+    "ctl": 8.1,
+    "atl": 26.7,
+    "tsb": -18.6,
     "tss_today": 0.0,
-    "state": "overreached",
-    "carb_bump_pct": 15,
+    "state": "heavy_load",
+    "carb_bump_pct": 10,
     "history": [
       {
         "date": "2026-08-21",
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-09-14",
-        "ctl": 3.0,
-        "atl": 4.7,
-        "tsb": -1.7,
-        "tss": 35.0
+        "ctl": 2.2,
+        "atl": 0.0,
+        "tsb": 2.2,
+        "tss": 0.0
       },
       {
         "date": "2026-09-15",
-        "ctl": 4.5,
-        "atl": 12.7,
-        "tsb": -8.2,
+        "ctl": 3.6,
+        "atl": 8.7,
+        "tsb": -5.0,
         "tss": 65.0
       },
       {
         "date": "2026-09-16",
-        "ctl": 5.5,
-        "atl": 17.7,
-        "tsb": -12.1,
+        "ctl": 4.7,
+        "atl": 14.2,
+        "tsb": -9.4,
         "tss": 50.0
       },
       {
         "date": "2026-09-17",
-        "ctl": 6.9,
-        "atl": 24.0,
-        "tsb": -17.0,
+        "ctl": 6.2,
+        "atl": 20.9,
+        "tsb": -14.8,
         "tss": 65.0
       },
       {
         "date": "2026-09-18",
-        "ctl": 9.0,
-        "atl": 33.4,
-        "tsb": -24.4,
+        "ctl": 8.2,
+        "atl": 30.8,
+        "tsb": -22.5,
         "tss": 95.0
       },
       {
         "date": "2026-09-19",
-        "ctl": 8.8,
-        "atl": 29.0,
-        "tsb": -20.2,
+        "ctl": 8.1,
+        "atl": 26.7,
+        "tsb": -18.6,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-09-19T02:06:59.700116Z"
+  "generated_at": "2026-09-19T08:21:28.471873Z"
 }
