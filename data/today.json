@@ -1,16 +1,9 @@
 {
-  "date": "2026-09-19",
-  "weekday": "Saturday",
+  "date": "2026-09-20",
+  "weekday": "Sunday",
   "phase": "base",
   "day_color": "RED",
-  "workout": {
-    "title": "Walk: Walking",
-    "sport": "other",
-    "duration_min": 60,
-    "tss": null,
-    "intensity_factor": null,
-    "is_completed": false
-  },
+  "workout": null,
   "secondary_workouts": [],
   "week_strip": [
     {
@@ -57,7 +50,7 @@
       "date": "2026-09-19",
       "label": "S",
       "color": "red",
-      "is_today": true,
+      "is_today": false,
       "title": "Walk: Walking",
       "duration_min": 60
     },
@@ -65,7 +58,7 @@
       "date": "2026-09-20",
       "label": "S",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     }
@@ -88,8 +81,8 @@
       "carbs_g": 30,
       "protein_g": 35,
       "fat_g": 15,
-      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
-      "label": "Pre-session \u00b7 light, low-fiber"
+      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
+      "label": "Steady start"
     },
     {
       "slot": "lunch",
@@ -125,32 +118,12 @@
       "label": "Veg-forward, balanced"
     }
   ],
-  "in_session": {
-    "target_carbs_g_per_hr": 30,
-    "total_carbs_g": 30,
-    "sodium_mg": 0,
-    "glucose_pct": 100,
-    "fructose_pct": 0,
-    "bottle_count": 1,
-    "note": "",
-    "steps": [
-      {
-        "when": "0\u201360 min",
-        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
-        "carbs_g": 30
-      },
-      {
-        "when": "Total",
-        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
-        "carbs_g": 0
-      }
-    ]
-  },
+  "in_session": null,
   "flags": [
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -19, CTL 8, ATL 27. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -17, CTL 8, ATL 25. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -235,25 +208,18 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 253,
+    "days_to_go": 252,
     "distance": 70.3,
     "priority": "A"
   },
   "training_load": {
-    "ctl": 8.1,
-    "atl": 26.7,
-    "tsb": -18.6,
+    "ctl": 8.2,
+    "atl": 24.9,
+    "tsb": -16.7,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
     "history": [
-      {
-        "date": "2026-08-21",
-        "ctl": 3.8,
-        "atl": 0.0,
-        "tsb": 3.8,
-        "tss": 0.0
-      },
       {
         "date": "2026-08-22",
         "ctl": 3.8,
@@ -452,12 +418,19 @@
       },
       {
         "date": "2026-09-19",
-        "ctl": 8.1,
-        "atl": 26.7,
-        "tsb": -18.6,
+        "ctl": 8.4,
+        "atl": 28.7,
+        "tsb": -20.3,
+        "tss": 15.0
+      },
+      {
+        "date": "2026-09-20",
+        "ctl": 8.2,
+        "atl": 24.9,
+        "tsb": -16.7,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-09-19T23:45:24.402774Z"
+  "generated_at": "2026-09-20T02:12:51.183966Z"
 }
