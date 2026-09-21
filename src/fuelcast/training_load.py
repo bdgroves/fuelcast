@@ -82,6 +82,7 @@ def compute_training_load(
     seed_days: int = 60,
     initial_ctl: float = 0.0,
     initial_atl: float = 0.0,
+    daily_tss: dict[str, float] | None = None,
 ) -> list[TrainingLoad]:
     """Compute daily CTL/ATL/TSB for the period leading up to target_date.
 
@@ -92,6 +93,14 @@ def compute_training_load(
     actual TrainingPeaks values at the start of the seed window. Otherwise
     seeds at zero, which under-counts fitness for the first 6 weeks until
     the exponential filter converges.
+
+    `daily_tss` optionally supplies measured TSS per day as
+    ``{"YYYY-MM-DD": tss}`` — normally Garmin's real history, which covers
+    far more than the TrainingPeaks iCal window. A date present in that
+    mapping wins over anything derived from `workouts`, **including when
+    its value is 0.0**: the feed emits explicit zeros for rest days, and
+    those are measurements, not gaps. Only dates absent from the mapping
+    fall through to the workout-derived estimate.
     """
     target_date = target_date or date.today()
     start = target_date - timedelta(days=seed_days)
@@ -102,7 +111,11 @@ def compute_training_load(
 
     current = start
     while current <= target_date:
-        tss = _daily_tss(workouts, current)
+        key = current.isoformat()
+        if daily_tss is not None and key in daily_tss:
+            tss = daily_tss[key]
+        else:
+            tss = _daily_tss(workouts, current)
         ctl = ctl + (tss - ctl) * CTL_LAMBDA
         atl = atl + (tss - atl) * ATL_LAMBDA
         history.append(

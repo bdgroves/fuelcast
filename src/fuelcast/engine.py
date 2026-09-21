@@ -25,6 +25,11 @@ from fuelcast.prescriptions.fat import (
 )
 from fuelcast.prescriptions.protein import daily_protein_grams
 from fuelcast.prescriptions.session import in_session_plan
+from fuelcast.sources.garmin import (
+    GarminLoadUnavailable,
+    fetch_daily_tss,
+    series_bounds,
+)
 from fuelcast.sources.trainingpeaks import (
     Workout,
     all_workouts_for,
@@ -215,6 +220,7 @@ def build_day_plan(
     athlete: Athlete,
     workouts: list[Workout],
     panel: BloodworkPanel | None,
+    daily_tss: dict[str, float] | None = None,
 ) -> DayPlan:
     """Build a complete day plan for the given date."""
     primary = workout_for(target_date, workouts)
@@ -226,10 +232,19 @@ def build_day_plan(
     phase = athlete.phase
     diet = athlete.diet
 
-    # Training load — compute CTL/ATL/TSB from completed workout history
     # Training load — compute CTL/ATL/TSB from completed workout history.
-    # Seed from athlete.yaml if the athlete provided real TP values, so we
-    # don't have to wait 6 weeks for the exponential filter to converge.
+    #
+    # Preference order:
+    #   1. Garmin's measured daily TSS. It covers ~180 days, so the 42-day
+    #      filter is fully converged and no manual seed is needed — the
+    #      window itself carries the fitness. initial_ctl/atl are reset to
+    #      zero here on purpose: seeding *and* supplying real history would
+    #      double-count the same fitness.
+    #   2. The athlete.yaml seed plus the TrainingPeaks iCal window. This
+    #      is the original path and is only correct when the seed date is
+    #      close to the feed's 7-day lookback. When it drifts months away
+    #      (as it had), every uncovered day scores TSS 0 and decays CTL to
+    #      nothing — which is the bug this ordering exists to avoid.
     tl_config = athlete.raw.get("training_load_seed", {})
     initial_ctl = float(tl_config.get("ctl", 0.0))
     initial_atl = float(tl_config.get("atl", 0.0))
@@ -244,12 +259,33 @@ def build_day_plan(
         except (ValueError, TypeError):
             pass
 
+    load_source = "trainingpeaks_ical"
+    if daily_tss:
+        first, last = series_bounds(daily_tss)
+        seed_days_param = max(1, (target_date - first).days)
+        initial_ctl = 0.0
+        initial_atl = 0.0
+        load_source = "garmin"
+        # Surfaced in the log because a silent switch between two load
+        # sources that disagree by an order of magnitude is not something
+        # that should ever have to be inferred from the numbers.
+        print(
+            f"training load: garmin series {first}..{last} "
+            f"({len(daily_tss)} days, {sum(1 for v in daily_tss.values() if v > 0)} active)"
+        )
+    else:
+        print(
+            f"training load: no garmin series — falling back to iCal "
+            f"with seed CTL {initial_ctl} ATL {initial_atl} from {seed_date_str}"
+        )
+
     load_history = compute_training_load(
         workouts,
         target_date=target_date,
         seed_days=seed_days_param,
         initial_ctl=initial_ctl,
         initial_atl=initial_atl,
+        daily_tss=daily_tss,
     )
     current_load = latest_load(load_history)
 
@@ -359,6 +395,12 @@ def build_day_plan(
             "tss_today": current_load.tss_today,
             "state": tsb_state(current_load.tsb),
             "carb_bump_pct": carb_bump_pct,
+            # Which feed these numbers came from. Consumers should show
+            # this: "garmin" and "trainingpeaks_ical" can differ by an
+            # order of magnitude, and a reader deserves to know which
+            # one produced the fatigue warning in front of them.
+            "source": load_source,
+            "days_modelled": len(load_history),
             "history": [
                 {"date": h.date.isoformat(), "ctl": h.ctl, "atl": h.atl,
                  "tsb": h.tsb, "tss": h.tss_today}
@@ -418,11 +460,21 @@ def run_engine(
         today=target_date,
     )
 
+    # Measured training load from Garmin. Degrading to the iCal path is
+    # acceptable (it is the old behaviour); silently degrading is not, so
+    # the reason is always printed.
+    daily_tss = None
+    try:
+        daily_tss = fetch_daily_tss(today=target_date)
+    except GarminLoadUnavailable as e:
+        print(f"training load: garmin feed unusable — {e}")
+
     plan = build_day_plan(
         target_date,
         athlete=athlete,
         workouts=workouts,
         panel=panel,
+        daily_tss=daily_tss,
     )
 
     out_path = Path(output_path)
