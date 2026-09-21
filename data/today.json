@@ -71,13 +71,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 550,
+    "carbs_g": 500,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3972,
-    "carbs_g_per_kg": 6.04,
+    "calories": 3772,
+    "carbs_g_per_kg": 5.49,
     "protein_g_per_kg": 2.4,
-    "carb_bump_pct": 10
+    "carb_bump_pct": 0
   },
   "meals": [
     {
@@ -148,9 +148,9 @@
   },
   "flags": [
     {
-      "level": "warn",
-      "title": "Heavy load",
-      "text": "TSB -12, CTL 6, ATL 18. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "level": "ok",
+      "title": "Recovery state",
+      "text": "TSB +1, CTL 81. Productive load zone \u2014 fitness is building."
     },
     {
       "level": "ok",
@@ -240,226 +240,226 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 6.3,
-    "atl": 18.1,
-    "tsb": -11.8,
-    "tss_today": 0.0,
-    "state": "heavy_load",
-    "carb_bump_pct": 10,
-    "source": "trainingpeaks_ical",
-    "days_modelled": 142,
+    "ctl": 81.0,
+    "atl": 80.1,
+    "tsb": 0.9,
+    "tss_today": 29.0,
+    "state": "productive",
+    "carb_bump_pct": 0,
+    "source": "garmin",
+    "days_modelled": 181,
     "history": [
       {
         "date": "2026-08-23",
-        "ctl": 3.7,
-        "atl": 0.0,
-        "tsb": 3.7,
-        "tss": 0.0
+        "ctl": 67.8,
+        "atl": 78.7,
+        "tsb": -11.0,
+        "tss": 45.2
       },
       {
         "date": "2026-08-24",
-        "ctl": 3.6,
-        "atl": 0.0,
-        "tsb": 3.6,
-        "tss": 0.0
+        "ctl": 67.6,
+        "atl": 76.0,
+        "tsb": -8.4,
+        "tss": 58.1
       },
       {
         "date": "2026-08-25",
-        "ctl": 3.5,
-        "atl": 0.0,
-        "tsb": 3.5,
-        "tss": 0.0
+        "ctl": 70.0,
+        "atl": 88.6,
+        "tsb": -18.6,
+        "tss": 171.0
       },
       {
         "date": "2026-08-26",
-        "ctl": 3.4,
-        "atl": 0.0,
-        "tsb": 3.4,
-        "tss": 0.0
+        "ctl": 73.1,
+        "atl": 103.9,
+        "tsb": -30.7,
+        "tss": 203.1
       },
       {
         "date": "2026-08-27",
-        "ctl": 3.3,
-        "atl": 0.0,
-        "tsb": 3.3,
-        "tss": 0.0
+        "ctl": 74.5,
+        "atl": 107.4,
+        "tsb": -33.0,
+        "tss": 130.6
       },
       {
         "date": "2026-08-28",
-        "ctl": 3.3,
-        "atl": 0.0,
-        "tsb": 3.3,
-        "tss": 0.0
+        "ctl": 73.8,
+        "atl": 99.1,
+        "tsb": -25.3,
+        "tss": 45.0
       },
       {
         "date": "2026-08-29",
-        "ctl": 3.2,
-        "atl": 0.0,
-        "tsb": 3.2,
-        "tss": 0.0
+        "ctl": 72.8,
+        "atl": 90.0,
+        "tsb": -17.2,
+        "tss": 30.3
       },
       {
         "date": "2026-08-30",
-        "ctl": 3.1,
-        "atl": 0.0,
-        "tsb": 3.1,
-        "tss": 0.0
+        "ctl": 72.1,
+        "atl": 83.7,
+        "tsb": -11.7,
+        "tss": 43.1
       },
       {
         "date": "2026-08-31",
-        "ctl": 3.0,
-        "atl": 0.0,
-        "tsb": 3.0,
-        "tss": 0.0
+        "ctl": 70.8,
+        "atl": 74.9,
+        "tsb": -4.1,
+        "tss": 17.3
       },
       {
         "date": "2026-09-01",
-        "ctl": 3.0,
-        "atl": 0.0,
-        "tsb": 3.0,
-        "tss": 0.0
+        "ctl": 75.4,
+        "atl": 100.4,
+        "tsb": -25.0,
+        "tss": 266.2
       },
       {
         "date": "2026-09-02",
-        "ctl": 2.9,
-        "atl": 0.0,
-        "tsb": 2.9,
-        "tss": 0.0
+        "ctl": 78.8,
+        "atl": 116.6,
+        "tsb": -37.8,
+        "tss": 222.7
       },
       {
         "date": "2026-09-03",
-        "ctl": 2.8,
-        "atl": 0.0,
-        "tsb": 2.8,
-        "tss": 0.0
+        "ctl": 80.7,
+        "atl": 121.9,
+        "tsb": -41.3,
+        "tss": 156.3
       },
       {
         "date": "2026-09-04",
-        "ctl": 2.8,
-        "atl": 0.0,
-        "tsb": 2.8,
-        "tss": 0.0
+        "ctl": 79.6,
+        "atl": 110.2,
+        "tsb": -30.6,
+        "tss": 34.0
       },
       {
         "date": "2026-09-05",
-        "ctl": 2.7,
-        "atl": 0.0,
-        "tsb": 2.7,
-        "tss": 0.0
+        "ctl": 79.4,
+        "atl": 105.4,
+        "tsb": -26.0,
+        "tss": 74.3
       },
       {
         "date": "2026-09-06",
-        "ctl": 2.6,
-        "atl": 0.0,
-        "tsb": 2.6,
-        "tss": 0.0
+        "ctl": 83.4,
+        "atl": 124.5,
+        "tsb": -41.1,
+        "tss": 248.5
       },
       {
         "date": "2026-09-07",
-        "ctl": 2.6,
-        "atl": 0.0,
-        "tsb": 2.6,
-        "tss": 0.0
+        "ctl": 83.2,
+        "atl": 117.8,
+        "tsb": -34.6,
+        "tss": 74.3
       },
       {
         "date": "2026-09-08",
-        "ctl": 2.5,
-        "atl": 0.0,
-        "tsb": 2.5,
-        "tss": 0.0
+        "ctl": 81.9,
+        "atl": 105.5,
+        "tsb": -23.7,
+        "tss": 25.6
       },
       {
         "date": "2026-09-09",
-        "ctl": 2.4,
-        "atl": 0.0,
-        "tsb": 2.4,
-        "tss": 0.0
+        "ctl": 84.5,
+        "atl": 117.4,
+        "tsb": -32.9,
+        "tss": 194.4
       },
       {
         "date": "2026-09-10",
-        "ctl": 2.4,
-        "atl": 0.0,
-        "tsb": 2.4,
-        "tss": 0.0
+        "ctl": 83.1,
+        "atl": 104.9,
+        "tsb": -21.8,
+        "tss": 23.5
       },
       {
         "date": "2026-09-11",
-        "ctl": 2.3,
-        "atl": 0.0,
-        "tsb": 2.3,
-        "tss": 0.0
+        "ctl": 81.4,
+        "atl": 92.6,
+        "tsb": -11.2,
+        "tss": 13.1
       },
       {
         "date": "2026-09-12",
-        "ctl": 2.3,
-        "atl": 0.0,
-        "tsb": 2.3,
-        "tss": 0.0
+        "ctl": 80.7,
+        "atl": 87.3,
+        "tsb": -6.5,
+        "tss": 52.3
       },
       {
         "date": "2026-09-13",
-        "ctl": 2.2,
-        "atl": 0.0,
-        "tsb": 2.2,
-        "tss": 0.0
+        "ctl": 81.1,
+        "atl": 88.4,
+        "tsb": -7.3,
+        "tss": 95.8
       },
       {
         "date": "2026-09-14",
-        "ctl": 2.2,
-        "atl": 0.0,
-        "tsb": 2.2,
-        "tss": 0.0
+        "ctl": 79.8,
+        "atl": 80.0,
+        "tsb": -0.2,
+        "tss": 25.1
       },
       {
         "date": "2026-09-15",
-        "ctl": 2.1,
-        "atl": 0.0,
-        "tsb": 2.1,
-        "tss": 0.0
+        "ctl": 80.9,
+        "atl": 86.1,
+        "tsb": -5.2,
+        "tss": 125.7
       },
       {
         "date": "2026-09-16",
-        "ctl": 2.1,
-        "atl": 0.0,
-        "tsb": 2.1,
-        "tss": 0.0
+        "ctl": 79.4,
+        "atl": 77.1,
+        "tsb": 2.3,
+        "tss": 18.5
       },
       {
         "date": "2026-09-17",
-        "ctl": 3.5,
-        "atl": 8.7,
-        "tsb": -5.1,
-        "tss": 65.0
+        "ctl": 80.9,
+        "atl": 86.2,
+        "tsb": -5.2,
+        "tss": 145.5
       },
       {
         "date": "2026-09-18",
-        "ctl": 5.7,
-        "atl": 20.1,
-        "tsb": -14.4,
-        "tss": 95.0
+        "ctl": 84.6,
+        "atl": 106.4,
+        "tsb": -21.8,
+        "tss": 238.3
       },
       {
         "date": "2026-09-19",
-        "ctl": 5.9,
-        "atl": 19.5,
-        "tsb": -13.5,
-        "tss": 15.0
+        "ctl": 83.7,
+        "atl": 97.9,
+        "tsb": -14.3,
+        "tss": 42.6
       },
       {
         "date": "2026-09-20",
-        "ctl": 6.5,
-        "atl": 20.9,
-        "tsb": -14.4,
-        "tss": 30.0
+        "ctl": 82.2,
+        "atl": 87.9,
+        "tsb": -5.7,
+        "tss": 22.8
       },
       {
         "date": "2026-09-21",
-        "ctl": 6.3,
-        "atl": 18.1,
-        "tsb": -11.8,
-        "tss": 0.0
+        "ctl": 81.0,
+        "atl": 80.1,
+        "tsb": 0.9,
+        "tss": 29.0
       }
     ]
   },
-  "generated_at": "2026-09-21T23:30:52.865773Z"
+  "generated_at": "2026-09-21T23:42:00.355839Z"
 }
