@@ -7,8 +7,14 @@ channels = ["conda-forge"]
 platforms = ["win-64", "linux-64", "osx-arm64"]
 
 [tasks]
-fuelcast = "python -m fuelcast.cli"
-test = "pytest tests/ -v"
+# PYTHONPATH rather than an editable install. This is a pure-Python src/
+# layout, so an editable wheel only ever provided an import path — and
+# building one made every env update write a fresh .whl into the uv cache,
+# which endpoint security (CrowdStrike Falcon) intercepts between uv's
+# write and its read-back. That failure is unfixable locally because the
+# EDR is centrally managed. No build step, no interception.
+fuelcast = { cmd = "python -m fuelcast.cli", env = { PYTHONPATH = "src" } }
+test = { cmd = "pytest tests/ -v", env = { PYTHONPATH = "src" } }
 fmt = "ruff format src/ tests/"
 lint = "ruff check src/ tests/"
 
@@ -21,6 +27,9 @@ python-dateutil = ">=2.8"
 pytz = "*"
 
 [pypi-dependencies]
-fuelcast = { path = ".", editable = true }
+# fuelcast itself is intentionally NOT listed here as an editable path
+# dependency — see the note on [tasks] above. pyproject.toml still
+# declares the package properly, so `pip install .` works for anyone
+# consuming it normally.
 ruff = ">=0.6"
 pytest = ">=8.0"

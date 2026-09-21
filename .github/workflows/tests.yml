@@ -1,0 +1,36 @@
+name: Tests
+
+# The suite previously only ran on a developer machine, which meant a
+# Windows-only toolchain problem (a locked uv build cache, MAX_PATH in the
+# rattler cache) could block testing entirely while the daily generator
+# carried on shipping whatever was on main. Running here decouples the two:
+# Linux, clean checkout, no local cache state.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Deliberately plain pip rather than pixi. The daily job uses pixi
+      # because it needs the locked production environment; this job only
+      # needs to run tests, and skipping the lockfile solve keeps it fast
+      # and removes a moving part from the signal.
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pyyaml icalendar requests
+
+      - name: Run tests
+        env:
+          PYTHONPATH: src
+        run: pytest tests/ -q
