@@ -123,7 +123,7 @@
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -14, CTL 7, ATL 21. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -12, CTL 6, ATL 18. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -213,9 +213,9 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 7.4,
-    "atl": 21.3,
-    "tsb": -14.0,
+    "ctl": 6.3,
+    "atl": 18.1,
+    "tsb": -11.8,
     "tss_today": 0.0,
     "state": "heavy_load",
     "carb_bump_pct": 10,
@@ -390,47 +390,47 @@
       },
       {
         "date": "2026-09-16",
-        "ctl": 3.2,
-        "atl": 6.7,
-        "tsb": -3.4,
-        "tss": 50.0
+        "ctl": 2.1,
+        "atl": 0.0,
+        "tsb": 2.1,
+        "tss": 0.0
       },
       {
         "date": "2026-09-17",
-        "ctl": 4.7,
-        "atl": 14.4,
-        "tsb": -9.7,
+        "ctl": 3.5,
+        "atl": 8.7,
+        "tsb": -5.1,
         "tss": 65.0
       },
       {
         "date": "2026-09-18",
-        "ctl": 6.8,
-        "atl": 25.1,
-        "tsb": -18.3,
+        "ctl": 5.7,
+        "atl": 20.1,
+        "tsb": -14.4,
         "tss": 95.0
       },
       {
         "date": "2026-09-19",
-        "ctl": 7.0,
-        "atl": 23.8,
-        "tsb": -16.8,
+        "ctl": 5.9,
+        "atl": 19.5,
+        "tsb": -13.5,
         "tss": 15.0
       },
       {
         "date": "2026-09-20",
-        "ctl": 7.6,
-        "atl": 24.6,
-        "tsb": -17.1,
+        "ctl": 6.5,
+        "atl": 20.9,
+        "tsb": -14.4,
         "tss": 30.0
       },
       {
         "date": "2026-09-21",
-        "ctl": 7.4,
-        "atl": 21.3,
-        "tsb": -14.0,
+        "ctl": 6.3,
+        "atl": 18.1,
+        "tsb": -11.8,
         "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-09-21T02:12:45.815616Z"
+  "generated_at": "2026-09-21T09:23:21.348563Z"
 }
