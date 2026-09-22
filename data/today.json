@@ -11,7 +11,18 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Bike: Virtual Activity Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-09-21",
@@ -71,13 +82,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 500,
+    "carbs_g": 550,
     "protein_g": 218,
     "fat_g": 100,
-    "calories": 3772,
-    "carbs_g_per_kg": 5.49,
+    "calories": 3972,
+    "carbs_g_per_kg": 6.04,
     "protein_g_per_kg": 2.4,
-    "carb_bump_pct": 0
+    "carb_bump_pct": 10
   },
   "meals": [
     {
@@ -148,9 +159,9 @@
   },
   "flags": [
     {
-      "level": "ok",
-      "title": "Recovery state",
-      "text": "TSB +10, CTL 79. Recovered, ready for normal training."
+      "level": "warn",
+      "title": "Heavy load",
+      "text": "TSB -14, CTL 84, ATL 98. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -240,12 +251,12 @@
     "priority": "A"
   },
   "training_load": {
-    "ctl": 79.0,
-    "atl": 69.4,
-    "tsb": 9.6,
-    "tss_today": 0.0,
-    "state": "recovered",
-    "carb_bump_pct": 0,
+    "ctl": 84.1,
+    "atl": 97.8,
+    "tsb": -13.7,
+    "tss_today": 213.1,
+    "state": "heavy_load",
+    "carb_bump_pct": 10,
     "source": "garmin",
     "days_modelled": 181,
     "history": [
@@ -454,12 +465,12 @@
       },
       {
         "date": "2026-09-22",
-        "ctl": 79.0,
-        "atl": 69.4,
-        "tsb": 9.6,
-        "tss": 0.0
+        "ctl": 84.1,
+        "atl": 97.8,
+        "tsb": -13.7,
+        "tss": 213.1
       }
     ]
   },
-  "generated_at": "2026-09-22T20:37:47.630951Z"
+  "generated_at": "2026-09-22T23:54:00.868449Z"
 }
