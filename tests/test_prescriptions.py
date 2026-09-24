@@ -2,8 +2,6 @@
 
 from datetime import date
 
-import pytest
-
 from fuelcast.prescriptions.carbs import (
     MEAL_CARBS_G,
     daily_carbs_g_per_kg,

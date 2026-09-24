@@ -42,6 +42,7 @@ series does not cover at all.
 from __future__ import annotations
 
 import os
+from dataclasses import dataclass
 from datetime import date, datetime
 
 import requests
@@ -139,3 +140,123 @@ def series_bounds(series: dict[str, float]) -> tuple[date, date]:
     """First and last date present in the series."""
     ds = sorted(datetime.strptime(k, "%Y-%m-%d").date() for k in series)
     return ds[0], ds[-1]
+
+
+# ─── Athlete state: weight, body composition, energy, recovery ─────────
+#
+# The same feed that carries daily TSS also carries what the athlete
+# weighs and what they actually burn. Before this, FuelCast had neither:
+# weight was a hand-edited number in athlete.yaml, and expenditure wasn't
+# modelled at all — so a stated weight-loss goal produced a surplus on
+# every single day type.
+#
+# Every field is optional and independently validated. A bad weight must
+# not suppress a good TDEE, and vice versa.
+
+
+# A weigh-in older than this stops describing the current athlete. Macros
+# are sized per kg, so a stale weight silently mis-sizes every target.
+MAX_WEIGHT_AGE_DAYS = 21
+
+# Energy needs enough complete days to average out a single big ride or a
+# lazy Sunday. Fewer than this and one outlier dominates the estimate.
+MIN_ENERGY_DAYS = 5
+
+
+@dataclass
+class AthleteState:
+    weight_kg: float | None = None           # 7-day smoothed
+    weight_trend_kg_wk: float | None = None  # 30-day slope
+    body_fat_pct: float | None = None
+    ffm_kg: float | None = None              # fat-free mass
+    tdee_kcal: float | None = None           # measured, 7-day mean
+    active_kcal: float | None = None
+    bmr_kcal: float | None = None
+    training_kcal: float | None = None       # net of BMR, 7-day mean
+    kcal_per_hour: dict | None = None        # athlete's own net rate by sport
+    energy_days: int = 0
+    rhr_7d: float | None = None
+    hrv_last_night: float | None = None
+    hrv_status: str | None = None
+    notes: tuple[str, ...] = ()
+
+
+def parse_athlete_state(doc: dict) -> AthleteState:
+    """Validate each section of the feed independently."""
+    notes: list[str] = []
+    st = AthleteState()
+
+    w = doc.get("weight") or {}
+    kg = w.get("smoothed_kg") or w.get("latest_kg")
+    stale = w.get("stale_days")
+    if kg:
+        try:
+            kg = float(kg)
+        except (TypeError, ValueError):
+            kg = None
+    if kg and stale is not None and stale > MAX_WEIGHT_AGE_DAYS:
+        notes.append(f"weight {stale}d stale — using configured")
+        kg = None
+    # A unit mix-up upstream (grams, or pounds mislabelled as kg) would
+    # otherwise flow straight into every per-kg macro.
+    if kg and not 30.0 <= kg <= 250.0:
+        notes.append(f"weight {kg} outside plausible range — ignored")
+        kg = None
+    if kg:
+        st.weight_kg = kg
+        st.weight_trend_kg_wk = w.get("trend_kg_per_week")
+        bf = w.get("body_fat_pct")
+        if bf and 3.0 <= float(bf) <= 60.0:
+            st.body_fat_pct = float(bf)
+            st.ffm_kg = w.get("ffm_kg") or round(kg * (1 - float(bf) / 100), 1)
+
+    e = doc.get("energy") or {}
+    days = int(e.get("days") or 0)
+    tdee = e.get("tdee_7d")
+    if tdee and days >= MIN_ENERGY_DAYS and 1200 <= float(tdee) <= 7000:
+        st.tdee_kcal = float(tdee)
+        st.active_kcal = e.get("active_7d")
+        st.bmr_kcal = e.get("bmr")
+        st.energy_days = days
+        tk = e.get("training_kcal_7d")
+        # Training can't exceed total expenditure; if it does, the split is
+        # wrong (double-counted activity) and the baseline would go negative.
+        if tk is not None and 0 <= float(tk) < float(tdee):
+            st.training_kcal = float(tk)
+        elif tk is not None:
+            notes.append(f"training kcal {tk} >= TDEE {tdee} — split ignored")
+        rates = e.get("kcal_per_hour")
+        if isinstance(rates, dict):
+            st.kcal_per_hour = {k: float(v) for k, v in rates.items()
+                                if isinstance(v, (int, float)) and 0 < v < 1500}
+    elif tdee:
+        notes.append(f"TDEE from {days} days — below {MIN_ENERGY_DAYS}, not trusted")
+
+    r = doc.get("recovery") or {}
+    st.rhr_7d = r.get("rhr_7d")
+    st.hrv_last_night = r.get("hrv_last_night")
+    st.hrv_status = r.get("hrv_status")
+
+    st.notes = tuple(notes)
+    return st
+
+
+def fetch_athlete_state(
+    url: str | None = None,
+    *,
+    timeout: int = 15,
+) -> AthleteState:
+    """Fetch the athlete-state sections of the Garmin feed.
+
+    Returns an empty AthleteState (every field None) rather than raising
+    when the feed is unreachable — each consumer then falls back to its
+    configured value, which is exactly the pre-existing behaviour.
+    """
+    url = url or os.environ.get("GARMIN_LOAD_URL", DEFAULT_URL)
+    try:
+        r = requests.get(url, timeout=timeout)
+        r.raise_for_status()
+        doc = r.json()
+    except Exception as e:
+        return AthleteState(notes=(f"feed unreachable: {e}",))
+    return parse_athlete_state(doc)

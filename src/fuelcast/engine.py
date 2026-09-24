@@ -19,14 +19,14 @@ from fuelcast.prescriptions.carbs import (
     meal_breakdown,
     session_color,
 )
-from fuelcast.prescriptions.fat import (
-    daily_calories_estimate,
-    daily_fat_g_per_kg,
-)
-from fuelcast.prescriptions.protein import daily_protein_grams
+from fuelcast.prescriptions.energy import energy_flag, estimate_expenditure, fit_macros
+from fuelcast.prescriptions.gut_training import build_gut_plan, gut_plan_flag
+from fuelcast.prescriptions.protein import daily_protein_g_per_kg
 from fuelcast.prescriptions.session import in_session_plan
 from fuelcast.sources.garmin import (
+    AthleteState,
     GarminLoadUnavailable,
+    fetch_athlete_state,
     fetch_daily_tss,
     series_bounds,
 )
@@ -38,7 +38,6 @@ from fuelcast.sources.trainingpeaks import (
     workout_for,
 )
 from fuelcast.training_load import (
-    TrainingLoad,
     carb_adjustment_pct,
     compute_training_load,
     latest_load,
@@ -65,6 +64,9 @@ class DayPlan:
     biomarkers: list[dict] = field(default_factory=list)
     biomarker_panel_date: str | None = None
     race: dict | None = None
+    energy: dict | None = None
+    body: dict | None = None
+    gut_training: dict | None = None
     training_load: dict | None = None
     generated_at: str = ""
 
@@ -94,10 +96,21 @@ def build_meals(
     *,
     phase: str,
     diet: str,
+    targets: dict | None = None,
 ) -> list[dict]:
-    """Construct the meal timeline for the day."""
+    """Construct the meal timeline for the day.
+
+    ``targets`` carries the day's final carbs/protein/fat in grams. When
+    given, every meal is scaled so the meals actually sum to the day.
+
+    Previously the per-meal protein and fat were fixed constants that summed
+    to 140 g protein against a daily prescription of 218 g, and any carb
+    shortfall was dumped wholesale into dinner — which is how the page came
+    to recommend 390 g of carbohydrate in a single evening meal.
+    """
     breakdown = meal_breakdown(workout, phase=phase)
-    total_carbs = daily_carbs_grams(weight_kg, workout, phase=phase)
+    total_carbs = ((targets or {}).get("carbs_g")
+                   or daily_carbs_grams(weight_kg, workout, phase=phase))
 
     # Veg-friendly meal copy that picks up on the day's color and session
     color = session_color(workout)
@@ -182,11 +195,23 @@ def build_meals(
     # If the day's total carbs from meal-color buckets falls short of the
     # prescribed daily total, fold the difference into dinner (athlete's
     # easiest place to top up complex carbs).
-    meal_carb_sum = sum(m["carbs_g"] for m in meals)
-    deficit = total_carbs - meal_carb_sum
-    if deficit > 15:
-        meals[-1]["carbs_g"] += deficit
-        meals[-1]["note"] += f" Add ~{deficit}g extra complex carbs (rice, sweet potato)."
+    # Scale each macro across the meals so they sum to the day's target,
+    # preserving the traffic-light shape (a GREEN lunch stays the biggest
+    # carb meal). Rounding residue lands on the meal that is already largest
+    # for that macro, where a few grams are least noticeable.
+    day_totals = {"carbs_g": total_carbs}
+    if targets:
+        day_totals.update({k: targets[k] for k in ("protein_g", "fat_g") if targets.get(k)})
+    for key, total in day_totals.items():
+        current = sum(m[key] for m in meals)
+        if not current or not total:
+            continue
+        f = total / current
+        for m in meals:
+            m[key] = round(m[key] * f)
+        residue = total - sum(m[key] for m in meals)
+        if residue:
+            max(meals, key=lambda m: m[key])[key] += residue
 
     return meals
 
@@ -221,13 +246,19 @@ def build_day_plan(
     workouts: list[Workout],
     panel: BloodworkPanel | None,
     daily_tss: dict[str, float] | None = None,
+    athlete_state: AthleteState | None = None,
 ) -> DayPlan:
     """Build a complete day plan for the given date."""
     primary = workout_for(target_date, workouts)
     all_today = all_workouts_for(target_date, workouts)
 
     color = session_color(primary)
-    weight = athlete.weight_kg
+    state = athlete_state or AthleteState()
+    # Measured weight (7-day mean from the Index scale) beats the hand-edited
+    # value in athlete.yaml, whose comment said "update monthly" — meaning
+    # every per-kg macro drifted between edits.
+    weight = state.weight_kg or athlete.weight_kg
+    weight_source = "garmin scale, 7-day mean" if state.weight_kg else "athlete.yaml"
     age = calculate_age(athlete)
     phase = athlete.phase
     diet = athlete.diet
@@ -289,23 +320,60 @@ def build_day_plan(
     )
     current_load = latest_load(load_history)
 
-    # Macros — base prescription
-    carbs_g = daily_carbs_grams(weight, primary, phase=phase)
-    protein_g = daily_protein_grams(weight, age=age, diet=diet, phase=phase)
-    fat_g = round(daily_fat_g_per_kg(phase=phase) * weight)
+    # ─── Macros ─────────────────────────────────────────────────────
+    # Carbs are still periodized by session — that part of the original
+    # design was right. What's new is that they now have a ceiling: the
+    # energy model estimates what today costs, applies the goal, and fits
+    # the macros inside that target. Before this, calories were simply
+    # whatever the per-kg macros summed to, and athlete.yaml's
+    # "goal: weight_loss" was never read by any code.
+    carbs_periodized = daily_carbs_grams(weight, primary, phase=phase)
 
-    # Recovery-aware carb adjustment based on TSB.
-    # Heavy load / overreached → bump carbs to support recovery.
+    # Recovery-aware carb bump from TSB (heavy load / overreached).
     carb_bump_pct = 0
     if current_load is not None:
         carb_bump_pct = carb_adjustment_pct(current_load.tsb)
         if carb_bump_pct > 0:
-            carbs_g = round(carbs_g * (1 + carb_bump_pct / 100))
+            carbs_periodized = round(carbs_periodized * (1 + carb_bump_pct / 100))
 
-    cals = daily_calories_estimate(weight, carbs_g, protein_g, fat_g)
+    # The per-kg rate, not grams: daily_protein_grams rounds, so passing a
+    # weight of 1.0 would turn 2.4 g/kg into 2.
+    protein_per_kg = daily_protein_g_per_kg(age=age, diet=diet, phase=phase)
+    goal = athlete.raw.get("goal", "maintenance")
+    physical = athlete.raw.get("physical", {})
 
-    # Meals
-    meals = build_meals(weight, primary, phase=phase, diet=diet)
+    expenditure = estimate_expenditure(
+        session_sport=primary.sport if primary else None,
+        session_duration_hr=primary.duration_hr if primary else 0.0,
+        measured_tdee=state.tdee_kcal,
+        measured_training_kcal=state.training_kcal,
+        measured_bmr=state.bmr_kcal,
+        kcal_per_hour=state.kcal_per_hour,
+        weight_kg=weight,
+        height_cm=float(physical.get("height_cm") or 175),
+        age=age,
+        sex=athlete.raw.get("sex", "M"),
+    )
+    energy = fit_macros(
+        goal=goal,
+        color=color,
+        expenditure=expenditure,
+        weight_kg=weight,
+        ffm_kg=state.ffm_kg,
+        protein_g_per_kg=protein_per_kg,
+        carbs_periodized_g=carbs_periodized,
+        weight_trend_kg_wk=state.weight_trend_kg_wk,
+        sex=athlete.raw.get("sex", "M"),
+    )
+    carbs_g, protein_g, fat_g = energy.carbs_g, energy.protein_g, energy.fat_g
+    cals = energy.target_kcal
+    print(f"energy: {goal} · burn ~{expenditure.total_kcal} ({expenditure.method}) · "
+          f"target {cals} ({energy.balance_kcal:+}) · EA {energy.energy_availability}"
+          + (f" · floors: {', '.join(energy.floors_binding)}" if energy.floors_binding else ""))
+
+    # Meals now sum to the day's real totals.
+    meals = build_meals(weight, primary, phase=phase, diet=diet,
+                        targets={"carbs_g": carbs_g, "protein_g": protein_g, "fat_g": fat_g})
 
     # In-session fuel plan
     session = in_session_plan(
@@ -334,6 +402,13 @@ def build_day_plan(
         # Insert at top so it's the first thing the athlete sees
         flags.insert(0, tl_flag)
 
+    # Energy position leads the card — it's the number that now drives
+    # everything else on it.
+    flags.insert(0, energy_flag(energy))
+    for note in energy.adjustments:
+        flags.append({"level": "warn" if "rising" in note or "faster" in note else "ok",
+                      "title": "Energy adjustment", "text": note})
+
     # Biomarkers list for the panel
     biomarkers_out = []
     panel_date_str = None
@@ -361,6 +436,67 @@ def build_day_plan(
             "distance": next_a.distance,
             "priority": next_a.priority,
         }
+
+    # ─── Gut training ────────────────────────────────────────────────
+    # in_session_carbs_g_per_hr caps at gut_trained_to_g_hr — correct, but
+    # static. Nothing raised it and nothing told the athlete to try, so the
+    # tool would have prescribed the same tolerance on race day as eight
+    # months out.
+    gut_plan = build_gut_plan(
+        today=target_date,
+        days_to_race=race_dict["days_to_go"] if race_dict else None,
+        current_g_hr=athlete.gut_trained_to_g_hr,
+        race_distance=race_dict["distance"] if race_dict else None,
+        session_duration_min=primary.duration_min if primary else 0.0,
+    )
+    gut_dict = None
+    if gut_plan is not None:
+        gut_dict = {
+            "current_g_hr": gut_plan.current_g_hr,
+            "race_target_g_hr": gut_plan.race_target_g_hr,
+            "gap_g_hr": gut_plan.gap_g_hr,
+            "weeks_to_race": gut_plan.weeks_to_race,
+            "feasible": gut_plan.feasible,
+            "today_is_rehearsal": gut_plan.today_is_rehearsal,
+            "today_target_g_hr": gut_plan.today_target_g_hr,
+            "note": gut_plan.note,
+            "ladder": [{"target_g_hr": x.target_g_hr, "start_date": x.start_date.isoformat(),
+                        "weeks": x.weeks, "is_current": x.is_current} for x in gut_plan.ladder],
+        }
+        gf = gut_plan_flag(gut_plan)
+        if gf:
+            flags.append(gf)
+
+    # Energy + body block for the dashboard
+    energy_dict = {
+        "goal": energy.goal,
+        "expenditure_kcal": expenditure.total_kcal,
+        "rest_baseline_kcal": expenditure.rest_baseline_kcal,
+        "session_kcal": expenditure.session_kcal,
+        "method": expenditure.method,
+        "target_kcal": energy.target_kcal,
+        "balance_kcal": energy.balance_kcal,
+        "energy_availability": energy.energy_availability,
+        "ea_floor": energy.ea_floor,
+        "floors_binding": energy.floors_binding,
+        "adjustments": energy.adjustments,
+        "protein_basis": energy.protein_basis,
+        "carbs_periodized_g": carbs_periodized,
+    }
+    body_dict = {
+        "weight_kg": round(weight, 1),
+        "weight_lb": round(weight * 2.20462, 1),
+        "weight_source": weight_source,
+        "trend_kg_per_week": state.weight_trend_kg_wk,
+        "trend_lb_per_week": (round(state.weight_trend_kg_wk * 2.20462, 2)
+                              if state.weight_trend_kg_wk is not None else None),
+        "body_fat_pct": state.body_fat_pct,
+        "ffm_kg": state.ffm_kg,
+        "rhr_7d": state.rhr_7d,
+        "hrv_last_night": state.hrv_last_night,
+        "hrv_status": state.hrv_status,
+        "notes": list(state.notes),
+    }
 
     # Workout dicts
     primary_dict = None
@@ -432,6 +568,9 @@ def build_day_plan(
         biomarker_panel_date=panel_date_str,
         race=race_dict,
         training_load=training_load_dict,
+        energy=energy_dict,
+        body=body_dict,
+        gut_training=gut_dict,
         generated_at=datetime.now(UTC).isoformat().replace("+00:00", "Z"),
     )
 
@@ -469,12 +608,21 @@ def run_engine(
     except GarminLoadUnavailable as e:
         print(f"training load: garmin feed unusable — {e}")
 
+    # Body composition, measured energy and recovery ride in the same feed.
+    # Fetched separately from the TSS series so a problem with one never
+    # suppresses the other. Never raises — an empty state means every
+    # consumer falls back to its configured value.
+    athlete_state = fetch_athlete_state()
+    for note in athlete_state.notes:
+        print(f"athlete state: {note}")
+
     plan = build_day_plan(
         target_date,
         athlete=athlete,
         workouts=workouts,
         panel=panel,
         daily_tss=daily_tss,
+        athlete_state=athlete_state,
     )
 
     out_path = Path(output_path)

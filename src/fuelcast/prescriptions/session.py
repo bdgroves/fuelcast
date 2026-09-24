@@ -128,7 +128,7 @@ def in_session_plan(
         steps.append(
             FuelStep(
                 when="−15 min",
-                what=f"Sip ~200 ml sports drink (≈ 15g carbs) before starting",
+                what="Sip ~200 ml sports drink (≈ 15g carbs) before starting",
                 carbs_g=15,
             )
         )

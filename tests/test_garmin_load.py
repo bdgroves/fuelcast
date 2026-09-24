@@ -7,7 +7,6 @@ model then reports a well-trained athlete as unfit and fatigued.
 
 from __future__ import annotations
 
-import math
 from datetime import date, timedelta
 
 import pytest
