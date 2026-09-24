@@ -220,7 +220,7 @@
     "state": "productive",
     "carb_bump_pct": 0,
     "source": "garmin",
-    "days_modelled": 182,
+    "days_modelled": 181,
     "history": [
       {
         "date": "2026-08-26",
@@ -273,7 +273,7 @@
       },
       {
         "date": "2026-09-02",
-        "ctl": 78.8,
+        "ctl": 78.7,
         "atl": 116.6,
         "tsb": -37.9,
         "tss": 222.7
@@ -434,5 +434,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-24T08:49:54.576286Z"
+  "generated_at": "2026-09-24T14:29:54.361907Z"
 }
