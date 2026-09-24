@@ -11,7 +11,18 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Bike: TrainingPeaks Virtual - Wollongong, New South Wales, Australia",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-09-21",
@@ -742,5 +753,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-24T20:23:12.072728Z"
+  "generated_at": "2026-09-24T22:48:28.186562Z"
 }
