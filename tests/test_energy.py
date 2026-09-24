@@ -258,3 +258,47 @@ def test_regression_meals_sum_to_daily_targets():
         assert sum(m[k] for m in meals) == v, k
     dinner = next(m for m in meals if m["slot"] == "dinner")
     assert dinner["carbs_g"] < 250            # not the 390 g dump
+
+
+# ─── regressions from the first live run (2026-09-24) ────────────────
+
+LIVE = dict(measured_tdee=3231, measured_training_kcal=823, measured_bmr=2215,
+            kcal_per_hour={"run": 325, "ride": 516}, weight_kg=94.8,
+            height_cm=178, age=56, sex="M")
+
+
+def test_regression_no_body_fat_does_not_produce_a_surplus():
+    """First live run: the scale sent no body fat, protein fell back to 100%
+    of body weight (228 g), the floors exceeded expenditure, and a
+    weight-loss day prescribed +101 kcal."""
+    e = estimate_expenditure(session_sport="run", session_duration_hr=1.0, **LIVE)
+    p = fit_macros(goal="weight_loss", color="YELLOW", expenditure=e, weight_kg=94.8,
+                   ffm_kg=None, protein_g_per_kg=2.4, carbs_periodized_g=521, sex="M")
+    assert p.balance_kcal < 0
+    assert p.protein_g < 228
+
+
+def test_protein_and_ea_use_the_same_lean_mass_estimate():
+    """They previously assumed 100% and 80% of body weight respectively."""
+    e = estimate_expenditure(session_sport=None, session_duration_hr=0, **LIVE)
+    p = fit_macros(goal="weight_loss", color="RED", expenditure=e, weight_kg=94.8,
+                   ffm_kg=None, protein_g_per_kg=2.4, carbs_periodized_g=330, sex="M")
+    assert p.ffm_estimated is True
+    assert p.protein_g == round(2.4 * 94.8 * 0.80)
+    assert "estimated" in p.protein_basis
+
+
+def test_measured_ffm_is_not_labelled_estimated():
+    e = estimate_expenditure(session_sport=None, session_duration_hr=0, **LIVE)
+    p = fit_macros(goal="weight_loss", color="RED", expenditure=e, weight_kg=94.8,
+                   ffm_kg=72.0, protein_g_per_kg=2.4, carbs_periodized_g=330, sex="M")
+    assert p.ffm_estimated is False
+    assert "estimated" not in p.protein_basis
+
+
+def test_weight_basis_carried_through():
+    """A single weigh-in from 15 days ago must not be labelled a 7-day mean."""
+    st = parse_athlete_state({"weight": {"smoothed_kg": 94.8, "stale_days": 15,
+                                         "basis": "last weigh-in Sep 9"}})
+    assert st.weight_basis == "last weigh-in Sep 9"
+    assert st.weight_stale_days == 15

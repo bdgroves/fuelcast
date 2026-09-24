@@ -167,6 +167,8 @@ MIN_ENERGY_DAYS = 5
 class AthleteState:
     weight_kg: float | None = None           # 7-day smoothed
     weight_trend_kg_wk: float | None = None  # 30-day slope
+    weight_basis: str | None = None          # what the weight number actually is
+    weight_stale_days: int | None = None
     body_fat_pct: float | None = None
     ffm_kg: float | None = None              # fat-free mass
     tdee_kcal: float | None = None           # measured, 7-day mean
@@ -205,6 +207,8 @@ def parse_athlete_state(doc: dict) -> AthleteState:
     if kg:
         st.weight_kg = kg
         st.weight_trend_kg_wk = w.get("trend_kg_per_week")
+        st.weight_basis = w.get("basis")
+        st.weight_stale_days = stale
         bf = w.get("body_fat_pct")
         if bf and 3.0 <= float(bf) <= 60.0:
             st.body_fat_pct = float(bf)

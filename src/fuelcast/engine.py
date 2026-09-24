@@ -258,7 +258,11 @@ def build_day_plan(
     # value in athlete.yaml, whose comment said "update monthly" — meaning
     # every per-kg macro drifted between edits.
     weight = state.weight_kg or athlete.weight_kg
-    weight_source = "garmin scale, 7-day mean" if state.weight_kg else "athlete.yaml"
+    # Say what the weight actually is — a genuine mean, or one old reading.
+    if state.weight_kg:
+        weight_source = f"garmin scale · {state.weight_basis or 'recent'}"
+    else:
+        weight_source = "athlete.yaml"
     age = calculate_age(athlete)
     phase = athlete.phase
     diet = athlete.diet

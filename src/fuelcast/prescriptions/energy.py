@@ -106,6 +106,9 @@ CARB_MIN_G_PER_KG = {"RED": 2.0, "YELLOW": 3.5, "GREEN": 5.0}
 FAT_MIN_G_PER_KG = 0.7
 FAT_MAX_G_PER_KG = 1.5
 
+# Lean mass as a fraction of body weight when the scale gives no body fat.
+FFM_FALLBACK_FRACTION = 0.80
+
 # Losing faster than this fraction of bodyweight per week costs lean mass
 # (Garthe 2011). The model halves the deficit when it sees it.
 MAX_SAFE_LOSS_FRAC_PER_WEEK = 0.01
@@ -212,6 +215,7 @@ class EnergyPlan:
     adjustments: list[str] = field(default_factory=list)
     protein_basis: str = "total bodyweight"
     ea_floor: float = 25.0
+    ffm_estimated: bool = False
 
 
 def fit_macros(
@@ -260,9 +264,23 @@ def fit_macros(
     # In a deficit, protein is prescribed per kg of lean mass (Helms 2014).
     # Applying it to total bodyweight at 2.4 g/kg left no room for any
     # deficit at all on a rest day — the floors alone exceeded expenditure.
-    if goal == "weight_loss" and ffm_kg:
-        protein_g = round(protein_g_per_kg * ffm_kg)
-        protein_basis = f"fat-free mass ({ffm_kg:.1f} kg)"
+    #
+    # One lean-mass figure is used for both protein and energy availability.
+    # When the scale reports no body fat, it is estimated at 80% of body
+    # weight. That estimate used to apply only to the EA check while protein
+    # fell back to 100% of body weight — two different assumptions about the
+    # same body. With no body-fat reading, that pushed protein to 228 g and
+    # the macro floors above the day's expenditure, so a weight-loss day
+    # prescribed a surplus. 80% errs high for most adults, which errs toward
+    # *more* protein and a *higher* EA floor: safe in both directions.
+    ffm_estimated = ffm_kg is None
+    ffm_used = ffm_kg if ffm_kg else weight_kg * FFM_FALLBACK_FRACTION
+    if goal == "weight_loss":
+        protein_g = round(protein_g_per_kg * ffm_used)
+        protein_basis = (
+            f"estimated lean mass ({ffm_used:.1f} kg, 80% of weight — no body-fat reading)"
+            if ffm_estimated else f"fat-free mass ({ffm_used:.1f} kg)"
+        )
     else:
         protein_g = round(protein_g_per_kg * weight_kg)
         protein_basis = "total bodyweight"
@@ -272,9 +290,9 @@ def fit_macros(
     fat_max = round(FAT_MAX_G_PER_KG * weight_kg)
 
     # ── Energy-availability floor ──
-    # EA = (intake - exercise energy) / FFM. If FFM is unknown, estimate at
-    # 80% of bodyweight — deliberately generous, so the guard errs safe.
-    ffm_for_ea = ffm_kg or weight_kg * 0.80
+    # EA = (intake - exercise energy) / FFM, using the same lean-mass figure
+    # as protein above.
+    ffm_for_ea = ffm_used
     ea_min_target = ea_floor * ffm_for_ea + expenditure.session_kcal
     if target < ea_min_target:
         floors.append(f"energy availability (≥{ea_floor:.0f} kcal/kg FFM)")
@@ -315,6 +333,7 @@ def fit_macros(
         adjustments=adjustments,
         protein_basis=protein_basis,
         ea_floor=ea_floor,
+        ffm_estimated=ffm_estimated,
     )
 
 
