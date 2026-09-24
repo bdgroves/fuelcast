@@ -368,6 +368,7 @@ def build_day_plan(
         carbs_periodized_g=carbs_periodized,
         weight_trend_kg_wk=state.weight_trend_kg_wk,
         sex=athlete.raw.get("sex", "M"),
+        load_state=tsb_state(current_load.tsb) if current_load else None,
     )
     carbs_g, protein_g, fat_g = energy.carbs_g, energy.protein_g, energy.fat_g
     cals = energy.target_kcal

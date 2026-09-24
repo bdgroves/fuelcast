@@ -302,3 +302,64 @@ def test_weight_basis_carried_through():
                                          "basis": "last weigh-in Sep 9"}})
     assert st.weight_basis == "last weigh-in Sep 9"
     assert st.weight_stale_days == 15
+
+
+# ─── recovery vs deficit, and flags that match the plan ──────────────
+
+def test_overreached_suspends_the_deficit():
+    e = estimate_expenditure(session_sport="run", session_duration_hr=1.0, **LIVE)
+    p = fit_macros(goal="weight_loss", color="YELLOW", expenditure=e, weight_kg=94.8,
+                   ffm_kg=67.1, protein_g_per_kg=2.4, carbs_periodized_g=573,
+                   sex="M", load_state="overreached")
+    assert abs(p.balance_kcal) < 60
+    assert any("suspended" in a for a in p.adjustments)
+
+
+def test_heavy_load_halves_the_deficit_when_it_can():
+    e = estimate_expenditure(session_sport="bike", session_duration_hr=3.0, **LIVE)
+    kw = dict(goal="weight_loss", color="GREEN", expenditure=e, weight_kg=94.8,
+              ffm_kg=67.1, protein_g_per_kg=2.4, carbs_periodized_g=900, sex="M")
+    normal = fit_macros(**kw)
+    heavy = fit_macros(**kw, load_state="heavy_load")
+    assert heavy.balance_kcal > normal.balance_kcal
+    assert any("halved" in a for a in heavy.adjustments)
+
+
+def test_regression_no_claim_of_easing_when_nothing_changed():
+    """When the floors already hold the deficit small, halving changes
+    nothing — so the plan must not say it halved anything."""
+    e = estimate_expenditure(session_sport="run", session_duration_hr=1.0, **LIVE)
+    p = fit_macros(goal="weight_loss", color="YELLOW", expenditure=e, weight_kg=94.8,
+                   ffm_kg=67.1, protein_g_per_kg=2.4, carbs_periodized_g=573,
+                   sex="M", load_state="heavy_load")
+    assert not any("halved" in a for a in p.adjustments)
+    assert any("no further easing" in a for a in p.adjustments)
+
+
+def test_regression_training_load_flag_makes_no_fuel_claims():
+    """It said 'carbs bumped 10%' while the energy model had trimmed them."""
+    from datetime import date as _d
+
+    from fuelcast.training_load import TrainingLoad, training_load_flag
+    for tsb in (-13, -25):
+        f = training_load_flag(TrainingLoad(date=_d(2026, 9, 24), ctl=85, atl=85 - tsb,
+                                            tsb=tsb, tss_today=0))
+        assert "bumped" not in f["text"]
+        assert "carbs" not in f["text"].lower()
+
+
+def test_regression_no_salt_when_sodium_target_is_zero():
+    """A 60-min bottle said '+ ½ tsp salt' beside '≈ 0 mg sodium'."""
+    from datetime import date as _d
+
+    from fuelcast.prescriptions.session import in_session_plan
+    from fuelcast.sources.trainingpeaks import Workout
+    short = in_session_plan(Workout(date=_d(2026, 9, 24), title="Run", sport="run",
+                                    duration_min=60, tss=None), gut_trained_to=75)
+    b1 = next(s.what for s in short.steps if s.what.startswith("Bottle 1"))
+    assert "salt" not in b1 and short.sodium_mg == 0
+
+    long = in_session_plan(Workout(date=_d(2026, 9, 24), title="Ride", sport="bike",
+                                   duration_min=120, tss=None), gut_trained_to=75)
+    b1 = next(s.what for s in long.steps if s.what.startswith("Bottle 1"))
+    assert "¼ tsp salt" in b1 and "500 mg" in b1

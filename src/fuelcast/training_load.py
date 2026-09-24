@@ -228,7 +228,12 @@ def training_load_flag(load: TrainingLoad | None) -> dict | None:
             "title": "Heavy load",
             "text": (
                 f"TSB {load.tsb:+.0f}, CTL {load.ctl:.0f}, ATL {load.atl:.0f}. "
-                "Significant fatigue — carbs bumped 10% for recovery. "
+                # Training state only. This used to say "carbs bumped 10% for
+                # recovery", but the energy model can trim carbs afterwards —
+                # on the first live page the bump was erased entirely while
+                # this flag still claimed it. What fuel actually did is
+                # reported by the energy flag, which knows.
+                "Significant fatigue. "
                 "Quality session OK if planned, otherwise consider easy."
             ),
         }
@@ -238,7 +243,7 @@ def training_load_flag(load: TrainingLoad | None) -> dict | None:
         "title": "Overreached",
         "text": (
             f"TSB {load.tsb:+.0f}, CTL {load.ctl:.0f}, ATL {load.atl:.0f}. "
-            "Fatigue significantly exceeds fitness — carbs bumped 15%. "
+            "Fatigue significantly exceeds fitness. "
             "Strongly consider a rest or easy day; pushing through risks "
             "deeper hole."
         ),

@@ -100,6 +100,26 @@ def sodium_mg_per_hr(workout: Workout, *, hot_day: bool = False) -> int:
     return 500
 
 
+# Table salt is ~40% sodium: one level teaspoon (~5.8 g) carries ~2,300 mg.
+MG_SODIUM_PER_TSP_SALT = 2300
+
+
+def _salt_text(workout: Workout, hot_day: bool) -> str:
+    """Salt instruction for one hour's bottle, matched to the sodium target.
+
+    This used to say "+ ½ tsp salt" unconditionally. Sessions under 75
+    minutes get a 0 mg/hr sodium target, so the page told the athlete to
+    salt the bottle and then reported "≈ 0 mg sodium" on the same card — and
+    even on long sessions ½ tsp (~1,150 mg) was over twice the hourly target.
+    """
+    mg = sodium_mg_per_hr(workout, hot_day=hot_day)
+    if mg <= 0:
+        return ""
+    frac = mg / MG_SODIUM_PER_TSP_SALT
+    tsp = "⅓" if frac >= 0.29 else "¼"
+    return f" + {tsp} tsp salt (~{mg} mg sodium)"
+
+
 def in_session_plan(
     workout: Workout | None,
     *,
@@ -139,7 +159,7 @@ def in_session_plan(
         FuelStep(
             when=f"0–{min(60, int(workout.duration_min))} min",
             what=(
-                f"Bottle 1: ~{bottle_carbs}g carbs in 750 ml + ½ tsp salt. "
+                f"Bottle 1: ~{bottle_carbs}g carbs in 750 ml{_salt_text(workout, hot_day)}. "
                 "Drain steadily through first hour."
             ),
             carbs_g=bottle_carbs,

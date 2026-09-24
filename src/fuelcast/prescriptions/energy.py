@@ -229,6 +229,7 @@ def fit_macros(
     carbs_periodized_g: int,
     weight_trend_kg_wk: float | None = None,
     sex: str = "M",
+    load_state: str | None = None,
 ) -> EnergyPlan:
     """Set today's target from the goal, then fit macros inside it."""
     ea_floor = EA_FLOOR_KCAL_PER_KG_FFM["F" if str(sex).upper().startswith("F") else "M"]
@@ -254,6 +255,16 @@ def fit_macros(
                 adjustments.append(
                     f"weight rising {weight_trend_kg_wk:+.2f} kg/wk during a loss block — "
                     "check intake logging or TDEE; not auto-escalating the deficit")
+        # Recovery outranks the goal. A deficit while carrying heavy
+        # fatigue slows adaptation and raises injury and illness risk. The
+        # first live page showed a -167 kcal day right next to a "significant
+        # fatigue" warning — the two contradicted each other.
+        if load_state == "overreached":
+            deficit = 0
+            adjustments.append("overreached — deficit suspended, eating at maintenance")
+        elif load_state == "heavy_load":
+            deficit *= 0.5
+            adjustments.append("heavy training load — deficit halved to protect recovery")
         target = exp_total - deficit
     elif goal == "training_focus":
         target = exp_total * (1 + SURPLUS_BY_COLOR_TRAINING[color])
@@ -319,6 +330,26 @@ def fit_macros(
 
     actual = protein_g * KCAL_PER_G_PROTEIN + carbs_g * KCAL_PER_G_CARB + fat_g * KCAL_PER_G_FAT
     ea = (actual - expenditure.session_kcal) / ffm_for_ea
+
+    # Only claim a recovery adjustment if it changed the outcome. When the
+    # macro floors already hold the deficit smaller than the eased version,
+    # "deficit halved" is true of the request and false of the plan — the
+    # same kind of claim that made the old training-load flag misleading.
+    if goal == "weight_loss" and load_state in ("heavy_load", "overreached"):
+        unadjusted = fit_macros(
+            goal=goal, color=color, expenditure=expenditure, weight_kg=weight_kg,
+            ffm_kg=ffm_kg, protein_g_per_kg=protein_g_per_kg,
+            carbs_periodized_g=carbs_periodized_g, weight_trend_kg_wk=weight_trend_kg_wk,
+            sex=sex, load_state=None,
+        )
+        if round(actual) == unadjusted.target_kcal:
+            adjustments = [
+                a for a in adjustments
+                if not a.startswith(("heavy training load", "overreached"))
+            ]
+            adjustments.append(
+                f"{load_state.replace('_', ' ')} — the macro floors already keep today's "
+                "deficit small, so no further easing was needed")
 
     return EnergyPlan(
         goal=goal,
