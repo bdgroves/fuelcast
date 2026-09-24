@@ -23,6 +23,7 @@ from fuelcast.prescriptions.energy import energy_flag, estimate_expenditure, fit
 from fuelcast.prescriptions.gut_training import build_gut_plan, gut_plan_flag
 from fuelcast.prescriptions.protein import daily_protein_g_per_kg
 from fuelcast.prescriptions.session import in_session_plan
+from fuelcast.sources import hrv4training
 from fuelcast.sources.garmin import (
     AthleteState,
     GarminLoadUnavailable,
@@ -67,6 +68,7 @@ class DayPlan:
     energy: dict | None = None
     body: dict | None = None
     gut_training: dict | None = None
+    hrv: dict | None = None
     training_load: dict | None = None
     generated_at: str = ""
 
@@ -247,6 +249,7 @@ def build_day_plan(
     panel: BloodworkPanel | None,
     daily_tss: dict[str, float] | None = None,
     athlete_state: AthleteState | None = None,
+    hrv_state: hrv4training.HRVState | None = None,
 ) -> DayPlan:
     """Build a complete day plan for the given date."""
     primary = workout_for(target_date, workouts)
@@ -369,6 +372,7 @@ def build_day_plan(
         weight_trend_kg_wk=state.weight_trend_kg_wk,
         sex=athlete.raw.get("sex", "M"),
         load_state=tsb_state(current_load.tsb) if current_load else None,
+        hrv_reason=hrv4training.recovery_level(hrv_state)[1] if hrv_state else None,
     )
     carbs_g, protein_g, fat_g = energy.carbs_g, energy.protein_g, energy.fat_g
     cals = energy.target_kcal
@@ -410,6 +414,38 @@ def build_day_plan(
     # Energy position leads the card — it's the number that now drives
     # everything else on it.
     flags.insert(0, energy_flag(energy))
+
+    # HRV4Training's own daily verdict, shown as it gave it.
+    hrv_dict = None
+    if hrv_state and hrv_state.latest:
+        lr = hrv_state.latest
+        stale = not hrv_state.usable_today
+        hrv_dict = {
+            "date": lr.day.isoformat(),
+            "age_days": hrv_state.age_days,
+            "usable_today": hrv_state.usable_today,
+            "rmssd": lr.rmssd,
+            "hr": lr.hr,
+            "verdict": lr.verdict,
+            "advice": lr.advice,
+            "rolling_ln": hrv_state.rolling_ln,
+            "baseline_ln": hrv_state.baseline_ln,
+            "baseline_sd": hrv_state.baseline_sd,
+            "readings_30d": hrv_state.readings_30d,
+            "history": [
+                {"date": h.day.isoformat(), "rmssd": h.rmssd, "verdict": h.verdict}
+                for h in hrv_state.history
+            ],
+        }
+        if stale:
+            text = (f"Last reading {hrv_state.age_days} days ago ({lr.rmssd:.0f} ms) — "
+                    "take one tomorrow morning so today's plan can use it.")
+            level = "ok"
+        else:
+            advice = lr.advice or "no verdict"
+            text = f"rMSSD {lr.rmssd:.0f} ms this morning. HRV4Training: {advice}."
+            level = "warn" if lr.verdict in ("below", "unusually_high") else "ok"
+        flags.insert(1, {"level": level, "title": "HRV", "text": text})
     for note in energy.adjustments:
         flags.append({"level": "warn" if "rising" in note or "faster" in note else "ok",
                       "title": "Energy adjustment", "text": note})
@@ -576,6 +612,7 @@ def build_day_plan(
         energy=energy_dict,
         body=body_dict,
         gut_training=gut_dict,
+        hrv=hrv_dict,
         generated_at=datetime.now(UTC).isoformat().replace("+00:00", "Z"),
     )
 
@@ -587,6 +624,7 @@ def run_engine(
     bloodwork_dir: Path | str = "data/bloodwork",
     output_path: Path | str = "data/today.json",
     ics_text: str | None = None,
+    hrv_path: Path | str = "data/hrv4training.csv",
 ) -> DayPlan:
     """Top-level entry point: build the day plan and write JSON output."""
     target_date = target_date or date.today()
@@ -618,6 +656,17 @@ def run_engine(
     # suppresses the other. Never raises — an empty state means every
     # consumer falls back to its configured value.
     athlete_state = fetch_athlete_state()
+
+    # HRV4Training export. Arrives by manual export or automated Dropbox
+    # fetch; either way it lands at the same path. A missing file is fine.
+    hrv_state = hrv4training.load(hrv_path, today=target_date)
+    for note in hrv_state.notes:
+        print(f"hrv: {note}")
+    if hrv_state.latest:
+        lr = hrv_state.latest
+        print(f"hrv: {lr.day} rMSSD {lr.rmssd} — {lr.verdict or 'no verdict'} "
+              f"({'used' if hrv_state.usable_today else 'shown only'}), "
+              f"{hrv_state.readings_30d} readings in 30 days")
     for note in athlete_state.notes:
         print(f"athlete state: {note}")
 
@@ -628,6 +677,7 @@ def run_engine(
         panel=panel,
         daily_tss=daily_tss,
         athlete_state=athlete_state,
+        hrv_state=hrv_state,
     )
 
     out_path = Path(output_path)

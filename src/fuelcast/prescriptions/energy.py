@@ -230,6 +230,7 @@ def fit_macros(
     weight_trend_kg_wk: float | None = None,
     sex: str = "M",
     load_state: str | None = None,
+    hrv_reason: str | None = None,
 ) -> EnergyPlan:
     """Set today's target from the goal, then fit macros inside it."""
     ea_floor = EA_FLOOR_KCAL_PER_KG_FFM["F" if str(sex).upper().startswith("F") else "M"]
@@ -259,12 +260,29 @@ def fit_macros(
         # fatigue slows adaptation and raises injury and illness risk. The
         # first live page showed a -167 kcal day right next to a "significant
         # fatigue" warning — the two contradicted each other.
+        #
+        # Two independent fatigue signals: training load (TSB) and morning
+        # HRV. Each can ease the deficit; when they agree they compound, so
+        # heavy load *and* a low HRV reading suspends it entirely.
+        reasons = []
+        level = 0
         if load_state == "overreached":
-            deficit = 0
-            adjustments.append("overreached — deficit suspended, eating at maintenance")
+            level += 2
+            reasons.append("overreached")
         elif load_state == "heavy_load":
+            level += 1
+            reasons.append("heavy training load")
+        if hrv_reason:
+            level += 1
+            reasons.append(hrv_reason)
+        level = min(level, 2)
+        why = " + ".join(reasons)
+        if level == 2:
+            deficit = 0
+            adjustments.append(f"{why} — deficit suspended, eating at maintenance")
+        elif level == 1:
             deficit *= 0.5
-            adjustments.append("heavy training load — deficit halved to protect recovery")
+            adjustments.append(f"{why} — deficit halved to protect recovery")
         target = exp_total - deficit
     elif goal == "training_focus":
         target = exp_total * (1 + SURPLUS_BY_COLOR_TRAINING[color])
@@ -335,21 +353,22 @@ def fit_macros(
     # macro floors already hold the deficit smaller than the eased version,
     # "deficit halved" is true of the request and false of the plan — the
     # same kind of claim that made the old training-load flag misleading.
-    if goal == "weight_loss" and load_state in ("heavy_load", "overreached"):
+    if goal == "weight_loss" and (load_state in ("heavy_load", "overreached") or hrv_reason):
         unadjusted = fit_macros(
             goal=goal, color=color, expenditure=expenditure, weight_kg=weight_kg,
             ffm_kg=ffm_kg, protein_g_per_kg=protein_g_per_kg,
             carbs_periodized_g=carbs_periodized_g, weight_trend_kg_wk=weight_trend_kg_wk,
-            sex=sex, load_state=None,
+            sex=sex, load_state=None, hrv_reason=None,
         )
         if round(actual) == unadjusted.target_kcal:
-            adjustments = [
-                a for a in adjustments
-                if not a.startswith(("heavy training load", "overreached"))
-            ]
-            adjustments.append(
-                f"{load_state.replace('_', ' ')} — the macro floors already keep today's "
-                "deficit small, so no further easing was needed")
+            eased = [a for a in adjustments
+                     if "deficit halved" in a or "deficit suspended" in a]
+            adjustments = [a for a in adjustments if a not in eased]
+            if eased:
+                why = eased[0].split(" — ")[0]
+                adjustments.append(
+                    f"{why} — the macro floors already keep today's deficit small, "
+                    "so no further easing was needed")
 
     return EnergyPlan(
         goal=goal,

@@ -25,6 +25,18 @@ jobs:
           # Use frozen if lockfile exists, otherwise let pixi resolve
           frozen: ${{ hashFiles('pixi.lock') != '' }}
 
+      # HRV4Training export from Dropbox, trimmed to the columns FuelCast
+      # uses. Skips cleanly until the secrets exist, and never fails the job:
+      # on any problem the previously committed file is used instead.
+      - name: Fetch HRV4Training from Dropbox
+        env:
+          DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
+          DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
+          DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
+          DROPBOX_HRV_PATH: ${{ vars.DROPBOX_HRV_PATH }}
+          PYTHONPATH: src
+        run: pixi run python -m fuelcast.sources.dropbox_hrv
+
       - name: Run FuelCast
         env:
           TP_ICS_URL: ${{ secrets.TP_ICS_URL }}
@@ -34,7 +46,8 @@ jobs:
         run: |
           git config user.name "fuelcast-bot"
           git config user.email "fuelcast@brooksgroves.com"
-          git add data/today.json
+          # today.json plus the trimmed HRV file (six columns, nothing private).
+          git add data/today.json data/hrv4training.csv
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
