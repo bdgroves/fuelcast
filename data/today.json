@@ -136,7 +136,7 @@
     "steps": [
       {
         "when": "0\u201360 min",
-        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
+        "what": "Bottle 1: ~30g carbs in 750 ml. Drain steadily through first hour.",
         "carbs_g": 30
       },
       {
@@ -150,12 +150,17 @@
     {
       "level": "ok",
       "title": "Energy balance",
-      "text": "167 kcal deficit today \u2014 eating 2566 against ~2733 burned (measured (Garmin 7-day TDEE minus training)). Held up by: macro minimums (protein / carbs / fat)."
+      "text": "167 kcal deficit today \u2014 eating 2566 against ~2733 burned (measured (Garmin 7-day TDEE minus training))."
+    },
+    {
+      "level": "ok",
+      "title": "HRV",
+      "text": "rMSSD 34 ms this morning. HRV4Training: Proceed as planned."
     },
     {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -13, CTL 85, ATL 98. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -13, CTL 85, ATL 98. Significant fatigue. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -181,6 +186,11 @@
       "level": "ok",
       "title": "Energy adjustment",
       "text": "carbs trimmed 573 \u2192 332 g to fit the energy target"
+    },
+    {
+      "level": "ok",
+      "title": "Energy adjustment",
+      "text": "heavy training load \u2014 the macro floors already keep today's deficit small, so no further easing was needed"
     },
     {
       "level": "ok",
@@ -264,11 +274,10 @@
     "balance_kcal": -167,
     "energy_availability": 33.4,
     "ea_floor": 25.0,
-    "floors_binding": [
-      "macro minimums (protein / carbs / fat)"
-    ],
+    "floors_binding": [],
     "adjustments": [
-      "carbs trimmed 573 \u2192 332 g to fit the energy target"
+      "carbs trimmed 573 \u2192 332 g to fit the energy target",
+      "heavy training load \u2014 the macro floors already keep today's deficit small, so no further easing was needed"
     ],
     "protein_basis": "fat-free mass (67.1 kg)",
     "carbs_periodized_g": 573
@@ -313,6 +322,201 @@
         "start_date": "2026-11-19",
         "weeks": 4,
         "is_current": false
+      }
+    ]
+  },
+  "hrv": {
+    "date": "2026-09-24",
+    "age_days": 0,
+    "usable_today": true,
+    "rmssd": 34.22,
+    "hr": 60.04,
+    "verdict": "within",
+    "advice": "Proceed as planned",
+    "rolling_ln": 3.7,
+    "baseline_ln": 3.337,
+    "baseline_sd": 0.357,
+    "readings_30d": 12,
+    "history": [
+      {
+        "date": "2026-07-27",
+        "rmssd": 70.53,
+        "verdict": "unusually_high"
+      },
+      {
+        "date": "2026-07-28",
+        "rmssd": 32.78,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-07-29",
+        "rmssd": 29.52,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-07-30",
+        "rmssd": 19.38,
+        "verdict": "below"
+      },
+      {
+        "date": "2026-07-31",
+        "rmssd": 22.46,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-01",
+        "rmssd": 19.44,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-02",
+        "rmssd": 28.92,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-04",
+        "rmssd": 36.41,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-05",
+        "rmssd": 28.27,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-06",
+        "rmssd": 20.67,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-07",
+        "rmssd": 16.43,
+        "verdict": "below"
+      },
+      {
+        "date": "2026-08-08",
+        "rmssd": 27.18,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-09",
+        "rmssd": 25.29,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-10",
+        "rmssd": 30.19,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-11",
+        "rmssd": 19.19,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-12",
+        "rmssd": 24.41,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-13",
+        "rmssd": 14.04,
+        "verdict": "below"
+      },
+      {
+        "date": "2026-08-14",
+        "rmssd": 27.97,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-15",
+        "rmssd": 25.17,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-16",
+        "rmssd": 18.21,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-18",
+        "rmssd": 25.15,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-19",
+        "rmssd": 27.74,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-21",
+        "rmssd": 40.72,
+        "verdict": "slightly_above"
+      },
+      {
+        "date": "2026-08-25",
+        "rmssd": 27.0,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-26",
+        "rmssd": 25.69,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-27",
+        "rmssd": 31.25,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-08-31",
+        "rmssd": 65.32,
+        "verdict": "unusually_high"
+      },
+      {
+        "date": "2026-09-01",
+        "rmssd": 23.59,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-09-02",
+        "rmssd": 24.77,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-09-09",
+        "rmssd": 26.64,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-09-10",
+        "rmssd": 22.65,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-09-15",
+        "rmssd": 58.22,
+        "verdict": "unusually_high"
+      },
+      {
+        "date": "2026-09-17",
+        "rmssd": 26.18,
+        "verdict": "within"
+      },
+      {
+        "date": "2026-09-22",
+        "rmssd": 46.62,
+        "verdict": "above"
+      },
+      {
+        "date": "2026-09-23",
+        "rmssd": 41.5,
+        "verdict": "slightly_above"
+      },
+      {
+        "date": "2026-09-24",
+        "rmssd": 34.22,
+        "verdict": "within"
       }
     ]
   },
@@ -538,5 +742,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-24T19:38:41.166712Z"
+  "generated_at": "2026-09-24T20:23:12.072728Z"
 }
