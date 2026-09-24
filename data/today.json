@@ -72,11 +72,11 @@
   ],
   "macros": {
     "carbs_g": 332,
-    "protein_g": 228,
+    "protein_g": 182,
     "fat_g": 66,
-    "calories": 2834,
+    "calories": 2650,
     "carbs_g_per_kg": 3.5,
-    "protein_g_per_kg": 2.41,
+    "protein_g_per_kg": 1.92,
     "carb_bump_pct": 10
   },
   "meals": [
@@ -86,7 +86,7 @@
       "time": "6:30 AM",
       "color": "RED",
       "carbs_g": 62,
-      "protein_g": 57,
+      "protein_g": 46,
       "fat_g": 13,
       "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
       "label": "Pre-session \u00b7 light, low-fiber"
@@ -97,7 +97,7 @@
       "time": "12:30 PM",
       "color": "YELLOW",
       "carbs_g": 104,
-      "protein_g": 65,
+      "protein_g": 52,
       "fat_g": 22,
       "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
       "label": "Steady mid-day fuel"
@@ -108,7 +108,7 @@
       "time": "4:00 PM",
       "color": "RED",
       "carbs_g": 62,
-      "protein_g": 33,
+      "protein_g": 26,
       "fat_g": 10,
       "note": "Apple + 2 tbsp almond butter, or Greek yogurt with walnuts + flaxseed.",
       "label": "Bridge to dinner"
@@ -119,7 +119,7 @@
       "time": "7:00 PM",
       "color": "YELLOW",
       "carbs_g": 104,
-      "protein_g": 73,
+      "protein_g": 58,
       "fat_g": 21,
       "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat.",
       "label": "Veg-forward, balanced"
@@ -150,7 +150,7 @@
     {
       "level": "ok",
       "title": "Energy balance",
-      "text": "101 kcal surplus today \u2014 eating 2834 against ~2733 burned (measured (Garmin 7-day TDEE minus training)). Held up by: macro minimums (protein / carbs / fat)."
+      "text": "83 kcal deficit today \u2014 eating 2650 against ~2733 burned (measured (Garmin 7-day TDEE minus training)). Held up by: macro minimums (protein / carbs / fat)."
     },
     {
       "level": "warn",
@@ -260,9 +260,9 @@
     "rest_baseline_kcal": 2408,
     "session_kcal": 325,
     "method": "measured (Garmin 7-day TDEE minus training)",
-    "target_kcal": 2834,
-    "balance_kcal": 101,
-    "energy_availability": 33.1,
+    "target_kcal": 2650,
+    "balance_kcal": -83,
+    "energy_availability": 30.7,
     "ea_floor": 25.0,
     "floors_binding": [
       "macro minimums (protein / carbs / fat)"
@@ -270,13 +270,13 @@
     "adjustments": [
       "carbs trimmed 573 \u2192 332 g to fit the energy target"
     ],
-    "protein_basis": "total bodyweight",
+    "protein_basis": "estimated lean mass (75.8 kg, 80% of weight \u2014 no body-fat reading)",
     "carbs_periodized_g": 573
   },
   "body": {
     "weight_kg": 94.8,
     "weight_lb": 209.0,
-    "weight_source": "garmin scale, 7-day mean",
+    "weight_source": "garmin scale \u00b7 recent",
     "trend_kg_per_week": null,
     "trend_lb_per_week": null,
     "body_fat_pct": null,
@@ -538,5 +538,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-24T19:08:54.325512Z"
+  "generated_at": "2026-09-24T19:35:33.581763Z"
 }
