@@ -2,8 +2,15 @@
   "date": "2026-09-24",
   "weekday": "Thursday",
   "phase": "base",
-  "day_color": "RED",
-  "workout": null,
+  "day_color": "YELLOW",
+  "workout": {
+    "title": "Run: Treadmill Running",
+    "sport": "run",
+    "duration_min": 60,
+    "tss": null,
+    "intensity_factor": null,
+    "is_completed": false
+  },
   "secondary_workouts": [],
   "week_strip": [
     {
@@ -33,10 +40,10 @@
     {
       "date": "2026-09-24",
       "label": "T",
-      "color": "red",
+      "color": "yellow",
       "is_today": true,
-      "title": "Rest",
-      "duration_min": 0
+      "title": "Run: Treadmill Running",
+      "duration_min": 60
     },
     {
       "date": "2026-09-25",
@@ -64,13 +71,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 318,
-    "protein_g": 218,
-    "fat_g": 100,
-    "calories": 3044,
-    "carbs_g_per_kg": 3.49,
-    "protein_g_per_kg": 2.4,
-    "carb_bump_pct": 0
+    "carbs_g": 332,
+    "protein_g": 228,
+    "fat_g": 66,
+    "calories": 2834,
+    "carbs_g_per_kg": 3.5,
+    "protein_g_per_kg": 2.41,
+    "carb_bump_pct": 10
   },
   "meals": [
     {
@@ -78,20 +85,20 @@
       "name": "Breakfast",
       "time": "6:30 AM",
       "color": "RED",
-      "carbs_g": 30,
-      "protein_g": 35,
-      "fat_g": 15,
-      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
-      "label": "Steady start"
+      "carbs_g": 62,
+      "protein_g": 57,
+      "fat_g": 13,
+      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
+      "label": "Pre-session \u00b7 light, low-fiber"
     },
     {
       "slot": "lunch",
       "name": "Lunch",
       "time": "12:30 PM",
-      "color": "RED",
-      "carbs_g": 30,
-      "protein_g": 40,
-      "fat_g": 25,
+      "color": "YELLOW",
+      "carbs_g": 104,
+      "protein_g": 65,
+      "fat_g": 22,
       "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
       "label": "Steady mid-day fuel"
     },
@@ -100,9 +107,9 @@
       "name": "Afternoon Snack",
       "time": "4:00 PM",
       "color": "RED",
-      "carbs_g": 30,
-      "protein_g": 20,
-      "fat_g": 12,
+      "carbs_g": 62,
+      "protein_g": 33,
+      "fat_g": 10,
       "note": "Apple + 2 tbsp almond butter, or Greek yogurt with walnuts + flaxseed.",
       "label": "Bridge to dinner"
     },
@@ -110,20 +117,45 @@
       "slot": "dinner",
       "name": "Dinner",
       "time": "7:00 PM",
-      "color": "RED",
-      "carbs_g": 228,
-      "protein_g": 45,
-      "fat_g": 25,
-      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat. Add ~198g extra complex carbs (rice, sweet potato).",
+      "color": "YELLOW",
+      "carbs_g": 104,
+      "protein_g": 73,
+      "fat_g": 21,
+      "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat.",
       "label": "Veg-forward, balanced"
     }
   ],
-  "in_session": null,
+  "in_session": {
+    "target_carbs_g_per_hr": 30,
+    "total_carbs_g": 30,
+    "sodium_mg": 0,
+    "glucose_pct": 100,
+    "fructose_pct": 0,
+    "bottle_count": 1,
+    "note": "",
+    "steps": [
+      {
+        "when": "0\u201360 min",
+        "what": "Bottle 1: ~30g carbs in 750 ml + \u00bd tsp salt. Drain steadily through first hour.",
+        "carbs_g": 30
+      },
+      {
+        "when": "Total",
+        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
+        "carbs_g": 0
+      }
+    ]
+  },
   "flags": [
     {
       "level": "ok",
-      "title": "Recovery state",
-      "text": "TSB -9, CTL 84. Productive load zone \u2014 fitness is building."
+      "title": "Energy balance",
+      "text": "101 kcal surplus today \u2014 eating 2834 against ~2733 burned (measured (Garmin 7-day TDEE minus training)). Held up by: macro minimums (protein / carbs / fat)."
+    },
+    {
+      "level": "warn",
+      "title": "Heavy load",
+      "text": "TSB -13, CTL 85, ATL 98. Significant fatigue \u2014 carbs bumped 10% for recovery. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -144,6 +176,16 @@
       "level": "warn",
       "title": "Omega-3 Index",
       "text": "Index at 7.2% \u2014 below 8% target. Algal DHA/EPA supplement (vegetarian) or daily flax + walnuts."
+    },
+    {
+      "level": "ok",
+      "title": "Energy adjustment",
+      "text": "carbs trimmed 573 \u2192 332 g to fit the energy target"
+    },
+    {
+      "level": "ok",
+      "title": "Gut training",
+      "text": "75 \u2192 90 g/hr, 35 weeks to race. Next rung 80 g/hr on long sessions."
     }
   ],
   "biomarkers": [
@@ -212,13 +254,75 @@
     "distance": 70.3,
     "priority": "A"
   },
+  "energy": {
+    "goal": "weight_loss",
+    "expenditure_kcal": 2733,
+    "rest_baseline_kcal": 2408,
+    "session_kcal": 325,
+    "method": "measured (Garmin 7-day TDEE minus training)",
+    "target_kcal": 2834,
+    "balance_kcal": 101,
+    "energy_availability": 33.1,
+    "ea_floor": 25.0,
+    "floors_binding": [
+      "macro minimums (protein / carbs / fat)"
+    ],
+    "adjustments": [
+      "carbs trimmed 573 \u2192 332 g to fit the energy target"
+    ],
+    "protein_basis": "total bodyweight",
+    "carbs_periodized_g": 573
+  },
+  "body": {
+    "weight_kg": 94.8,
+    "weight_lb": 209.0,
+    "weight_source": "garmin scale, 7-day mean",
+    "trend_kg_per_week": null,
+    "trend_lb_per_week": null,
+    "body_fat_pct": null,
+    "ffm_kg": null,
+    "rhr_7d": 60.0,
+    "hrv_last_night": null,
+    "hrv_status": null,
+    "notes": []
+  },
+  "gut_training": {
+    "current_g_hr": 75,
+    "race_target_g_hr": 90,
+    "gap_g_hr": 15,
+    "weeks_to_race": 35,
+    "feasible": true,
+    "today_is_rehearsal": false,
+    "today_target_g_hr": null,
+    "note": "15 g/hr to close in 32 usable weeks. +5 g/hr every 4 weeks, practised on sessions of 2hr or longer. Raise gut_trained_to_g_hr in athlete.yaml once a rung sits comfortably across two or three long sessions.",
+    "ladder": [
+      {
+        "target_g_hr": 80,
+        "start_date": "2026-09-24",
+        "weeks": 4,
+        "is_current": true
+      },
+      {
+        "target_g_hr": 85,
+        "start_date": "2026-10-22",
+        "weeks": 4,
+        "is_current": false
+      },
+      {
+        "target_g_hr": 90,
+        "start_date": "2026-11-19",
+        "weeks": 4,
+        "is_current": false
+      }
+    ]
+  },
   "training_load": {
-    "ctl": 83.9,
-    "atl": 92.6,
-    "tsb": -8.7,
-    "tss_today": 0.0,
-    "state": "productive",
-    "carb_bump_pct": 0,
+    "ctl": 84.8,
+    "atl": 97.5,
+    "tsb": -12.7,
+    "tss_today": 36.2,
+    "state": "heavy_load",
+    "carb_bump_pct": 10,
     "source": "garmin",
     "days_modelled": 181,
     "history": [
@@ -427,12 +531,12 @@
       },
       {
         "date": "2026-09-24",
-        "ctl": 83.9,
-        "atl": 92.6,
-        "tsb": -8.7,
-        "tss": 0.0
+        "ctl": 84.8,
+        "atl": 97.5,
+        "tsb": -12.7,
+        "tss": 36.2
       }
     ]
   },
-  "generated_at": "2026-09-24T14:29:54.361907Z"
+  "generated_at": "2026-09-24T19:08:54.325512Z"
 }
