@@ -11,7 +11,18 @@
     "intensity_factor": null,
     "is_completed": false
   },
-  "secondary_workouts": [],
+  "secondary_workouts": [
+    {
+      "title": "Bike: Indoor Cycling",
+      "sport": "bike",
+      "duration_min": 60
+    },
+    {
+      "title": "Bike: TrainingPeaks Virtual - Workout: VO2Max Four Fours",
+      "sport": "bike",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-09-21",
@@ -520,7 +531,7 @@
   "weather": {
     "location": "Lakewood, WA",
     "high_f": 61.0,
-    "precip_pct": 92,
+    "precip_pct": 33,
     "hot": false
   },
   "hydration_l": 4.0,
@@ -746,5 +757,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-25T19:40:05.278678Z"
+  "generated_at": "2026-09-25T22:55:30.024353Z"
 }
