@@ -151,6 +151,7 @@ def estimate_expenditure(
     height_cm: float,
     age: int,
     sex: str,
+    measured_session_kcal: float | None = None,
 ) -> Expenditure:
     """Estimate what today will cost.
 
@@ -190,6 +191,10 @@ def estimate_expenditure(
             rates["bike"] = kcal_per_hour["ride"]
     rate = rates.get(sport, rates["other"])
     session = max(0.0, session_duration_hr) * rate
+    # Once the session is done, Garmin has measured it — use that.
+    if measured_session_kcal is not None and measured_session_kcal >= 0:
+        session = measured_session_kcal
+        method += "; today's session measured by Garmin"
 
     return Expenditure(
         rest_baseline_kcal=round(rest),

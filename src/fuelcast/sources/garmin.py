@@ -176,6 +176,7 @@ class AthleteState:
     bmr_kcal: float | None = None
     training_kcal: float | None = None       # net of BMR, 7-day mean
     kcal_per_hour: dict | None = None        # athlete's own net rate by sport
+    activities: tuple = ()                   # recent completed activities, local-dated
     energy_days: int = 0
     rhr_7d: float | None = None
     hrv_last_night: float | None = None
@@ -235,6 +236,16 @@ def parse_athlete_state(doc: dict) -> AthleteState:
                                 if isinstance(v, (int, float)) and 0 < v < 1500}
     elif tdee:
         notes.append(f"TDEE from {days} days — below {MIN_ENERGY_DAYS}, not trusted")
+
+    acts = []
+    for a in doc.get("activities") or []:
+        try:
+            mins = float(a.get("duration_min") or 0)
+        except (TypeError, ValueError):
+            continue
+        if a.get("local_date") and mins > 0:
+            acts.append(a)
+    st.activities = tuple(acts)
 
     r = doc.get("recovery") or {}
     st.rhr_7d = r.get("rhr_7d")

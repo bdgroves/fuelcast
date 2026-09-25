@@ -13,6 +13,7 @@ from pathlib import Path
 
 from fuelcast.athlete import Athlete, load_athlete
 from fuelcast.biomarkers import BloodworkPanel, latest_panel, vegetarian_flags
+from fuelcast.localtime import local_today
 from fuelcast.prescriptions.carbs import (
     MEAL_CARBS_G,
     daily_carbs_grams,
@@ -23,7 +24,7 @@ from fuelcast.prescriptions.energy import energy_flag, estimate_expenditure, fit
 from fuelcast.prescriptions.gut_training import build_gut_plan, gut_plan_flag
 from fuelcast.prescriptions.protein import daily_protein_g_per_kg
 from fuelcast.prescriptions.session import in_session_plan
-from fuelcast.sources import hrv4training
+from fuelcast.sources import hrv4training, weather
 from fuelcast.sources.garmin import (
     AthleteState,
     GarminLoadUnavailable,
@@ -69,6 +70,10 @@ class DayPlan:
     body: dict | None = None
     gut_training: dict | None = None
     hrv: dict | None = None
+    session_source: str = "planned"
+    planned_workout: dict | None = None
+    weather: dict | None = None
+    hydration_l: float | None = None
     training_load: dict | None = None
     generated_at: str = ""
 
@@ -241,6 +246,12 @@ def build_week_strip(
     return days
 
 
+# Garmin buckets activities as run/ride/swim/strength/yoga; the rest of
+# FuelCast speaks TrainingPeaks' vocabulary.
+GARMIN_TO_TP_SPORT = {"run": "run", "ride": "bike", "swim": "swim",
+                      "strength": "strength", "yoga": "other", "other": "other"}
+
+
 def build_day_plan(
     target_date: date,
     *,
@@ -250,9 +261,34 @@ def build_day_plan(
     daily_tss: dict[str, float] | None = None,
     athlete_state: AthleteState | None = None,
     hrv_state: hrv4training.HRVState | None = None,
+    weather_today: weather.Weather | None = None,
 ) -> DayPlan:
     """Build a complete day plan for the given date."""
-    primary = workout_for(target_date, workouts)
+    planned = workout_for(target_date, workouts)
+    primary = planned
+
+    # ─── Plan vs reality ─────────────────────────────────────────────
+    # If Garmin shows training completed today, fuel the day that actually
+    # happened. A planned 60-minute run that became a 30-minute ride burns
+    # half as much, so the rest of the day's food should reflect that.
+    # Rule: once any training is recorded, it replaces the plan. A second
+    # planned session later in the day is picked up by the next refresh
+    # once it too has been done.
+    done_today = [a for a in ((athlete_state.activities if athlete_state else ()) or ())
+                  if a.get("local_date") == target_date.isoformat()]
+    measured_session_kcal = None
+    if done_today:
+        longest = max(done_today, key=lambda a: float(a["duration_min"]))
+        tss_vals = [float(a["tss"]) for a in done_today if a.get("tss") is not None]
+        primary = Workout(
+            date=target_date,
+            title=" + ".join(a.get("name") or a["sport"].title() for a in done_today),
+            sport=GARMIN_TO_TP_SPORT.get(longest["sport"], "other"),
+            duration_min=sum(float(a["duration_min"]) for a in done_today),
+            tss=sum(tss_vals) if tss_vals else None,
+            is_completed=True,
+        )
+        measured_session_kcal = sum(float(a.get("kcal_net") or 0) for a in done_today)
     all_today = all_workouts_for(target_date, workouts)
 
     color = session_color(primary)
@@ -360,6 +396,7 @@ def build_day_plan(
         height_cm=float(physical.get("height_cm") or 175),
         age=age,
         sex=athlete.raw.get("sex", "M"),
+        measured_session_kcal=measured_session_kcal,
     )
     energy = fit_macros(
         goal=goal,
@@ -385,10 +422,17 @@ def build_day_plan(
                         targets={"carbs_g": carbs_g, "protein_g": protein_g, "fat_g": fat_g})
 
     # In-session fuel plan
+    hot = bool(weather_today and weather_today.hot)
     session = in_session_plan(
         primary,
         gut_trained_to=athlete.gut_trained_to_g_hr,
+        hot_day=hot,
     )
+
+    # Daily fluid target: ~35 ml/kg baseline plus sweat replacement for the
+    # session, more in heat. Replaces the page's fixed "3+ L".
+    sess_hr = primary.duration_hr if primary else 0.0
+    hydration_l = round((0.035 * weight + sess_hr * (0.9 if hot else 0.6)) * 2) / 2
     session_dict = None
     if session is not None:
         session_dict = {
@@ -414,6 +458,23 @@ def build_day_plan(
     # Energy position leads the card — it's the number that now drives
     # everything else on it.
     flags.insert(0, energy_flag(energy))
+
+    if done_today:
+        def _label(w):
+            # TrainingPeaks titles often already carry the duration.
+            mins = f"{w.duration_min:.0f} min"
+            return w.title if mins in w.title else f"{w.title} ({mins})"
+        did = _label(primary)
+        if planned is not None:
+            text = (f"Planned {_label(planned)} · you did {did}. "
+                    "The rest of today is fuelled for what you actually did.")
+        else:
+            text = f"Recorded {did}. The rest of today is fuelled for it."
+        flags.insert(1, {"level": "ok", "title": "Session done", "text": text})
+    if hot:
+        flags.append({"level": "warn", "title": "Hot day",
+                      "text": f"Forecast high {weather_today.high_f:.0f}°F — extra sodium in "
+                              f"bottles and about {hydration_l:g} L of fluid across the day."})
 
     # HRV4Training's own daily verdict, shown as it gave it.
     hrv_dict = None
@@ -613,6 +674,14 @@ def build_day_plan(
         body=body_dict,
         gut_training=gut_dict,
         hrv=hrv_dict,
+        session_source="actual" if done_today else "planned",
+        planned_workout=({"title": planned.title, "sport": planned.sport,
+                          "duration_min": int(planned.duration_min)}
+                         if planned is not None else None),
+        weather=({"location": weather_today.location, "high_f": weather_today.high_f,
+                  "precip_pct": weather_today.precip_pct, "hot": weather_today.hot}
+                 if weather_today and weather_today.high_f is not None else None),
+        hydration_l=hydration_l,
         generated_at=datetime.now(UTC).isoformat().replace("+00:00", "Z"),
     )
 
@@ -627,7 +696,7 @@ def run_engine(
     hrv_path: Path | str = "data/hrv4training.csv",
 ) -> DayPlan:
     """Top-level entry point: build the day plan and write JSON output."""
-    target_date = target_date or date.today()
+    target_date = target_date or local_today()
 
     athlete = load_athlete(athlete_path)
     panel = latest_panel(bloodwork_dir)
@@ -659,6 +728,11 @@ def run_engine(
 
     # HRV4Training export. Arrives by manual export or automated Dropbox
     # fetch; either way it lands at the same path. A missing file is fine.
+    weather_today = weather.fetch(today=target_date)
+    print(f"weather: {weather_today.location or '?'} high {weather_today.high_f}°F"
+          + (" — HOT" if weather_today.hot else "")
+          + (f" ({weather_today.note})" if weather_today.note else ""))
+
     hrv_state = hrv4training.load(hrv_path, today=target_date)
     for note in hrv_state.notes:
         print(f"hrv: {note}")
@@ -678,6 +752,7 @@ def run_engine(
         daily_tss=daily_tss,
         athlete_state=athlete_state,
         hrv_state=hrv_state,
+        weather_today=weather_today,
     )
 
     out_path = Path(output_path)

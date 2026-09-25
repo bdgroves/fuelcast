@@ -11,10 +11,11 @@ from __future__ import annotations
 
 import argparse
 import sys
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 
 from fuelcast.engine import run_engine
+from fuelcast.localtime import local_today
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -51,7 +52,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
 
     if args.date == "today":
-        target = date.today()
+        # The athlete's local date, not the UTC runner's. See localtime.py.
+        target = local_today()
     else:
         target = datetime.strptime(args.date, "%Y-%m-%d").date()
 
