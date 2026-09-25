@@ -1,33 +1,10 @@
 {
-  "date": "2026-09-24",
-  "weekday": "Thursday",
+  "date": "2026-09-25",
+  "weekday": "Friday",
   "phase": "base",
-  "day_color": "YELLOW",
-  "workout": {
-    "title": "Indoor Cycling + TrainingPeaks Virtual - Wollongong, New South Wales, Australia + Strength + Treadmill Running",
-    "sport": "strength",
-    "duration_min": 107,
-    "tss": 98.1,
-    "intensity_factor": null,
-    "is_completed": true
-  },
-  "secondary_workouts": [
-    {
-      "title": "Run: Treadmill Running",
-      "sport": "run",
-      "duration_min": 60
-    },
-    {
-      "title": "Bike: TrainingPeaks Virtual - Wollongong, New South Wales, Australia",
-      "sport": "bike",
-      "duration_min": 60
-    },
-    {
-      "title": "Bike: Indoor Cycling",
-      "sport": "bike",
-      "duration_min": 60
-    }
-  ],
+  "day_color": "RED",
+  "workout": null,
+  "secondary_workouts": [],
   "week_strip": [
     {
       "date": "2026-09-21",
@@ -57,7 +34,7 @@
       "date": "2026-09-24",
       "label": "T",
       "color": "yellow",
-      "is_today": true,
+      "is_today": false,
       "title": "Run: Treadmill Running",
       "duration_min": 60
     },
@@ -65,7 +42,7 @@
       "date": "2026-09-25",
       "label": "F",
       "color": "red",
-      "is_today": false,
+      "is_today": true,
       "title": "Rest",
       "duration_min": 0
     },
@@ -87,13 +64,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 405,
+    "carbs_g": 190,
     "protein_g": 161,
     "fat_g": 66,
-    "calories": 2858,
-    "carbs_g_per_kg": 4.27,
+    "calories": 1998,
+    "carbs_g_per_kg": 2.0,
     "protein_g_per_kg": 1.7,
-    "carb_bump_pct": 10
+    "carb_bump_pct": 0
   },
   "meals": [
     {
@@ -101,18 +78,18 @@
       "name": "Breakfast",
       "time": "6:30 AM",
       "color": "RED",
-      "carbs_g": 76,
+      "carbs_g": 46,
       "protein_g": 40,
       "fat_g": 13,
-      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
-      "label": "Pre-session \u00b7 light, low-fiber"
+      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
+      "label": "Steady start"
     },
     {
       "slot": "lunch",
       "name": "Lunch",
       "time": "12:30 PM",
-      "color": "YELLOW",
-      "carbs_g": 126,
+      "color": "RED",
+      "carbs_g": 48,
       "protein_g": 46,
       "fat_g": 22,
       "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
@@ -123,7 +100,7 @@
       "name": "Afternoon Snack",
       "time": "4:00 PM",
       "color": "RED",
-      "carbs_g": 76,
+      "carbs_g": 48,
       "protein_g": 23,
       "fat_g": 10,
       "note": "Apple + 2 tbsp almond butter, or Greek yogurt with walnuts + flaxseed.",
@@ -133,50 +110,20 @@
       "slot": "dinner",
       "name": "Dinner",
       "time": "7:00 PM",
-      "color": "YELLOW",
-      "carbs_g": 127,
+      "color": "RED",
+      "carbs_g": 48,
       "protein_g": 52,
       "fat_g": 21,
       "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat.",
       "label": "Veg-forward, balanced"
     }
   ],
-  "in_session": {
-    "target_carbs_g_per_hr": 60,
-    "total_carbs_g": 107,
-    "sodium_mg": 894,
-    "glucose_pct": 100,
-    "fructose_pct": 0,
-    "bottle_count": 1,
-    "note": "",
-    "steps": [
-      {
-        "when": "\u221215 min",
-        "what": "Sip ~200 ml sports drink (\u2248 15g carbs) before starting",
-        "carbs_g": 15
-      },
-      {
-        "when": "0\u201360 min",
-        "what": "Bottle 1: ~60g carbs in 750 ml + \u00bc tsp salt (~500 mg sodium). Drain steadily through first hour.",
-        "carbs_g": 60
-      },
-      {
-        "when": "45 min",
-        "what": "1 gel (\u2248 25g)",
-        "carbs_g": 25
-      },
-      {
-        "when": "Total",
-        "what": "\u2248 107g carbs \u00b7 \u2248 894 mg sodium across the session",
-        "carbs_g": 0
-      }
-    ]
-  },
+  "in_session": null,
   "flags": [
     {
       "level": "ok",
       "title": "Energy balance",
-      "text": "185 kcal deficit today \u2014 eating 2858 against ~3043 burned (measured (Garmin 7-day TDEE minus training); today's session measured by Garmin)."
+      "text": "334 kcal deficit today \u2014 eating 1998 against ~2332 burned (measured (Garmin 7-day TDEE minus training)). Held up by: macro minimums (protein / carbs / fat)."
     },
     {
       "level": "ok",
@@ -185,13 +132,8 @@
     },
     {
       "level": "ok",
-      "title": "Session done",
-      "text": "Planned Run: Treadmill Running (60 min) \u00b7 you did Indoor Cycling + TrainingPeaks Virtual - Wollongong, New South Wales, Australia + Strength + Treadmill Running (107 min). The rest of today is fuelled for what you actually did."
-    },
-    {
-      "level": "warn",
-      "title": "Heavy load",
-      "text": "TSB -20, CTL 86, ATL 106. Significant fatigue. Quality session OK if planned, otherwise consider easy."
+      "title": "Recovery state",
+      "text": "TSB -7, CTL 84. Productive load zone \u2014 fitness is building."
     },
     {
       "level": "ok",
@@ -216,12 +158,7 @@
     {
       "level": "ok",
       "title": "Energy adjustment",
-      "text": "heavy training load \u2014 deficit halved to protect recovery"
-    },
-    {
-      "level": "ok",
-      "title": "Energy adjustment",
-      "text": "carbs trimmed 573 \u2192 405 g to fit the energy target"
+      "text": "carbs trimmed 332 \u2192 190 g to fit the energy target"
     },
     {
       "level": "ok",
@@ -291,27 +228,28 @@
   "race": {
     "name": "Ironman 70.3 Victoria, BC",
     "date": "2027-05-30",
-    "days_to_go": 248,
+    "days_to_go": 247,
     "distance": 70.3,
     "priority": "A"
   },
   "energy": {
     "goal": "weight_loss",
-    "expenditure_kcal": 3043,
-    "rest_baseline_kcal": 2250,
-    "session_kcal": 793,
-    "method": "measured (Garmin 7-day TDEE minus training); today's session measured by Garmin",
-    "target_kcal": 2858,
-    "balance_kcal": -185,
-    "energy_availability": 30.8,
+    "expenditure_kcal": 2332,
+    "rest_baseline_kcal": 2332,
+    "session_kcal": 0,
+    "method": "measured (Garmin 7-day TDEE minus training)",
+    "target_kcal": 1998,
+    "balance_kcal": -334,
+    "energy_availability": 29.8,
     "ea_floor": 25.0,
-    "floors_binding": [],
+    "floors_binding": [
+      "macro minimums (protein / carbs / fat)"
+    ],
     "adjustments": [
-      "heavy training load \u2014 deficit halved to protect recovery",
-      "carbs trimmed 573 \u2192 405 g to fit the energy target"
+      "carbs trimmed 332 \u2192 190 g to fit the energy target"
     ],
     "protein_basis": "fat-free mass (67.1 kg)",
-    "carbs_periodized_g": 573
+    "carbs_periodized_g": 332
   },
   "body": {
     "weight_kg": 94.8,
@@ -338,19 +276,19 @@
     "ladder": [
       {
         "target_g_hr": 80,
-        "start_date": "2026-09-24",
+        "start_date": "2026-09-25",
         "weeks": 4,
         "is_current": true
       },
       {
         "target_g_hr": 85,
-        "start_date": "2026-10-22",
+        "start_date": "2026-10-23",
         "weeks": 4,
         "is_current": false
       },
       {
         "target_g_hr": 90,
-        "start_date": "2026-11-19",
+        "start_date": "2026-11-20",
         "weeks": 4,
         "is_current": false
       }
@@ -358,22 +296,17 @@
   },
   "hrv": {
     "date": "2026-09-24",
-    "age_days": 0,
+    "age_days": 1,
     "usable_today": true,
     "rmssd": 34.22,
     "hr": 60.04,
     "verdict": "within",
     "advice": "Proceed as planned",
     "rolling_ln": 3.7,
-    "baseline_ln": 3.337,
-    "baseline_sd": 0.357,
-    "readings_30d": 12,
+    "baseline_ln": 3.31,
+    "baseline_sd": 0.326,
+    "readings_30d": 11,
     "history": [
-      {
-        "date": "2026-07-27",
-        "rmssd": 70.53,
-        "verdict": "unusually_high"
-      },
       {
         "date": "2026-07-28",
         "rmssd": 32.78,
@@ -551,36 +484,25 @@
       }
     ]
   },
-  "session_source": "actual",
-  "planned_workout": {
-    "title": "Run: Treadmill Running",
-    "sport": "run",
-    "duration_min": 60
-  },
+  "session_source": "planned",
+  "planned_workout": null,
   "weather": {
     "location": "Lakewood, WA",
-    "high_f": 64.0,
-    "precip_pct": 20,
+    "high_f": 62.0,
+    "precip_pct": 90,
     "hot": false
   },
-  "hydration_l": 4.5,
+  "hydration_l": 3.5,
   "training_load": {
-    "ctl": 86.2,
-    "atl": 105.7,
-    "tsb": -19.5,
-    "tss_today": 98.1,
-    "state": "heavy_load",
-    "carb_bump_pct": 10,
+    "ctl": 84.2,
+    "atl": 91.6,
+    "tsb": -7.4,
+    "tss_today": 0.0,
+    "state": "productive",
+    "carb_bump_pct": 0,
     "source": "garmin",
-    "days_modelled": 180,
+    "days_modelled": 181,
     "history": [
-      {
-        "date": "2026-08-26",
-        "ctl": 73.0,
-        "atl": 103.9,
-        "tsb": -30.9,
-        "tss": 203.1
-      },
       {
         "date": "2026-08-27",
         "ctl": 74.4,
@@ -783,8 +705,15 @@
         "atl": 105.7,
         "tsb": -19.5,
         "tss": 98.1
+      },
+      {
+        "date": "2026-09-25",
+        "ctl": 84.2,
+        "atl": 91.6,
+        "tsb": -7.4,
+        "tss": 0.0
       }
     ]
   },
-  "generated_at": "2026-09-25T02:21:49.167705Z"
+  "generated_at": "2026-09-25T09:10:32.797098Z"
 }
