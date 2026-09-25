@@ -488,8 +488,8 @@
   "planned_workout": null,
   "weather": {
     "location": "Lakewood, WA",
-    "high_f": 62.0,
-    "precip_pct": 90,
+    "high_f": 61.0,
+    "precip_pct": 92,
     "hot": false
   },
   "hydration_l": 3.5,
@@ -715,5 +715,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-25T09:10:32.797098Z"
+  "generated_at": "2026-09-25T14:50:15.555994Z"
 }
