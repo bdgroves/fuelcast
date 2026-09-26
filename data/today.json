@@ -3,8 +3,21 @@
   "weekday": "Saturday",
   "phase": "base",
   "day_color": "RED",
-  "workout": null,
-  "secondary_workouts": [],
+  "workout": {
+    "title": "Yard Work \ud83e\udeb4",
+    "sport": "other",
+    "duration_min": 33,
+    "tss": 18.3,
+    "intensity_factor": null,
+    "is_completed": true
+  },
+  "secondary_workouts": [
+    {
+      "title": "Other: Cardio",
+      "sport": "other",
+      "duration_min": 60
+    }
+  ],
   "week_strip": [
     {
       "date": "2026-09-21",
@@ -49,10 +62,10 @@
     {
       "date": "2026-09-26",
       "label": "S",
-      "color": "red",
+      "color": "yellow",
       "is_today": true,
-      "title": "Rest",
-      "duration_min": 0
+      "title": "Other: Cardio",
+      "duration_min": 60
     },
     {
       "date": "2026-09-27",
@@ -64,11 +77,11 @@
     }
   ],
   "macros": {
-    "carbs_g": 232,
+    "carbs_g": 257,
     "protein_g": 161,
     "fat_g": 66,
-    "calories": 2166,
-    "carbs_g_per_kg": 2.45,
+    "calories": 2266,
+    "carbs_g_per_kg": 2.71,
     "protein_g_per_kg": 1.7,
     "carb_bump_pct": 10
   },
@@ -78,18 +91,18 @@
       "name": "Breakfast",
       "time": "6:30 AM",
       "color": "RED",
-      "carbs_g": 58,
+      "carbs_g": 65,
       "protein_g": 40,
       "fat_g": 13,
-      "note": "Greek yogurt, berries, walnuts, oats. Coffee.",
-      "label": "Steady start"
+      "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
+      "label": "Pre-session \u00b7 light, low-fiber"
     },
     {
       "slot": "lunch",
       "name": "Lunch",
       "time": "12:30 PM",
       "color": "RED",
-      "carbs_g": 58,
+      "carbs_g": 64,
       "protein_g": 46,
       "fat_g": 22,
       "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
@@ -100,7 +113,7 @@
       "name": "Afternoon Snack",
       "time": "4:00 PM",
       "color": "RED",
-      "carbs_g": 58,
+      "carbs_g": 64,
       "protein_g": 23,
       "fat_g": 10,
       "note": "Apple + 2 tbsp almond butter, or Greek yogurt with walnuts + flaxseed.",
@@ -111,7 +124,7 @@
       "name": "Dinner",
       "time": "7:00 PM",
       "color": "RED",
-      "carbs_g": 58,
+      "carbs_g": 64,
       "protein_g": 52,
       "fat_g": 21,
       "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat.",
@@ -123,7 +136,7 @@
     {
       "level": "ok",
       "title": "Energy balance",
-      "text": "268 kcal deficit today \u2014 eating 2166 against ~2434 burned (measured (Garmin 7-day TDEE minus training))."
+      "text": "281 kcal deficit today \u2014 eating 2266 against ~2547 burned (measured (Garmin 7-day TDEE minus training); today's session measured by Garmin)."
     },
     {
       "level": "ok",
@@ -131,9 +144,14 @@
       "text": "Last reading 2 days ago (34 ms) \u2014 take one tomorrow morning so today's plan can use it."
     },
     {
+      "level": "ok",
+      "title": "Session done",
+      "text": "Planned Other: Cardio (60 min) \u00b7 you did Yard Work \ud83e\udeb4 (33 min). The rest of today is fuelled for what you actually did."
+    },
+    {
       "level": "warn",
       "title": "Heavy load",
-      "text": "TSB -12, CTL 86, ATL 98. Significant fatigue. Quality session OK if planned, otherwise consider easy."
+      "text": "TSB -14, CTL 86, ATL 100. Significant fatigue. Quality session OK if planned, otherwise consider easy."
     },
     {
       "level": "ok",
@@ -163,7 +181,7 @@
     {
       "level": "ok",
       "title": "Energy adjustment",
-      "text": "carbs trimmed 365 \u2192 232 g to fit the energy target"
+      "text": "carbs trimmed 365 \u2192 257 g to fit the energy target"
     },
     {
       "level": "ok",
@@ -239,18 +257,18 @@
   },
   "energy": {
     "goal": "weight_loss",
-    "expenditure_kcal": 2434,
+    "expenditure_kcal": 2547,
     "rest_baseline_kcal": 2434,
-    "session_kcal": 0,
-    "method": "measured (Garmin 7-day TDEE minus training)",
-    "target_kcal": 2166,
-    "balance_kcal": -268,
-    "energy_availability": 32.3,
+    "session_kcal": 113,
+    "method": "measured (Garmin 7-day TDEE minus training); today's session measured by Garmin",
+    "target_kcal": 2266,
+    "balance_kcal": -281,
+    "energy_availability": 32.1,
     "ea_floor": 25.0,
     "floors_binding": [],
     "adjustments": [
       "heavy training load \u2014 deficit halved to protect recovery",
-      "carbs trimmed 365 \u2192 232 g to fit the energy target"
+      "carbs trimmed 365 \u2192 257 g to fit the energy target"
     ],
     "protein_basis": "fat-free mass (67.1 kg)",
     "carbs_periodized_g": 365
@@ -483,8 +501,12 @@
       }
     ]
   },
-  "session_source": "planned",
-  "planned_workout": null,
+  "session_source": "actual",
+  "planned_workout": {
+    "title": "Other: Cardio",
+    "sport": "other",
+    "duration_min": 60
+  },
   "weather": {
     "location": "Lakewood, WA",
     "high_f": 63.0,
@@ -493,10 +515,10 @@
   },
   "hydration_l": 3.5,
   "training_load": {
-    "ctl": 85.9,
-    "atl": 97.9,
-    "tsb": -12.0,
-    "tss_today": 0.0,
+    "ctl": 86.3,
+    "atl": 100.3,
+    "tsb": -14.0,
+    "tss_today": 18.3,
     "state": "heavy_load",
     "carb_bump_pct": 10,
     "source": "garmin",
@@ -707,12 +729,12 @@
       },
       {
         "date": "2026-09-26",
-        "ctl": 85.9,
-        "atl": 97.9,
-        "tsb": -12.0,
-        "tss": 0.0
+        "ctl": 86.3,
+        "atl": 100.3,
+        "tsb": -14.0,
+        "tss": 18.3
       }
     ]
   },
-  "generated_at": "2026-09-26T17:34:13.298889Z"
+  "generated_at": "2026-09-26T20:19:10.209149Z"
 }
