@@ -2,16 +2,21 @@
   "date": "2026-09-25",
   "weekday": "Friday",
   "phase": "base",
-  "day_color": "YELLOW",
+  "day_color": "GREEN",
   "workout": {
-    "title": "Run: Treadmill Running",
-    "sport": "run",
-    "duration_min": 60,
-    "tss": null,
+    "title": "Indoor Cycling + TrainingPeaks Virtual - Workout: VO2Max Four Fours + Treadmill Running",
+    "sport": "bike",
+    "duration_min": 101,
+    "tss": 159.8,
     "intensity_factor": null,
-    "is_completed": false
+    "is_completed": true
   },
   "secondary_workouts": [
+    {
+      "title": "Run: Treadmill Running",
+      "sport": "run",
+      "duration_min": 60
+    },
     {
       "title": "Bike: Indoor Cycling",
       "sport": "bike",
@@ -82,13 +87,13 @@
     }
   ],
   "macros": {
-    "carbs_g": 332,
+    "carbs_g": 523,
     "protein_g": 161,
     "fat_g": 66,
-    "calories": 2566,
-    "carbs_g_per_kg": 3.5,
+    "calories": 3330,
+    "carbs_g_per_kg": 5.52,
     "protein_g_per_kg": 1.7,
-    "carb_bump_pct": 0
+    "carb_bump_pct": 15
   },
   "meals": [
     {
@@ -96,8 +101,8 @@
       "name": "Breakfast",
       "time": "6:30 AM",
       "color": "RED",
-      "carbs_g": 62,
-      "protein_g": 40,
+      "carbs_g": 68,
+      "protein_g": 38,
       "fat_g": 13,
       "note": "Pre-session \u00b7 light, low-fiber. Greek yogurt, berries, honey. Coffee black.",
       "label": "Pre-session \u00b7 light, low-fiber"
@@ -106,20 +111,20 @@
       "slot": "lunch",
       "name": "Lunch",
       "time": "12:30 PM",
-      "color": "YELLOW",
-      "carbs_g": 104,
-      "protein_g": 46,
+      "color": "GREEN",
+      "carbs_g": 227,
+      "protein_g": 54,
       "fat_g": 22,
-      "note": "Hummus + whole-grain wrap with greens, sprouts, avocado. Side of fruit.",
-      "label": "Steady mid-day fuel"
+      "note": "Recovery meal: lentils + brown rice bowl, tahini, roasted veg. Cottage cheese on the side covers leucine. Citrus or pepper for vitamin C \u2192 iron uptake.",
+      "label": "Recovery window \u00b7 complete plant protein"
     },
     {
       "slot": "afternoon_snack",
       "name": "Afternoon Snack",
       "time": "4:00 PM",
-      "color": "RED",
-      "carbs_g": 62,
-      "protein_g": 23,
+      "color": "YELLOW",
+      "carbs_g": 114,
+      "protein_g": 21,
       "fat_g": 10,
       "note": "Apple + 2 tbsp almond butter, or Greek yogurt with walnuts + flaxseed.",
       "label": "Bridge to dinner"
@@ -129,30 +134,40 @@
       "name": "Dinner",
       "time": "7:00 PM",
       "color": "YELLOW",
-      "carbs_g": 104,
-      "protein_g": 52,
+      "carbs_g": 114,
+      "protein_g": 48,
       "fat_g": 21,
       "note": "Tofu stir-fry over quinoa, broccolini, bok choy, sesame oil. Quinoa + tofu = complete amino acids. Avocado for fat.",
       "label": "Veg-forward, balanced"
     }
   ],
   "in_session": {
-    "target_carbs_g_per_hr": 30,
-    "total_carbs_g": 30,
-    "sodium_mg": 0,
+    "target_carbs_g_per_hr": 60,
+    "total_carbs_g": 101,
+    "sodium_mg": 845,
     "glucose_pct": 100,
     "fructose_pct": 0,
     "bottle_count": 1,
     "note": "",
     "steps": [
       {
+        "when": "\u221215 min",
+        "what": "Sip ~200 ml sports drink (\u2248 15g carbs) before starting",
+        "carbs_g": 15
+      },
+      {
         "when": "0\u201360 min",
-        "what": "Bottle 1: ~30g carbs in 750 ml. Drain steadily through first hour.",
-        "carbs_g": 30
+        "what": "Bottle 1: ~60g carbs in 750 ml + \u00bc tsp salt (~500 mg sodium). Drain steadily through first hour.",
+        "carbs_g": 60
+      },
+      {
+        "when": "45 min",
+        "what": "1 gel (\u2248 25g)",
+        "carbs_g": 25
       },
       {
         "when": "Total",
-        "what": "\u2248 30g carbs \u00b7 \u2248 0 mg sodium across the session",
+        "what": "\u2248 101g carbs \u00b7 \u2248 845 mg sodium across the session",
         "carbs_g": 0
       }
     ]
@@ -161,7 +176,7 @@
     {
       "level": "ok",
       "title": "Energy balance",
-      "text": "94 kcal deficit today \u2014 eating 2566 against ~2660 burned (measured (Garmin 7-day TDEE minus training)). Held up by: macro minimums (protein / carbs / fat)."
+      "text": "at maintenance today \u2014 eating 3330 against ~3332 burned (measured (Garmin 7-day TDEE minus training); today's session measured by Garmin)."
     },
     {
       "level": "ok",
@@ -170,8 +185,13 @@
     },
     {
       "level": "ok",
-      "title": "Recovery state",
-      "text": "TSB -7, CTL 84. Productive load zone \u2014 fitness is building."
+      "title": "Session done",
+      "text": "Planned Run: Treadmill Running (60 min) \u00b7 you did Indoor Cycling + TrainingPeaks Virtual - Workout: VO2Max Four Fours + Treadmill Running (101 min). The rest of today is fuelled for what you actually did."
+    },
+    {
+      "level": "alert",
+      "title": "Overreached",
+      "text": "TSB -25, CTL 88, ATL 113. Fatigue significantly exceeds fitness. Strongly consider a rest or easy day; pushing through risks deeper hole."
     },
     {
       "level": "ok",
@@ -196,7 +216,12 @@
     {
       "level": "ok",
       "title": "Energy adjustment",
-      "text": "carbs trimmed 521 \u2192 332 g to fit the energy target"
+      "text": "overreached \u2014 deficit suspended, eating at maintenance"
+    },
+    {
+      "level": "ok",
+      "title": "Energy adjustment",
+      "text": "carbs trimmed 818 \u2192 523 g to fit the energy target"
     },
     {
       "level": "ok",
@@ -272,22 +297,21 @@
   },
   "energy": {
     "goal": "weight_loss",
-    "expenditure_kcal": 2660,
-    "rest_baseline_kcal": 2332,
-    "session_kcal": 328,
-    "method": "measured (Garmin 7-day TDEE minus training)",
-    "target_kcal": 2566,
-    "balance_kcal": -94,
-    "energy_availability": 33.4,
+    "expenditure_kcal": 3332,
+    "rest_baseline_kcal": 2408,
+    "session_kcal": 924,
+    "method": "measured (Garmin 7-day TDEE minus training); today's session measured by Garmin",
+    "target_kcal": 3330,
+    "balance_kcal": -2,
+    "energy_availability": 35.9,
     "ea_floor": 25.0,
-    "floors_binding": [
-      "macro minimums (protein / carbs / fat)"
-    ],
+    "floors_binding": [],
     "adjustments": [
-      "carbs trimmed 521 \u2192 332 g to fit the energy target"
+      "overreached \u2014 deficit suspended, eating at maintenance",
+      "carbs trimmed 818 \u2192 523 g to fit the energy target"
     ],
     "protein_basis": "fat-free mass (67.1 kg)",
-    "carbs_periodized_g": 521
+    "carbs_periodized_g": 818
   },
   "body": {
     "weight_kg": 94.8,
@@ -522,7 +546,7 @@
       }
     ]
   },
-  "session_source": "planned",
+  "session_source": "actual",
   "planned_workout": {
     "title": "Run: Treadmill Running",
     "sport": "run",
@@ -534,14 +558,14 @@
     "precip_pct": 33,
     "hot": false
   },
-  "hydration_l": 4.0,
+  "hydration_l": 4.5,
   "training_load": {
-    "ctl": 84.2,
-    "atl": 91.6,
-    "tsb": -7.4,
-    "tss_today": 0.0,
-    "state": "productive",
-    "carb_bump_pct": 0,
+    "ctl": 88.0,
+    "atl": 112.9,
+    "tsb": -24.9,
+    "tss_today": 159.8,
+    "state": "overreached",
+    "carb_bump_pct": 15,
     "source": "garmin",
     "days_modelled": 181,
     "history": [
@@ -750,12 +774,12 @@
       },
       {
         "date": "2026-09-25",
-        "ctl": 84.2,
-        "atl": 91.6,
-        "tsb": -7.4,
-        "tss": 0.0
+        "ctl": 88.0,
+        "atl": 112.9,
+        "tsb": -24.9,
+        "tss": 159.8
       }
     ]
   },
-  "generated_at": "2026-09-25T22:55:30.024353Z"
+  "generated_at": "2026-09-26T02:26:09.619374Z"
 }
